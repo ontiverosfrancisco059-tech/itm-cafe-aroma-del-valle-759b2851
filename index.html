@@ -1,124 +1,124 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Aroma Del Valle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
-        <div class="container header-inner">
+        <div class="container">
             <h1 class="logo" data-eb-editable="text" data-eb-key="index.h1.1" data-eb-role="h1" data-eb-kind="text">Café Aroma Del Valle</h1>
-            <nav class="nav" id="main-nav">
+            <nav class="nav">
                 <ul>
-                    <li><a href="#hero" class="nav-link" data-eb-editable="link" data-eb-key="index.a.2" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
-                    <li><a href="#menu" class="nav-link" data-eb-editable="link" data-eb-key="index.a.3" data-eb-role="a" data-eb-kind="link">Menú</a></li>
-                    <li><a href="#about" class="nav-link" data-eb-editable="link" data-eb-key="index.a.4" data-eb-role="a" data-eb-kind="link">Sobre Nosotros</a></li>
-                    <li><a href="#order" class="nav-link" data-eb-editable="link" data-eb-key="index.a.5" data-eb-role="a" data-eb-kind="link">Ordenar</a></li>
+                    <li><a href="index.html" aria-current="page" data-eb-editable="link" data-eb-key="index.a.2" data-eb-role="a" data-eb-kind="link">Home</a></li>
+                    <li><a href="menu.html" data-eb-editable="link" data-eb-key="index.a.3" data-eb-role="a" data-eb-kind="link">Menu</a></li>
+                    <li><a href="contact.html" data-eb-editable="link" data-eb-key="index.a.4" data-eb-role="a" data-eb-kind="link">Contact</a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/8112345678" class="whatsapp-fixed" aria-label="Ordenar por WhatsApp" data-eb-editable="link" data-eb-key="index.a.6" data-eb-role="a" data-eb-kind="link">
-                <svg width="24" height="24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 10.172l-3.879 2.464-.688-3.945-2.948.117L7.13 6.95l3.73-.317L10.52 3.29l2.464 3.879.117 2.948-3.945.688z"/></svg>
-            </a>
-            <button class="nav-toggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false" data-eb-editable="link" data-eb-key="index.button.7" data-eb-role="button" data-eb-kind="link">
-                <span class="hamburger"></span>
-            </button>
+            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="index.a.5" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+            <button class="nav-toggle" aria-label="Abrir menú" data-eb-editable="link" data-eb-key="index.button.6" data-eb-role="button" data-eb-kind="link">☰</button>
         </div>
     </header>
 
-    <section class="hero" id="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h2 data-eb-editable="text" data-eb-key="index.h2.8" data-eb-role="h2" data-eb-kind="text">Especialidad que despierta el valle</h2>
-            <p data-eb-editable="text" data-eb-key="index.p.9" data-eb-role="p" data-eb-kind="text">Café de origen, panadería artesanal y opciones veganas</p>
-            <a href="https://wa.me/8112345678" class="btn-primary" data-eb-editable="link" data-eb-key="index.a.10" data-eb-role="a" data-eb-kind="link">Ordenar por WhatsApp</a>
+    <section class="hero" style="background-image:url('https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg')" aria-label="Hero section">
+        <div class="hero-content">
+            <h2 data-eb-editable="text" data-eb-key="index.h2.7" data-eb-role="h2" data-eb-kind="text">Café Aroma Del Valle</h2>
+            <p data-eb-editable="text" data-eb-key="index.p.8" data-eb-role="p" data-eb-kind="text">Specialty coffee & artisan bakery</p>
+            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="btn-primary" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="index.a.9" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
         </div>
     </section>
 
-    <section class="about" id="about">
-        <div class="container about-inner">
-            <picture>
-                <source srcset="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" media="(min-width: 600px)">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Fachada del café con mesas al aire libre y plantas" loading="lazy" data-eb-editable="image" data-eb-key="index.img.11" data-eb-role="img" data-eb-kind="image">
-            </picture>
-            <div class="about-text">
-                <h3 data-eb-editable="text" data-eb-key="index.h3.12" data-eb-role="h3" data-eb-kind="text">Nuestro Valle, Nuestro Café</h3>
-                <p data-eb-editable="text" data-eb-key="index.p.13" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey. Ofrecemos café de origen, panadería artesanal, desayunos y opciones veganas. Ambiente acogedor, baristas certificados y wifi gratuito. Aceptamos pedidos por WhatsApp con entrega a domicilio.</p>
-                <p data-eb-editable="text" data-eb-key="index.p.14" data-eb-role="p" data-eb-kind="text">Horario: Lun a Vie 7:00 - 21:00, Sáb 8:00 - 22:00, Dom 9:00 - 15:00</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="menu" id="menu">
+    <section class="featured-menu">
         <div class="container">
-            <h3 data-eb-editable="text" data-eb-key="index.h3.15" data-eb-role="h3" data-eb-kind="text">Menú</h3>
-            <div class="menu-grid">
-                <article class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Cruasán artesanal en plato rústico" loading="lazy" data-eb-editable="image" data-eb-key="index.img.16" data-eb-role="img" data-eb-kind="image">
-                    <h4 data-eb-editable="text" data-eb-key="index.h4.17" data-eb-role="h4" data-eb-kind="text">Cruasán Artesanal</h4>
-                    <p data-eb-editable="text" data-eb-key="index.p.18" data-eb-role="p" data-eb-kind="text">Cruasán mantecoso, hojaldrado, perfecto para acompañar tu café.</p>
-                    <p class="price" data-eb-editable="text" data-eb-key="index.p.19" data-eb-role="p" data-eb-kind="text">$45</p>
-                </article>
-                <article class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Tostada vegana de aguacate en pan integral" loading="lazy" data-eb-editable="image" data-eb-key="index.img.20" data-eb-role="img" data-eb-kind="image">
-                    <h4 data-eb-editable="text" data-eb-key="index.h4.21" data-eb-role="h4" data-eb-kind="text">Tostada Vegana de Aguacate</h4>
-                    <p data-eb-editable="text" data-eb-key="index.p.22" data-eb-role="p" data-eb-kind="text">Pan integral, aguacate, tomate, rúgula y limón.</p>
-                    <p class="price" data-eb-editable="text" data-eb-key="index.p.23" data-eb-role="p" data-eb-kind="text">$80</p>
-                </article>
-                <!-- More items could be added -->
-            </div>
-        </div>
-    </section>
-
-    <section class="order-cta" id="order">
-        <div class="container">
-            <h3 data-eb-editable="text" data-eb-key="index.h3.24" data-eb-role="h3" data-eb-kind="text">Listo para ordenar?</h3>
-            <p data-eb-editable="text" data-eb-key="index.p.25" data-eb-role="p" data-eb-kind="text">Envíanos un WhatsApp y llevamos tu pedido a domicilio.</p>
-            <a href="https://wa.me/8112345678" class="btn-primary" data-eb-editable="link" data-eb-key="index.a.26" data-eb-role="a" data-eb-kind="link">Ordenar por WhatsApp</a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container footer-inner">
-            <div class="footer-content">
-                <h4 data-eb-editable="text" data-eb-key="index.h4.27" data-eb-role="h4" data-eb-kind="text">Café Aroma Del Valle</h4>
-                <p data-eb-editable="text" data-eb-key="index.p.28" data-eb-role="p" data-eb-kind="text">Monterrey</p>
-                <p data-eb-editable="text" data-eb-key="index.p.29" data-eb-role="p" data-eb-kind="text">Tel: 8112345678</p>
-                <p data-eb-editable="text" data-eb-key="index.p.30" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00, Sáb 8:00 - 22:00, Dom 9:00 - 15:00</p>
-                <div class="social-icons">
-                    <!-- Placeholder for social links -->
+            <h2 data-eb-editable="text" data-eb-key="index.h2.10" data-eb-role="h2" data-eb-kind="text">Today’s Favorites</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte art cappuccino" loading="lazy" data-eb-editable="image" data-eb-key="index.img.11" data-eb-role="img" data-eb-kind="image">
+                    <h3 data-eb-editable="text" data-eb-key="index.h3.12" data-eb-role="h3" data-eb-kind="text">Latte Art Cappuccino</h3>
+                    <p data-eb-editable="text" data-eb-key="index.p.13" data-eb-role="p" data-eb-kind="text">Espresso with velvety milk foam and latte art.</p>
+                    <span class="tag">Vegan option</span>
+                </div>
+                <div class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Almond croissant" loading="lazy" data-eb-editable="image" data-eb-key="index.img.14" data-eb-role="img" data-eb-kind="image">
+                    <h3 data-eb-editable="text" data-eb-key="index.h3.15" data-eb-role="h3" data-eb-kind="text">Almond Croissant</h3>
+                    <p data-eb-editable="text" data-eb-key="index.p.16" data-eb-role="p" data-eb-kind="text">Flaky pastry filled with almond cream.</p>
+                    <span class="tag">Gluten-free available</span>
+                </div>
+                <div class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Avocado toast" loading="lazy" data-eb-editable="image" data-eb-key="index.img.17" data-eb-role="img" data-eb-kind="image">
+                    <h3 data-eb-editable="text" data-eb-key="index.h3.18" data-eb-role="h3" data-eb-kind="text">Avocado Toast</h3>
+                    <p data-eb-editable="text" data-eb-key="index.p.19" data-eb-role="p" data-eb-kind="text">Sourdough with smashed avocado, cherry tomatoes and feta.</p>
+                    <span class="tag">Vegan</span>
+                </div>
+                <div class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Blueberry muffin" loading="lazy" data-eb-editable="image" data-eb-key="index.img.20" data-eb-role="img" data-eb-kind="image">
+                    <h3 data-eb-editable="text" data-eb-key="index.h3.21" data-eb-role="h3" data-eb-kind="text">Blueberry Muffin</h3>
+                    <p data-eb-editable="text" data-eb-key="index.p.22" data-eb-role="p" data-eb-kind="text">Moist muffin with fresh blueberries.</p>
+                    <span class="tag">Vegetarian</span>
                 </div>
             </div>
-            <p class="copyright" data-eb-editable="text" data-eb-key="index.p.31" data-eb-role="p" data-eb-kind="text">© 2026 Café Aroma Del Valle. Todos los derechos reservados.</p>
+            <a href="menu.html" class="see-all" aria-label="See full menu" data-eb-editable="link" data-eb-key="index.a.23" data-eb-role="a" data-eb-kind="link">See full menu</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-image">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Barista preparing coffee" loading="lazy" data-eb-editable="image" data-eb-key="index.img.24" data-eb-role="img" data-eb-kind="image">
+            </div>
+            <div class="about-text">
+                <h2 data-eb-editable="text" data-eb-key="index.h2.25" data-eb-role="h2" data-eb-kind="text">Our Story</h2>
+                <p data-eb-editable="text" data-eb-key="index.p.26" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey. Ofrecemos café de origen, panadería artesanal, desayunos y opciones veganas.</p>
+                <p data-eb-editable="text" data-eb-key="index.p.27" data-eb-role="p" data-eb-kind="text">Ambiente acogedor, baristas certificados y wifi gratuito.</p>
+                <p data-eb-editable="text" data-eb-key="index.p.28" data-eb-role="p" data-eb-kind="text">Aceptamos pedidos por WhatsApp con entrega a domicilio.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2 data-eb-editable="text" data-eb-key="index.h2.29" data-eb-role="h2" data-eb-kind="text">Moments at Aroma</h2>
+            <div class="gallery-grid">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte art close-up" loading="lazy" data-eb-editable="image" data-eb-key="index.img.30" data-eb-role="img" data-eb-kind="image">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Café interior" loading="lazy" data-eb-editable="image" data-eb-key="index.img.31" data-eb-role="img" data-eb-kind="image">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Pastry display" loading="lazy" data-eb-editable="image" data-eb-key="index.img.32" data-eb-role="img" data-eb-kind="image">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Café exterior" loading="lazy" data-eb-editable="image" data-eb-key="index.img.33" data-eb-role="img" data-eb-kind="image">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Cappuccino art" loading="lazy" data-eb-editable="image" data-eb-key="index.img.34" data-eb-role="img" data-eb-kind="image">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Coffee beans" loading="lazy" data-eb-editable="image" data-eb-key="index.img.35" data-eb-role="img" data-eb-kind="image">
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp fixed" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="index.a.36" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h3 data-eb-editable="text" data-eb-key="index.h3.37" data-eb-role="h3" data-eb-kind="text">Café Aroma Del Valle</h3>
+                <p data-eb-editable="text" data-eb-key="index.p.38" data-eb-role="p" data-eb-kind="text">Specialty coffee & artisan bakery</p>
+            </div>
+            <div class="footer-col">
+                <h3 data-eb-editable="text" data-eb-key="index.h3.39" data-eb-role="h3" data-eb-kind="text">Hours</h3>
+                <p data-eb-editable="text" data-eb-key="index.p.40" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00</p>
+                <p data-eb-editable="text" data-eb-key="index.p.41" data-eb-role="p" data-eb-kind="text">Sáb 8:00 - 22:00</p>
+                <p data-eb-editable="text" data-eb-key="index.p.42" data-eb-role="p" data-eb-kind="text">Dom 9:00 - 15:00</p>
+                <p data-eb-editable="text" data-eb-key="index.p.43" data-eb-role="p" data-eb-kind="text">Monterrey</p>
+                <p data-eb-editable="text" data-eb-key="index.p.44" data-eb-role="p" data-eb-kind="text">Tel: 8112345678</p>
+            </div>
+            <div class="footer-col">
+                <h3 data-eb-editable="text" data-eb-key="index.h3.45" data-eb-role="h3" data-eb-kind="text">Follow</h3>
+                <a href="#" aria-label="Instagram" data-eb-editable="link" data-eb-key="index.a.46" data-eb-role="a" data-eb-kind="link">Instagram</a>
+                <a href="#" aria-label="Facebook" data-eb-editable="link" data-eb-key="index.a.47" data-eb-role="a" data-eb-kind="link">Facebook</a>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Simple mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const nav = document.getElementById('main-nav');
-        navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-            navToggle.setAttribute('aria-expanded', !expanded);
-            nav.classList.toggle('nav-open');
-        });
-
-        // Header background on scroll
-        const header = document.querySelector('.header');
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll <= 0) {
-                header.classList.remove('scrolled');
-            } else if (currentScroll > lastScroll && !header.classList.contains('scrolled')) {
-                // scrolling down
-                header.classList.add('scrolled');
-            } else if (currentScroll < lastScroll && header.classList.contains('scrolled')) {
-                // scrolling up
-                header.classList.remove('scrolled');
-            }
-            lastScroll = currentScroll;
+        document.querySelector('.nav-toggle').addEventListener('click', function () {
+            document.querySelector('.nav ul').classList.toggle('open');
         });
     </script>
 </body>
