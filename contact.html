@@ -4,141 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Café Aroma Del Valle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="container">
             <h1 class="logo" data-eb-editable="text" data-eb-key="contact.h1.1" data-eb-role="h1" data-eb-kind="text">Café Aroma Del Valle</h1>
-            <nav>
+            <nav class="nav">
                 <ul>
                     <li><a href="index.html" data-eb-editable="link" data-eb-key="contact.a.2" data-eb-role="a" data-eb-kind="link">Home</a></li>
                     <li><a href="menu.html" data-eb-editable="link" data-eb-key="contact.a.3" data-eb-role="a" data-eb-kind="link">Menu</a></li>
-                    <li><a href="about.html" data-eb-editable="link" data-eb-key="contact.a.4" data-eb-role="a" data-eb-kind="link">About</a></li>
-                    <li><a href="contact.html" aria-current="page" data-eb-editable="link" data-eb-key="contact.a.5" data-eb-role="a" data-eb-kind="link">Contact</a></li>
+                    <li><a href="contact.html" aria-current="page" data-eb-editable="link" data-eb-key="contact.a.4" data-eb-role="a" data-eb-kind="link">Contact</a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta secondary" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="contact.a.6" data-eb-role="a" data-eb-kind="link">WhatsApp</a>
+            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp" data-eb-editable="link" data-eb-key="contact.a.5" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+            <button class="nav-toggle" aria-label="Abrir menú" data-eb-editable="link" data-eb-key="contact.button.6" data-eb-role="button" data-eb-kind="link">☰</button>
         </div>
     </header>
 
-    <section class="contact-info">
+    <section class="hero hero-contact">
+        <div class="hero-content">
+            <h2 data-eb-editable="text" data-eb-key="contact.h2.7" data-eb-role="h2" data-eb-kind="text">Visit Us</h2>
+            <p data-eb-editable="text" data-eb-key="contact.p.8" data-eb-role="p" data-eb-kind="text">Monterrey • Specialty Coffee & Bakery</p>
+            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="btn-primary" data-eb-editable="link" data-eb-key="contact.a.9" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+        </div>
+    </section>
+
+    <section class="info-block">
         <div class="container">
-            <h2 data-eb-editable="text" data-eb-key="contact.h2.7" data-eb-role="h2" data-eb-kind="text">Contact Us</h2>
-            <div class="cards">
-                <article class="card">
-                    <h3 data-eb-editable="text" data-eb-key="contact.h3.8" data-eb-role="h3" data-eb-kind="text">Location</h3>
-                    <p data-eb-editable="text" data-eb-key="contact.p.9" data-eb-role="p" data-eb-kind="text">Valle de Monterrey, Monterrey, N.L.</p>
-                </article>
-                <article class="card">
-                    <h3 data-eb-editable="text" data-eb-key="contact.h3.10" data-eb-role="h3" data-eb-kind="text">Phone</h4>
-                    <p data-eb-editable="text" data-eb-key="contact.p.11" data-eb-role="p" data-eb-kind="text">8112345678</p>
-                </article>
-                <article class="card">
-                    <h3 data-eb-editable="text" data-eb-key="contact.h3.12" data-eb-role="h3" data-eb-kind="text">Hours</h3>
-                    <p data-eb-editable="text" data-eb-key="contact.p.13" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00<br>Sáb 8:00 - 22:00<br>Dom 9:00 - 15:00</p>
-                </article>
+            <div class="info-text">
+                <h2 data-eb-editable="text" data-eb-key="contact.h2.10" data-eb-role="h2" data-eb-kind="text">Café Aroma Del Valle</h2>
+                <p data-eb-editable="text" data-eb-key="contact.p.11" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey. Ofrecemos café de origen, panadería artesanal, desayunos y opciones veganas. Ambiente acogedor, baristas certificados y wifi gratuito.</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.12" data-eb-role="p" data-eb-kind="text"><strong>Horario:</strong> Lun a Vie 7:00 - 21:00, Sáb 8:00 - 22:00, Dom 9:00 - 15:00</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.13" data-eb-role="p" data-eb-kind="text"><strong>Dirección:</strong> Monterrey, Nuevo León</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.14" data-eb-role="p" data-eb-kind="text"><strong>Teléfono:</strong> 8112345678</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.15" data-eb-role="p" data-eb-kind="text">Aceptamos pedidos por WhatsApp con entrega a domicilio.</p>
+            </div>
+            <div class="info-image">
+                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Café exterior façade" data-eb-editable="image" data-eb-key="contact.img.16" data-eb-role="img" data-eb-kind="image">
             </div>
         </div>
     </section>
 
     <section class="map-embed">
         <div class="container">
-            <h2 data-eb-editable="text" data-eb-key="contact.h2.14" data-eb-role="h2" data-eb-kind="text">Find Us</h2>
-            <div class="card">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.22823108833!2d-100.3164838846853!3d25.686614283590263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662c6f4d9a8c5c9%3A0x5a8c2b3c1f6f2c4e!2sMonterrey%2C%20N.L.!5e0!3m2!1ses!2smx!4v1616000000000"
-                    width="100%"
-                    height="300"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                ></iframe>
+            <h2 data-eb-editable="text" data-eb-key="contact.h2.17" data-eb-role="h2" data-eb-kind="text">Find Us on Map</h2>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.567890123456!2d-100.31611588452223!3d25.68661428356428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662c54d6f3b4c67%3A0x921c9ee98137b5f8!2sMonterrey%2C%20N.L.%2C%20Mexico!5e0!3m2!1ses!2smx!4v1612345678901" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <section class="form">
-        <div class="container">
-            <h2 data-eb-editable="text" data-eb-key="contact.h2.15" data-eb-role="h2" data-eb-kind="text">Send us a message</h2>
-            <form id="contactForm">
-                <div class="cards">
-                    <div>
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div>
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="cta primary" data-eb-editable="link" data-eb-key="contact.button.16" data-eb-role="button" data-eb-kind="link">Send Message</button>
-            </form>
-            <div id="formResponse" aria-live="polite"></div>
-        </div>
-    </section>
+    <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp fixed" data-eb-editable="link" data-eb-key="contact.a.18" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-cols">
-                <div>
-                    <h3 data-eb-editable="text" data-eb-key="contact.h3.17" data-eb-role="h3" data-eb-kind="text">Café Aroma Del Valle</h3>
-                    <p data-eb-editable="text" data-eb-key="contact.p.18" data-eb-role="p" data-eb-kind="text">Specialty coffee from the valley</p>
-                </div>
-                <div>
-                    <h4 data-eb-editable="text" data-eb-key="contact.h4.19" data-eb-role="h4" data-eb-kind="text">Address</h4>
-                    <p data-eb-editable="text" data-eb-key="contact.p.20" data-eb-role="p" data-eb-kind="text">Valle de Monterrey, Monterrey, N.L.</p>
-                </div>
-                <div>
-                    <h4 data-eb-editable="text" data-eb-key="contact.h4.21" data-eb-role="h4" data-eb-kind="text">Phone</h4>
-                    <p data-eb-editable="text" data-eb-key="contact.p.22" data-eb-role="p" data-eb-kind="text">8112345678</p>
-                </div>
-                <div>
-                    <h4 data-eb-editable="text" data-eb-key="contact.h4.23" data-eb-role="h4" data-eb-kind="text">Hours</h4>
-                    <p data-eb-editable="text" data-eb-key="contact.p.24" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00<br>Sáb 8:00 - 22:00<br>Dom 9:00 - 15:00</p>
-                </div>
-                <div>
-                    <h4 data-eb-editable="text" data-eb-key="contact.h4.25" data-eb-role="h4" data-eb-kind="text">Follow</h4>
-                    <a href="#" aria-label="Facebook" data-eb-editable="link" data-eb-key="contact.a.26" data-eb-role="a" data-eb-kind="link">Facebook</a> |
-                    <a href="#" aria-label="Instagram" data-eb-editable="link" data-eb-key="contact.a.27" data-eb-role="a" data-eb-kind="link">Instagram</a>
-                </div>
+            <div class="footer-col">
+                <h3 data-eb-editable="text" data-eb-key="contact.h3.19" data-eb-role="h3" data-eb-kind="text">Café Aroma Del Valle</h3>
+                <p data-eb-editable="text" data-eb-key="contact.p.20" data-eb-role="p" data-eb-kind="text">Specialty coffee & artisan bakery</p>
             </div>
-            <p class="copyright" data-eb-editable="text" data-eb-key="contact.p.28" data-eb-role="p" data-eb-kind="text">© 2026 Café Aroma Del Valle. Todos los derechos reservados.</p>
+            <div class="footer-col">
+                <h3 data-eb-editable="text" data-eb-key="contact.h3.21" data-eb-role="h3" data-eb-kind="text">Hours</h3>
+                <p data-eb-editable="text" data-eb-key="contact.p.22" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.23" data-eb-role="p" data-eb-kind="text">Sáb 8:00 - 22:00</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.24" data-eb-role="p" data-eb-kind="text">Dom 9:00 - 15:00</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.25" data-eb-role="p" data-eb-kind="text">Monterrey</p>
+                <p data-eb-editable="text" data-eb-key="contact.p.26" data-eb-role="p" data-eb-kind="text">Tel: 8112345678</p>
+            </div>
+            <div class="footer-col">
+                <h3 data-eb-editable="text" data-eb-key="contact.h3.27" data-eb-role="h3" data-eb-kind="text">Follow</h3>
+                <a href="#" aria-label="Instagram" data-eb-editable="link" data-eb-key="contact.a.28" data-eb-role="a" data-eb-kind="link">Instagram</a>
+                <a href="#" aria-label="Facebook" data-eb-editable="link" data-eb-key="contact.a.29" data-eb-role="a" data-eb-kind="link">Facebook</a>
+            </div>
         </div>
     </footer>
 
-    <!-- WhatsApp floating button -->
-    <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="whatsapp-float" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="contact.a.29" data-eb-role="a" data-eb-kind="link">
-        💬
-    </a>
-
     <script>
-        // Show floating button after scrolling past hero (if any) or after a certain height
-        const floatBtn = document.querySelector('.whatsapp-float');
-        // In contact.html, we can show after scrolling 200px
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) {
-                floatBtn.style.opacity = '1';
-                floatBtn.style.visibility = 'visible';
-            } else {
-                floatBtn.style.opacity = '0';
-                floatBtn.style.visibility = 'hidden';
-            }
-        });
-
-        // Simple form validation and submission (just show alert for demo)
-        const form = document.getElementById('contactForm');
-        const responseDiv = document.getElementById('formResponse');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // In a real site, you would send this to a server
-            responseDiv.textContent = 'Thank you for your message! We will get back to you soon.';
-            responseDiv.style.color = 'var(--primary)';
-            form.reset();
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav ul').classList.toggle('open');
         });
     </script>
 </body>
