@@ -3,164 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú - Café Aroma Del Valle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <title>Menu - Café Aroma Del Valle</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
             <h1 class="logo" data-eb-editable="text" data-eb-key="menu.h1.1" data-eb-role="h1" data-eb-kind="text">Café Aroma Del Valle</h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html" data-eb-editable="link" data-eb-key="menu.a.2" data-eb-role="a" data-eb-kind="link">Home</a></li>
-                    <li><a href="menu.html" aria-current="page" data-eb-editable="link" data-eb-key="menu.a.3" data-eb-role="a" data-eb-kind="link">Menu</a></li>
-                    <li><a href="contact.html" data-eb-editable="link" data-eb-key="menu.a.4" data-eb-role="a" data-eb-kind="link">Contact</a></li>
+            <nav class="nav" aria-label="Principal">
+                <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" data-eb-editable="link" data-eb-key="menu.button.2" data-eb-role="button" data-eb-kind="link">
+                    <span class="hamburger"></span>
+                </button>
+                <ul id="nav-menu" class="nav-menu">
+                    <li><a href="index.html" class="nav-link" data-eb-editable="link" data-eb-key="menu.a.3" data-eb-role="a" data-eb-kind="link">Home</a></li>
+                    <li><a href="menu.html" class="nav-link active" data-eb-editable="link" data-eb-key="menu.a.4" data-eb-role="a" data-eb-kind="link">Menu</a></li>
+                    <li><a href="contact.html" class="nav-link" data-eb-editable="link" data-eb-key="menu.a.5" data-eb-role="a" data-eb-kind="link">Contact</a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp" data-eb-editable="link" data-eb-key="menu.a.5" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
-            <button class="nav-toggle" aria-label="Abrir menú" data-eb-editable="link" data-eb-key="menu.button.6" data-eb-role="button" data-eb-kind="link">☰</button>
+            <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido." class="whatsapp-icon" aria-label="WhatsApp" data-eb-editable="link" data-eb-key="menu.a.6" data-eb-role="a" data-eb-kind="link">
+                <svg width="24" height="24" fill="#25D366"><circle cx="12" cy="12" r="10"/><path d="M16.75 8.69c0 .42-.17.81-.47 1.12l-2.12 2.22c-.29.3-.76.5-1.25.5-.49 0-.96-.2-1.25-.5l-.91-.96c-.34-.36-.54-.86-.54-1.36 0-.5.14-.98.4-1.34l1.16-1.28c.26-.36.68-.58 1.18-.58.5 0 .92.22 1.18.58l1.16 1.28c.26.36.4.84.4 1.34z" fill="#fff"/></svg>
+            </a>
         </div>
     </header>
 
-    <section class="hero hero-menu">
-        <div class="hero-content">
-            <h2 data-eb-editable="text" data-eb-key="menu.h2.7" data-eb-role="h2" data-eb-kind="text">Our Menu</h2>
-            <p data-eb-editable="text" data-eb-key="menu.p.8" data-eb-role="p" data-eb-kind="text">Explore our specialty coffee, bakery and breakfast options</p>
-            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="btn-primary" data-eb-editable="link" data-eb-key="menu.a.9" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
-        </div>
-    </section>
-
-    <section class="menu-categories">
+    <section class="intro">
         <div class="container">
-            <div class="tabs">
-                <button class="tab-btn active" data-category="beverages" data-eb-editable="link" data-eb-key="menu.button.10" data-eb-role="button" data-eb-kind="link">Beverages</button>
-                <button class="tab-btn" data-category="bakery" data-eb-editable="link" data-eb-key="menu.button.11" data-eb-role="button" data-eb-kind="link">Bakery</button>
-                <button class="tab-btn" data-category="breakfast" data-eb-editable="link" data-eb-key="menu.button.12" data-eb-role="button" data-eb-kind="link">Breakfast</button>
-                <button class="tab-btn" data-category="vegan" data-eb-editable="link" data-eb-key="menu.button.13" data-eb-role="button" data-eb-kind="link">Vegan</button>
-            </div>
-            <div class="menu-items" id="beverages">
-                <!-- Beverage items -->
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte" data-eb-editable="image" data-eb-key="menu.img.14" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.15" data-eb-role="h3" data-eb-kind="text">Latte Art Cappuccino</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.16" data-eb-role="p" data-eb-kind="text">Espresso with velvety milk foam and latte art.</p>
-                        <span class="price">$4.50</span>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Americano" data-eb-editable="image" data-eb-key="menu.img.17" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.18" data-eb-role="h3" data-eb-kind="text">Americano</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.19" data-eb-role="p" data-eb-kind="text">Rich espresso diluted with hot water.</p>
-                        <span class="price">$3.50</span>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-items" id="bakery" style="display:none;">
-                <!-- Bakery items -->
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Croissant" data-eb-editable="image" data-eb-key="menu.img.20" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.21" data-eb-role="h3" data-eb-kind="text">Almond Croissant</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.22" data-eb-role="p" data-eb-kind="text">Flaky pastry filled with almond cream.</p>
-                        <span class="price">$3.00</span>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Muffin" data-eb-editable="image" data-eb-key="menu.img.23" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.24" data-eb-role="h3" data-eb-kind="text">Blueberry Muffin</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.25" data-eb-role="p" data-eb-kind="text">Moist muffin with fresh blueberries.</p>
-                        <span class="price">$2.75</span>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-items" id="breakfast" style="display:none;">
-                <!-- Breakfast items -->
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Avocado Toast" data-eb-editable="image" data-eb-key="menu.img.26" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.27" data-eb-role="h3" data-eb-kind="text">Avocado Toast</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.28" data-eb-role="p" data-eb-kind="text">Sourdough toast with smashed avocado, cherry tomatoes and feta.</p>
-                        <span class="price">$5.50</span>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Chilaquiles" data-eb-editable="image" data-eb-key="menu.img.29" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.30" data-eb-role="h3" data-eb-kind="text">Chilaquiles Verdes</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.31" data-eb-role="p" data-eb-kind="text">Traditional Mexican chilaquiles with green sauce, crema and queso fresco.</p>
-                        <span class="price">$6.00</span>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-items" id="vegan" style="display:none;">
-                <!-- Vegan items -->
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Vegan Bagel" data-eb-editable="image" data-eb-key="menu.img.32" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.33" data-eb-role="h3" data-eb-kind="text">Vegan Bagel</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.34" data-eb-role="p" data-eb-kind="text">Whole grain bagel with avocado, sprouts and tomato.</p>
-                        <span class="price">$4.00</span>
-                        <span class="tag">Vegan</span>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Vegan Muffin" data-eb-editable="image" data-eb-key="menu.img.35" data-eb-role="img" data-eb-kind="image">
-                    <div>
-                        <h3 data-eb-editable="text" data-eb-key="menu.h3.36" data-eb-role="h3" data-eb-kind="text">Vegan Chocolate Muffin</h3>
-                        <p data-eb-editable="text" data-eb-key="menu.p.37" data-eb-role="p" data-eb-kind="text">Rich chocolate muffin made with plant-based ingredients.</p>
-                        <span class="price">$3.25</span>
-                        <span class="tag">Vegan</span>
-                    </div>
-                </div>
-            </div>
+            <h2 data-eb-editable="text" data-eb-key="menu.h2.7" data-eb-role="h2" data-eb-kind="text">Our Menu</h2>
+            <p data-eb-editable="text" data-eb-key="menu.p.8" data-eb-role="p" data-eb-kind="text">Explore our specialty coffee, artisan bakery, and vegan options.</p>
         </div>
     </section>
 
-    <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp fixed" data-eb-editable="link" data-eb-key="menu.a.38" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+    <section class="menu-grid">
+        <div class="container">
+            <h3 data-eb-editable="text" data-eb-key="menu.h3.9" data-eb-role="h3" data-eb-kind="text">Featured Items</h3>
+            <div class="cards-grid">
+                <!-- Item 1 -->
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte art in white cup" loading="lazy" data-eb-editable="image" data-eb-key="menu.img.10" data-eb-role="img" data-eb-kind="image">
+                    <div class="card-content">
+                        <h4 data-eb-editable="text" data-eb-key="menu.h4.11" data-eb-role="h4" data-eb-kind="text">Latte Art</h4>
+                        <p data-eb-editable="text" data-eb-key="menu.p.12" data-eb-role="p" data-eb-kind="text">Espresso with steamed milk, topped with beautiful latte art.</p>
+                        <div class="price-badge">$4.50</div>
+                        <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Latte%20Art" class="whatsapp-btn" data-eb-editable="link" data-eb-key="menu.a.13" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+                    </div>
+                </article>
+                <!-- Item 2 -->
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Croissant on wooden board" loading="lazy" data-eb-editable="image" data-eb-key="menu.img.14" data-eb-role="img" data-eb-kind="image">
+                    <div class="card-content">
+                        <h4 data-eb-editable="text" data-eb-key="menu.h4.15" data-eb-role="h4" data-eb-kind="text">Croissant</h4>
+                        <p data-eb-editable="text" data-eb-key="menu.p.16" data-eb-role="p" data-eb-kind="text">Buttery, flaky pastry made fresh daily.</p>
+                        <div class="price-badge">$3.00</div>
+                        <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Croissant" class="whatsapp-btn" data-eb-editable="link" data-eb-key="menu.a.17" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+                    </div>
+                </article>
+                <!-- Item 3 -->
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Vegan banana bread" loading="lazy" data-eb-editable="image" data-eb-key="menu.img.18" data-eb-role="img" data-eb-kind="image">
+                    <div class="card-content">
+                        <h4 data-eb-editable="text" data-eb-key="menu.h4.19" data-eb-role="h4" data-eb-kind="text">Vegan Banana Bread</h4>
+                        <p data-eb-editable="text" data-eb-key="menu.p.20" data-eb-role="p" data-eb-kind="text">Moist banana bread made with plant-based ingredients.</p>
+                        <div class="price-badge">$3.50</div>
+                        <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Vegan%20Banana%20Bread" class="whatsapp-btn" data-eb-editable="link" data-eb-key="menu.a.21" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+                    </div>
+                </article>
+                <!-- Item 4 -->
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Cappuccino" loading="lazy" data-eb-editable="image" data-eb-key="menu.img.22" data-eb-role="img" data-eb-kind="image">
+                    <div class="card-content">
+                        <h4 data-eb-editable="text" data-eb-key="menu.h4.23" data-eb-role="h4" data-eb-kind="text">Cappuccino</h4>
+                        <p data-eb-editable="text" data-eb-key="menu.p.24" data-eb-role="p" data-eb-kind="text">Equal parts espresso, steamed milk, and foam.</p>
+                        <div class="price-badge">$4.00</div>
+                        <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Cappuccino" class="whatsapp-btn" data-eb-editable="link" data-eb-key="menu.a.25" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+                    </div>
+                </article>
+                <!-- Item 5 -->
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Chocolate chip cookie" loading="lazy" data-eb-editable="image" data-eb-key="menu.img.26" data-eb-role="img" data-eb-kind="image">
+                    <div class="card-content">
+                        <h4 data-eb-editable="text" data-eb-key="menu.h4.27" data-eb-role="h4" data-eb-kind="text">Chocolate Chip Cookie</h4>
+                        <p data-eb-editable="text" data-eb-key="menu.p.28" data-eb-role="p" data-eb-kind="text">Classic cookie with chocolate chunks.</p>
+                        <div class="price-badge">$2.00</div>
+                        <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Chocolate%20Chip%20Cookie" class="whatsapp-btn" data-eb-editable="link" data-eb-key="menu.a.29" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+                    </div>
+                </article>
+                <!-- Item 6 -->
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Matcha latte" loading="lazy" data-eb-editable="image" data-eb-key="menu.img.30" data-eb-role="img" data-eb-kind="image">
+                    <div class="card-content">
+                        <h4 data-eb-editable="text" data-eb-key="menu.h4.31" data-eb-role="h4" data-eb-kind="text">Matcha Latte</h4>
+                        <p data-eb-editable="text" data-eb-key="menu.p.32" data-eb-role="p" data-eb-kind="text">Stone-ground matcha with steamed milk of choice.</p>
+                        <div class="price-badge">$4.75</div>
+                        <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Matcha%20Latte" class="whatsapp-btn" data-eb-editable="link" data-eb-key="menu.a.33" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-col">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.39" data-eb-role="h3" data-eb-kind="text">Café Aroma Del Valle</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.40" data-eb-role="p" data-eb-kind="text">Specialty coffee & artisan bakery</p>
+            <div class="footer-content">
+                <div class="footer-logo">Café Aroma Del Valle</div>
+                <div class="footer-info">
+                    <p data-eb-editable="text" data-eb-key="menu.p.34" data-eb-role="p" data-eb-kind="text">Monterrey, NL</p>
+                    <p data-eb-editable="text" data-eb-key="menu.p.35" data-eb-role="p" data-eb-kind="text">8112345678</p>
+                    <p data-eb-editable="text" data-eb-key="menu.p.36" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00, Sáb 8:00 - 22:00, Dom 9:00 - 15:00</p>
+                </div>
+                <div class="footer-social"></div>
             </div>
-            <div class="footer-col">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.41" data-eb-role="h3" data-eb-kind="text">Hours</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.42" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00</p>
-                <p data-eb-editable="text" data-eb-key="menu.p.43" data-eb-role="p" data-eb-kind="text">Sáb 8:00 - 22:00</p>
-                <p data-eb-editable="text" data-eb-key="menu.p.44" data-eb-role="p" data-eb-kind="text">Dom 9:00 - 15:00</p>
-                <p data-eb-editable="text" data-eb-key="menu.p.45" data-eb-role="p" data-eb-kind="text">Monterrey</p>
-                <p data-eb-editable="text" data-eb-key="menu.p.46" data-eb-role="p" data-eb-kind="text">Tel: 8112345678</p>
-            </div>
-            <div class="footer-col">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.47" data-eb-role="h3" data-eb-kind="text">Follow</h3>
-                <a href="#" aria-label="Instagram" data-eb-editable="link" data-eb-key="menu.a.48" data-eb-role="a" data-eb-kind="link">Instagram</a>
-                <a href="#" aria-label="Facebook" data-eb-editable="link" data-eb-key="menu.a.49" data-eb-role="a" data-eb-kind="link">Facebook</a>
-            </div>
+            <p class="footer-copyright" data-eb-editable="text" data-eb-key="menu.p.37" data-eb-role="p" data-eb-kind="text">&copy; 2026 Café Aroma Del Valle. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        const tabs = document.querySelectorAll('.tab-btn');
-        const menuItems = document.querySelectorAll('.menu-items');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                const category = tab.getAttribute('data-category');
-                menuItems.forEach(item => {
-                    item.style.display = item.id === category ? 'block' : 'none';
-                });
-            });
-        });
+    <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido." class="whatsapp-float" aria-label="WhatsApp" data-eb-editable="link" data-eb-key="menu.a.38" data-eb-role="a" data-eb-kind="link">
+        <svg width="28" height="28" fill="#25D366"><circle cx="14" cy="14" r="12"/><path d="M20.5 8.5c0 1.1-.4 2.1-1.1 2.9l-.9.7c-.8.6-1.7 1-2.7 1-.9 0-1.7-.3-2.4-.9l-.7-.9c-.6-.8-1-1.8-1-2.8s.4-2 1-2.8l.7-.9c.8-.6 1.8-1 2.8-1s2 .4 2.8 1l.7.9c.6.8 1 1.8 1 2.8z" fill="#fff"/></svg>
+    </a>
 
-        // Mobile nav toggle
-        document.querySelector('.nav-toggle').addEventListener('click', function() {
-            document.querySelector('.nav ul').classList.toggle('open');
+    <script>
+        const toggle = document.querySelector('.nav-toggle');
+        const menu = document.getElementById('nav-menu');
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
+            toggle.setAttribute('aria-expanded', !expanded);
+            menu.classList.toggle('open');
         });
     </script>
 </body>
