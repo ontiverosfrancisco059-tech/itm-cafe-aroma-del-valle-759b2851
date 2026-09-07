@@ -4,122 +4,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Café Aroma Del Valle</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
             <h1 class="logo" data-eb-editable="text" data-eb-key="index.h1.1" data-eb-role="h1" data-eb-kind="text">Café Aroma Del Valle</h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html" aria-current="page" data-eb-editable="link" data-eb-key="index.a.2" data-eb-role="a" data-eb-kind="link">Home</a></li>
-                    <li><a href="menu.html" data-eb-editable="link" data-eb-key="index.a.3" data-eb-role="a" data-eb-kind="link">Menu</a></li>
-                    <li><a href="contact.html" data-eb-editable="link" data-eb-key="index.a.4" data-eb-role="a" data-eb-kind="link">Contact</a></li>
+            <nav class="nav" aria-label="Principal">
+                <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" data-eb-editable="link" data-eb-key="index.button.2" data-eb-role="button" data-eb-kind="link">
+                    <span class="hamburger"></span>
+                </button>
+                <ul id="nav-menu" class="nav-menu">
+                    <li><a href="index.html" class="nav-link active" data-eb-editable="link" data-eb-key="index.a.3" data-eb-role="a" data-eb-kind="link">Home</a></li>
+                    <li><a href="menu.html" class="nav-link" data-eb-editable="link" data-eb-key="index.a.4" data-eb-role="a" data-eb-kind="link">Menu</a></li>
+                    <li><a href="contact.html" class="nav-link" data-eb-editable="link" data-eb-key="index.a.5" data-eb-role="a" data-eb-kind="link">Contact</a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="index.a.5" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
-            <button class="nav-toggle" aria-label="Abrir menú" data-eb-editable="link" data-eb-key="index.button.6" data-eb-role="button" data-eb-kind="link">☰</button>
+            <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido." class="whatsapp-icon" aria-label="WhatsApp" data-eb-editable="link" data-eb-key="index.a.6" data-eb-role="a" data-eb-kind="link">
+                <!-- Icon placeholder -->
+                <svg width="24" height="24" fill="#25D366"><circle cx="12" cy="12" r="10"/><path d="M16.75 8.69c0 .42-.17.81-.47 1.12l-2.12 2.22c-.29.3-.76.5-1.25.5-.49 0-.96-.2-1.25-.5l-.91-.96c-.34-.36-.54-.86-.54-1.36 0-.5.14-.98.4-1.34l1.16-1.28c.26-.36.68-.58 1.18-.58.5 0 .92.22 1.18.58l1.16 1.28c.26.36.4.84.4 1.34z" fill="#fff"/></svg>
+            </a>
         </div>
     </header>
 
-    <section class="hero" style="background-image:url('https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg')" aria-label="Hero section">
-        <div class="hero-content">
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
             <h2 data-eb-editable="text" data-eb-key="index.h2.7" data-eb-role="h2" data-eb-kind="text">Café Aroma Del Valle</h2>
-            <p data-eb-editable="text" data-eb-key="index.p.8" data-eb-role="p" data-eb-kind="text">Specialty coffee & artisan bakery</p>
-            <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="btn-primary" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="index.a.9" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+            <p data-eb-editable="text" data-eb-key="index.p.8" data-eb-role="p" data-eb-kind="text">Specialty coffee, artisan bakery & vegan options</p>
+            <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido." class="cta-button" data-eb-editable="link" data-eb-key="index.a.9" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
         </div>
     </section>
 
-    <section class="featured-menu">
+    <section class="features" id="features">
         <div class="container">
-            <h2 data-eb-editable="text" data-eb-key="index.h2.10" data-eb-role="h2" data-eb-kind="text">Today’s Favorites</h2>
-            <div class="cards">
-                <div class="card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte art cappuccino" loading="lazy" data-eb-editable="image" data-eb-key="index.img.11" data-eb-role="img" data-eb-kind="image">
-                    <h3 data-eb-editable="text" data-eb-key="index.h3.12" data-eb-role="h3" data-eb-kind="text">Latte Art Cappuccino</h3>
-                    <p data-eb-editable="text" data-eb-key="index.p.13" data-eb-role="p" data-eb-kind="text">Espresso with velvety milk foam and latte art.</p>
-                    <span class="tag">Vegan option</span>
-                </div>
-                <div class="card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Almond croissant" loading="lazy" data-eb-editable="image" data-eb-key="index.img.14" data-eb-role="img" data-eb-kind="image">
-                    <h3 data-eb-editable="text" data-eb-key="index.h3.15" data-eb-role="h3" data-eb-kind="text">Almond Croissant</h3>
-                    <p data-eb-editable="text" data-eb-key="index.p.16" data-eb-role="p" data-eb-kind="text">Flaky pastry filled with almond cream.</p>
-                    <span class="tag">Gluten-free available</span>
-                </div>
-                <div class="card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Avocado toast" loading="lazy" data-eb-editable="image" data-eb-key="index.img.17" data-eb-role="img" data-eb-kind="image">
-                    <h3 data-eb-editable="text" data-eb-key="index.h3.18" data-eb-role="h3" data-eb-kind="text">Avocado Toast</h3>
-                    <p data-eb-editable="text" data-eb-key="index.p.19" data-eb-role="p" data-eb-kind="text">Sourdough with smashed avocado, cherry tomatoes and feta.</p>
-                    <span class="tag">Vegan</span>
-                </div>
-                <div class="card">
-                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Blueberry muffin" loading="lazy" data-eb-editable="image" data-eb-key="index.img.20" data-eb-role="img" data-eb-kind="image">
-                    <h3 data-eb-editable="text" data-eb-key="index.h3.21" data-eb-role="h3" data-eb-kind="text">Blueberry Muffin</h3>
-                    <p data-eb-editable="text" data-eb-key="index.p.22" data-eb-role="p" data-eb-kind="text">Moist muffin with fresh blueberries.</p>
-                    <span class="tag">Vegetarian</span>
-                </div>
+            <h3 data-eb-editable="text" data-eb-key="index.h3.10" data-eb-role="h3" data-eb-kind="text">Our Highlights</h3>
+            <div class="cards-grid">
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Coffee beans closeup" loading="lazy" data-eb-editable="image" data-eb-key="index.img.11" data-eb-role="img" data-eb-kind="image">
+                    <h4 data-eb-editable="text" data-eb-key="index.h4.12" data-eb-role="h4" data-eb-kind="text">Origin Coffee</h4>
+                    <p data-eb-editable="text" data-eb-key="index.p.13" data-eb-role="p" data-eb-kind="text">We serve specialty coffee from selected farms.</p>
+                </article>
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Artisan bakery" loading="lazy" data-eb-editable="image" data-eb-key="index.img.14" data-eb-role="img" data-eb-kind="image">
+                    <h4 data-eb-editable="text" data-eb-key="index.h4.15" data-eb-role="h4" data-eb-kind="text">Artisan Bakery</h4>
+                    <p data-eb-editable="text" data-eb-key="index.p.16" data-eb-role="p" data-eb-kind="text">Fresh breads and pastries made daily.</p>
+                </article>
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Vegan options" loading="lazy" data-eb-editable="image" data-eb-key="index.img.17" data-eb-role="img" data-eb-kind="image">
+                    <h4 data-eb-editable="text" data-eb-key="index.h4.18" data-eb-role="h4" data-eb-kind="text">Vegan Options</h4>
+                    <p data-eb-editable="text" data-eb-key="index.p.19" data-eb-role="p" data-eb-kind="text">Delicious plant‑based food and drinks.</p>
+                </article>
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Free Wi‑Fi" loading="lazy" data-eb-editable="image" data-eb-key="index.img.20" data-eb-role="img" data-eb-kind="image">
+                    <h4 data-eb-editable="text" data-eb-key="index.h4.21" data-eb-role="h4" data-eb-kind="text">Free Wi‑Fi</h4>
+                    <p data-eb-editable="text" data-eb-key="index.p.22" data-eb-role="p" data-eb-kind="text">Stay connected while you enjoy your coffee.</p>
+                </article>
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Certified baristas" loading="lazy" data-eb-editable="image" data-eb-key="index.img.23" data-eb-role="img" data-eb-kind="image">
+                    <h4 data-eb-editable="text" data-eb-key="index.h4.24" data-eb-role="h4" data-eb-kind="text">Certified Baristas</h4>
+                    <p data-eb-editable="text" data-eb-key="index.p.25" data-eb-role="p" data-eb-kind="text">Expert hands preparing every cup.</p>
+                </article>
             </div>
-            <a href="menu.html" class="see-all" aria-label="See full menu" data-eb-editable="link" data-eb-key="index.a.23" data-eb-role="a" data-eb-kind="link">See full menu</a>
         </div>
     </section>
 
-    <section class="about">
+    <section class="menu-highlight" id="menu-highlight">
         <div class="container">
-            <div class="about-image">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Barista preparing coffee" loading="lazy" data-eb-editable="image" data-eb-key="index.img.24" data-eb-role="img" data-eb-kind="image">
-            </div>
-            <div class="about-text">
-                <h2 data-eb-editable="text" data-eb-key="index.h2.25" data-eb-role="h2" data-eb-kind="text">Our Story</h2>
-                <p data-eb-editable="text" data-eb-key="index.p.26" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey. Ofrecemos café de origen, panadería artesanal, desayunos y opciones veganas.</p>
-                <p data-eb-editable="text" data-eb-key="index.p.27" data-eb-role="p" data-eb-kind="text">Ambiente acogedor, baristas certificados y wifi gratuito.</p>
-                <p data-eb-editable="text" data-eb-key="index.p.28" data-eb-role="p" data-eb-kind="text">Aceptamos pedidos por WhatsApp con entrega a domicilio.</p>
+            <h3 data-eb-editable="text" data-eb-key="index.h3.26" data-eb-role="h3" data-eb-kind="text">Today’s Picks</h3>
+            <div class="cards-grid">
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte art" loading="lazy" data-eb-editable="image" data-eb-key="index.img.27" data-eb-role="img" data-eb-kind="image">
+                    <h4 data-eb-editable="text" data-eb-key="index.h4.28" data-eb-role="h4" data-eb-kind="text">Latte Art</h4>
+                    <p data-eb-editable="text" data-eb-key="index.p.29" data-eb-role="p" data-eb-kind="text">A beautiful latte with masterful art.</p>
+                    <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Latte%20Art" class="whatsapp-badge" data-eb-editable="link" data-eb-key="index.a.30" data-eb-role="a" data-eb-kind="link">Order</a>
+                </article>
+                <article class="card">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Croissant" loading="lazy" data-eb-editable="image" data-eb-key="index.img.31" data-eb-role="img" data-eb-kind="image">
+                    <h4 data-eb-editable="text" data-eb-key="index.h4.32" data-eb-role="h4" data-eb-kind="text">Croissant</h4>
+                    <p data-eb-editable="text" data-eb-key="index.p.33" data-eb-role="p" data-eb-kind="text">Buttery, flaky pastry.</p>
+                    <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido.%20Croissant" class="whatsapp-badge" data-eb-editable="link" data-eb-key="index.a.34" data-eb-role="a" data-eb-kind="link">Order</a>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="gallery">
+    <section class="testimonials" id="testimonials">
         <div class="container">
-            <h2 data-eb-editable="text" data-eb-key="index.h2.29" data-eb-role="h2" data-eb-kind="text">Moments at Aroma</h2>
-            <div class="gallery-grid">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte art close-up" loading="lazy" data-eb-editable="image" data-eb-key="index.img.30" data-eb-role="img" data-eb-kind="image">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Café interior" loading="lazy" data-eb-editable="image" data-eb-key="index.img.31" data-eb-role="img" data-eb-kind="image">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Pastry display" loading="lazy" data-eb-editable="image" data-eb-key="index.img.32" data-eb-role="img" data-eb-kind="image">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Café exterior" loading="lazy" data-eb-editable="image" data-eb-key="index.img.33" data-eb-role="img" data-eb-kind="image">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Cappuccino art" loading="lazy" data-eb-editable="image" data-eb-key="index.img.34" data-eb-role="img" data-eb-kind="image">
-                <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Coffee beans" loading="lazy" data-eb-editable="image" data-eb-key="index.img.35" data-eb-role="img" data-eb-kind="image">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.35" data-eb-role="h3" data-eb-kind="text">What Our Customers Say</h3>
+            <div class="slider">
+                <div class="slide">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Customer enjoying coffee" loading="lazy" data-eb-editable="image" data-eb-key="index.img.36" data-eb-role="img" data-eb-kind="image">
+                    <p data-eb-editable="text" data-eb-key="index.p.37" data-eb-role="p" data-eb-kind="text">“Amazing coffee and friendly service!”</p>
+                    <p class="author" data-eb-editable="text" data-eb-key="index.p.38" data-eb-role="p" data-eb-kind="text">– Ana G.</p>
+                </div>
+                <div class="slide">
+                    <img src="https://6e7197d3.itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Customer working on laptop" loading="lazy" data-eb-editable="image" data-eb-key="index.img.39" data-eb-role="img" data-eb-kind="image">
+                    <p data-eb-editable="text" data-eb-key="index.p.40" data-eb-role="p" data-eb-kind="text">“Great place to work remotely.”</p>
+                    <p class="author" data-eb-editable="text" data-eb-key="index.p.41" data-eb-role="p" data-eb-kind="text">– Luis M.</p>
+                </div>
             </div>
+            <button class="slider-arrow prev" aria-label="Previous slide" data-eb-editable="link" data-eb-key="index.button.42" data-eb-role="button" data-eb-kind="link">&#9664;</button>
+            <button class="slider-arrow next" aria-label="Next slide" data-eb-editable="link" data-eb-key="index.button.43" data-eb-role="button" data-eb-kind="link">&#9654;</button>
         </div>
     </section>
 
-    <a href="https://wa.me/8112345678?text=Hola%2C%20quisiera%20hacer%20un%20pedido" class="cta whatsapp fixed" aria-label="Order via WhatsApp" data-eb-editable="link" data-eb-key="index.a.36" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+    <section class="cta-banner">
+        <div class="container">
+            <p data-eb-editable="text" data-eb-key="index.p.44" data-eb-role="p" data-eb-kind="text">Ready to order?</p>
+            <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido." class="cta-button" data-eb-editable="link" data-eb-key="index.a.45" data-eb-role="a" data-eb-kind="link">Order via WhatsApp</a>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-col">
-                <h3 data-eb-editable="text" data-eb-key="index.h3.37" data-eb-role="h3" data-eb-kind="text">Café Aroma Del Valle</h3>
-                <p data-eb-editable="text" data-eb-key="index.p.38" data-eb-role="p" data-eb-kind="text">Specialty coffee & artisan bakery</p>
+            <div class="footer-content">
+                <div class="footer-logo">Café Aroma Del Valle</div>
+                <div class="footer-info">
+                    <p data-eb-editable="text" data-eb-key="index.p.46" data-eb-role="p" data-eb-kind="text">Monterrey, NL</p>
+                    <p data-eb-editable="text" data-eb-key="index.p.47" data-eb-role="p" data-eb-kind="text">8112345678</p>
+                    <p data-eb-editable="text" data-eb-key="index.p.48" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00, Sáb 8:00 - 22:00, Dom 9:00 - 15:00</p>
+                </div>
+                <div class="footer-social">
+                    <!-- Placeholder for social icons -->
+                </div>
             </div>
-            <div class="footer-col">
-                <h3 data-eb-editable="text" data-eb-key="index.h3.39" data-eb-role="h3" data-eb-kind="text">Hours</h3>
-                <p data-eb-editable="text" data-eb-key="index.p.40" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00</p>
-                <p data-eb-editable="text" data-eb-key="index.p.41" data-eb-role="p" data-eb-kind="text">Sáb 8:00 - 22:00</p>
-                <p data-eb-editable="text" data-eb-key="index.p.42" data-eb-role="p" data-eb-kind="text">Dom 9:00 - 15:00</p>
-                <p data-eb-editable="text" data-eb-key="index.p.43" data-eb-role="p" data-eb-kind="text">Monterrey</p>
-                <p data-eb-editable="text" data-eb-key="index.p.44" data-eb-role="p" data-eb-kind="text">Tel: 8112345678</p>
-            </div>
-            <div class="footer-col">
-                <h3 data-eb-editable="text" data-eb-key="index.h3.45" data-eb-role="h3" data-eb-kind="text">Follow</h3>
-                <a href="#" aria-label="Instagram" data-eb-editable="link" data-eb-key="index.a.46" data-eb-role="a" data-eb-kind="link">Instagram</a>
-                <a href="#" aria-label="Facebook" data-eb-editable="link" data-eb-key="index.a.47" data-eb-role="a" data-eb-kind="link">Facebook</a>
-            </div>
+            <p class="footer-copyright" data-eb-editable="text" data-eb-key="index.p.49" data-eb-role="p" data-eb-kind="text">&copy; 2026 Café Aroma Del Valle. All rights reserved.</p>
         </div>
     </footer>
 
+    <a href="https://wa.me/8112345678?text=Hola,%20quiero%20hacer%20un%20pedido." class="whatsapp-float" aria-label="WhatsApp" data-eb-editable="link" data-eb-key="index.a.50" data-eb-role="a" data-eb-kind="link">
+        <svg width="28" height="28" fill="#25D366"><circle cx="14" cy="14" r="12"/><path d="M20.5 8.5c0 1.1-.4 2.1-1.1 2.9l-.9.7c-.8.6-1.7 1-2.7 1-.9 0-1.7-.3-2.4-.9l-.7-.9c-.6-.8-1-1.8-1-2.8s.4-2 1-2.8l.7-.9c.8-.6 1.8-1 2.8-1s2 .4 2.8 1l.7.9c.6.8 1 1.8 1 2.8z" fill="#fff"/></svg>
+    </a>
+
     <script>
-        document.querySelector('.nav-toggle').addEventListener('click', function () {
-            document.querySelector('.nav ul').classList.toggle('open');
+        // Mobile nav toggle
+        const toggle = document.querySelector('.nav-toggle');
+        const menu = document.getElementById('nav-menu');
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
+            toggle.setAttribute('aria-expanded', !expanded);
+            menu.classList.toggle('open');
         });
+        // Simple testimonial slider
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.testimonials .slide');
+        const prevBtn = document.querySelector('.testimonials .slider-arrow.prev');
+        const nextBtn = document.querySelector('.testimonials .slider-arrow.next');
+        function showSlide(n) {
+            slides[slideIndex].classList.remove('active');
+            slideIndex = (n + slides.length) % slides.length;
+            slides[slideIndex].classList.add('active');
+        }
+        if (prevBtn && nextBtn && slides.length) {
+            slides[0].classList.add('active');
+            prevBtn.addEventListener('click', () => showSlide(slideIndex - 1));
+            nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
+            // Keyboard support
+            document.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') showSlide(slideIndex - 1);
+                if (e.key === 'ArrowRight') showSlide(slideIndex + 1);
+            });
+        }
     </script>
 </body>
 </html>
