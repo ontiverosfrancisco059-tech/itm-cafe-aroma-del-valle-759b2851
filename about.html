@@ -1,56 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros - Café Aroma Del Valle</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros — Café Aroma Del Valle</title>
+  <meta name="description" content="Conoce la historia de Café Aroma Del Valle. Nuestra filosofía de origen, equipo de baristas y compromiso con productores locales.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" data-eb-editable="link" data-eb-key="about.a.1" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
-                <li><a href="menu.html" data-eb-editable="link" data-eb-key="about.a.2" data-eb-role="a" data-eb-kind="link">Menú</a></li>
-                <li><a href="about.html" data-eb-editable="link" data-eb-key="about.a.3" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
-                <li><a href="contact.html" data-eb-editable="link" data-eb-key="about.a.4" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="header">
-        <h1 data-eb-editable="text" data-eb-key="about.h1.5" data-eb-role="h1" data-eb-kind="text">Nuestra Historia</h1>
-        <p data-eb-editable="text" data-eb-key="about.p.6" data-eb-role="p" data-eb-kind="text">Conoce más sobre nuestro compromiso con la calidad y la comunidad.</p>
-    </section>
-    <section class="story">
-        <h2 data-eb-editable="text" data-eb-key="about.h2.7" data-eb-role="h2" data-eb-kind="text">Historia</h2>
-        <p data-eb-editable="text" data-eb-key="about.p.8" data-eb-role="p" data-eb-kind="text">Café Aroma Del Valle nació en 2020 con la pasión por ofrecer café de origen y panadería artesanal en Monterrey. Desde entonces, nos hemos dedicado a seleccionar los mejores granos y a formar a nuestros baristas para brindar una experiencia única.</p>
-        <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=e10d7c70-3fc3-4cae-8dee-23ba30b5ed49" alt="Barista preparando café de especialidad" data-eb-editable="image" data-eb-key="about.img.9" data-eb-role="img" data-eb-kind="image">
-    </section>
-    <section class="team">
-        <h2 data-eb-editable="text" data-eb-key="about.h2.10" data-eb-role="h2" data-eb-kind="text">Nuestro Equipo</h2>
-        <p data-eb-editable="text" data-eb-key="about.p.11" data-eb-role="p" data-eb-kind="text">Nuestro equipo de baristas certificados está comprometido con la excelencia y el servicio amable. Cada taza es preparada con atención al detalle.</p>
-        <div class="team-cards">
-            <div class="card-team">
-                <h3 data-eb-editable="text" data-eb-key="about.h3.12" data-eb-role="h3" data-eb-kind="text">Barista Jefe</h3>
-                <p data-eb-editable="text" data-eb-key="about.p.13" data-eb-role="p" data-eb-kind="text">Especialista en métodos de filtrado y latte art.</p>
-            </div>
-            <div class="card-team">
-                <h3 data-eb-editable="text" data-eb-key="about.h3.14" data-eb-role="h3" data-eb-kind="text">Panadero Artesanal</h3>
-                <p data-eb-editable="text" data-eb-key="about.p.15" data-eb-role="p" data-eb-kind="text">Encargado de nuestras piezas de panadería fresca.</p>
-            </div>
-            <div class="card-team">
-                <h3 data-eb-editable="text" data-eb-key="about.h3.16" data-eb-role="h3" data-eb-kind="text">Atención al Cliente</h3>
-                <p data-eb-editable="text" data-eb-key="about.p.17" data-eb-role="p" data-eb-kind="text">Listo para tomar tu pedido por WhatsApp y resolver tus dudas.</p>
-            </div>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" data-eb-editable="link" data-eb-key="about.a.1" data-eb-role="a" data-eb-kind="link"><span class="dot"></span> Café Aroma Del Valle</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-eb-editable="link" data-eb-key="about.a.2" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
+        <li><a href="menu.html" data-eb-editable="link" data-eb-key="about.a.3" data-eb-role="a" data-eb-kind="link">Menú</a></li>
+        <li><a href="about.html" class="active" data-eb-editable="link" data-eb-key="about.a.4" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
+        <li><a href="gallery.html" data-eb-editable="link" data-eb-key="about.a.5" data-eb-role="a" data-eb-kind="link">Galería</a></li>
+        <li><a href="contact.html" data-eb-editable="link" data-eb-key="about.a.6" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/528112345678" class="nav-cta" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="about.a.7" data-eb-role="a" data-eb-kind="link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Pedir por WhatsApp
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menú" data-eb-editable="link" data-eb-key="about.button.8" data-eb-role="button" data-eb-kind="link">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" data-eb-editable="link" data-eb-key="about.button.9" data-eb-role="button" data-eb-kind="link">&times;</button>
+    <a href="index.html" data-eb-editable="link" data-eb-key="about.a.10" data-eb-role="a" data-eb-kind="link">Inicio</a>
+    <a href="menu.html" data-eb-editable="link" data-eb-key="about.a.11" data-eb-role="a" data-eb-kind="link">Menú</a>
+    <a href="about.html" data-eb-editable="link" data-eb-key="about.a.12" data-eb-role="a" data-eb-kind="link">Nosotros</a>
+    <a href="gallery.html" data-eb-editable="link" data-eb-key="about.a.13" data-eb-role="a" data-eb-kind="link">Galería</a>
+    <a href="contact.html" data-eb-editable="link" data-eb-key="about.a.14" data-eb-role="a" data-eb-kind="link">Contacto</a>
+    <a href="https://wa.me/528112345678" class="btn-primary" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="about.a.15" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg')"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Nuestra historia</span>
+      <h1 data-eb-editable="text" data-eb-key="about.h1.16" data-eb-role="h1" data-eb-kind="text">El aroma que nos une</h1>
+      <p data-eb-editable="text" data-eb-key="about.p.17" data-eb-role="p" data-eb-kind="text">Conoce la historia detrás de cada taza y el equipo que hace posible esta pasión por el café.</p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section">
+    <div class="section-center">
+      <div class="story-grid fade-in">
+        <div>
+          <span class="section-label">Cómo empezamos</span>
+          <h2 data-eb-editable="text" data-eb-key="about.h2.18" data-eb-role="h2" data-eb-kind="text">Del grano a la comunidad</h2>
+          <p style="color: var(--text-light); margin-bottom: 16px; line-height: 1.7;" data-eb-editable="text" data-eb-key="about.p.19" data-eb-role="p" data-eb-kind="text">Café Aroma Del Valle nació en 2019 como un sueño de dos amigos baristas que querían llevar el café de especialidad al Valle de Monterrey. Con ahorros, un tostador pequeño y mucha pasión, abrimos nuestras puertas con una misión clara: ofrecer café de origen rastreable y crear un espacio donde la comunidad pudiera reunirse.</p>
+          <p style="color: var(--text-light); margin-bottom: 16px; line-height: 1.7;" data-eb-editable="text" data-eb-key="about.p.20" data-eb-role="p" data-eb-kind="text">Hoy, cada grano que tostamos viene de productores con los que tenemos relación directa. Trabajamos con fincas en Veracruz, Chiapas y Oaxaca, garantizando prácticas sostenibles y precios justos para los agricultores.</p>
+          <p style="color: var(--text-light); line-height: 1.7;" data-eb-editable="text" data-eb-key="about.p.21" data-eb-role="p" data-eb-kind="text">Nuestra barra de café es un taller donde los baristas experimentan, perfeccionan técnicas y comparten lo que aprenden con cada cliente que se acerca.</p>
         </div>
-    </section>
-    <section class="ambience">
-        <h2 data-eb-editable="text" data-eb-key="about.h2.18" data-eb-role="h2" data-eb-kind="text">Ambiente</h2>
-        <p data-eb-editable="text" data-eb-key="about.p.19" data-eb-role="p" data-eb-kind="text">Nuestro espacio está diseñado para que te sientas como en casa: luz cálida, cómodas sillas y wifi gratuito para que puedas trabajar o relajarte mientras disfrutas de tu café.</p>
-    </section>
-    <footer>
-        <p data-eb-editable="text" data-eb-key="about.p.20" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00, Sáb 8:00 - 22:00, Dom 9:00 - 15:00</p>
-        <p data-eb-editable="text" data-eb-key="about.p.21" data-eb-role="p" data-eb-kind="text">Tel: 8112345678</p>
-    </footer>
+        <div class="story-img">
+          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Granos de café siendo tostados artesanalmente" loading="lazy" data-eb-editable="image" data-eb-key="about.img.22" data-eb-role="img" data-eb-kind="image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section" style="background: var(--cream);">
+    <div class="section-center">
+      <div class="section-header fade-in">
+        <span class="section-label">Nuestros valores</span>
+        <h2 data-eb-editable="text" data-eb-key="about.h2.23" data-eb-role="h2" data-eb-kind="text">Lo que nos mueve</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card fade-in">
+          <div class="icon">&#9749;</div>
+          <h3 data-eb-editable="text" data-eb-key="about.h3.24" data-eb-role="h3" data-eb-kind="text">Calidad sin compromiso</h3>
+          <p data-eb-editable="text" data-eb-key="about.p.25" data-eb-role="p" data-eb-kind="text">Cada taza pasa por nuestro control de calidad. Solo servimos café que nosotros mismos disfrutaríamos.</p>
+        </div>
+        <div class="value-card fade-in">
+          <div class="icon">&#127793;</div>
+          <h3 data-eb-editable="text" data-eb-key="about.h3.26" data-eb-role="h3" data-eb-kind="text">Sostenibilidad</h3>
+          <p data-eb-editable="text" data-eb-key="about.p.27" data-eb-role="p" data-eb-kind="text">Relación directa con productores, prácticas de comercio justo y empaques biodegradables.</p>
+        </div>
+        <div class="value-card fade-in">
+          <div class="icon">&#128101;</div>
+          <h3 data-eb-editable="text" data-eb-key="about.h3.28" data-eb-role="h3" data-eb-kind="text">Comunidad</h3>
+          <p data-eb-editable="text" data-eb-key="about.p.29" data-eb-role="p" data-eb-kind="text">Más que una cafetería, somos un punto de encuentro. Aquí caben todos, sin prisa, sin pretensiones.</p>
+        </div>
+        <div class="value-card fade-in">
+          <div class="icon">&#127891;</div>
+          <h3 data-eb-editable="text" data-eb-key="about.h3.30" data-eb-role="h3" data-eb-kind="text">Aprendizaje continuo</h3>
+          <p data-eb-editable="text" data-eb-key="about.p.31" data-eb-role="p" data-eb-kind="text">Nuestros baristas se certifican y capacitan constantemente. Compartimos lo que sabemos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARISTAS -->
+  <section class="section">
+    <div class="section-center">
+      <div class="story-grid fade-in">
+        <div class="story-img">
+          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Equipo de baristas" loading="lazy" data-eb-editable="image" data-eb-key="about.img.32" data-eb-role="img" data-eb-kind="image">
+        </div>
+        <div>
+          <span class="section-label">Nuestro equipo</span>
+          <h2 data-eb-editable="text" data-eb-key="about.h2.33" data-eb-role="h2" data-eb-kind="text">Baristas que aman lo que hacen</h2>
+          <p style="color: var(--text-light); margin-bottom: 16px; line-height: 1.7;" data-eb-editable="text" data-eb-key="about.p.34" data-eb-role="p" data-eb-kind="text">Cada uno de nuestros baristas tiene una historia con el café. Desde recién iniciados hasta certificaciones SCA, todos comparten una pasión por la excelencia y la cercanía con el cliente.</p>
+          <p style="color: var(--text-light); margin-bottom: 16px; line-height: 1.7;" data-eb-editable="text" data-eb-key="about.p.35" data-eb-role="p" data-eb-kind="text">Creemos que un buen barista no solo prepara café — escucha, recomienda y crea una experiencia. Por eso invertimos en capacitación continua, catas y visitas a fincas.</p>
+          <p style="color: var(--text-light); line-height: 1.7;" data-eb-editable="text" data-eb-key="about.p.36" data-eb-role="p" data-eb-kind="text">Si te apasiona el café y quieres ser parte del equipo, escríbenos. Siempre estamos buscando personas con hambre de aprender.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background: var(--cream);">
+    <div class="section-center">
+      <div class="cta-banner fade-in">
+        <h2 data-eb-editable="text" data-eb-key="about.h2.37" data-eb-role="h2" data-eb-kind="text">¿Te gustaría conocernos?</h2>
+        <p data-eb-editable="text" data-eb-key="about.p.38" data-eb-role="p" data-eb-kind="text">Visítanos en el Valle de Monterrey. Estamos abiertos de lunes a domingo.</p>
+        <a href="contact.html" class="btn-primary" data-eb-editable="link" data-eb-key="about.a.39" data-eb-role="a" data-eb-kind="link">Cómo llegar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3 data-eb-editable="text" data-eb-key="about.h3.40" data-eb-role="h3" data-eb-kind="text"><span class="dot" style="width:8px;height:8px;background:var(--terracotta);border-radius:50%;display:inline-block;"></span> Café Aroma Del Valle</h3>
+        <p data-eb-editable="text" data-eb-key="about.p.41" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal y un ambiente que te hace sentir en casa.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-eb-editable="text" data-eb-key="about.h4.42" data-eb-role="h4" data-eb-kind="text">Navegación</h4>
+        <ul>
+          <li><a href="index.html" data-eb-editable="link" data-eb-key="about.a.43" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
+          <li><a href="menu.html" data-eb-editable="link" data-eb-key="about.a.44" data-eb-role="a" data-eb-kind="link">Menú</a></li>
+          <li><a href="about.html" data-eb-editable="link" data-eb-key="about.a.45" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
+          <li><a href="gallery.html" data-eb-editable="link" data-eb-key="about.a.46" data-eb-role="a" data-eb-kind="link">Galería</a></li>
+          <li><a href="contact.html" data-eb-editable="link" data-eb-key="about.a.47" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-eb-editable="text" data-eb-key="about.h4.48" data-eb-role="h4" data-eb-kind="text">Contacto</h4>
+        <ul>
+          <li><a href="tel:528112345678" data-eb-editable="link" data-eb-key="about.a.49" data-eb-role="a" data-eb-kind="link">81 1234 5678</a></li>
+          <li><a href="https://wa.me/528112345678" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="about.a.50" data-eb-role="a" data-eb-kind="link">WhatsApp</a></li>
+          <li><a href="https://maps.google.com/?q=Monterrey" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="about.a.51" data-eb-role="a" data-eb-kind="link">Ubicación</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-eb-editable="text" data-eb-key="about.h4.52" data-eb-role="h4" data-eb-kind="text">Horario</h4>
+        <ul>
+          <li>Lun a Vie: 7:00 – 21:00</li>
+          <li>Sáb: 8:00 – 22:00</li>
+          <li>Dom: 9:00 – 15:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Café Aroma Del Valle. Todos los derechos reservados.</span>
+      <span>Hecho con amor en Monterrey</span>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.add('open');
+    });
+    document.getElementById('mobileNavClose').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.remove('open');
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
 </body>
 </html>
