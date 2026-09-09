@@ -1,104 +1,354 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú - Café Aroma Del Valle</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú — Café Aroma Del Valle</title>
+  <meta name="description" content="Menú completo de Café Aroma Del Valle: café de especialidad, panadería artesanal, desayunos, veganos y bebidas de temporada.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" data-eb-editable="link" data-eb-key="menu.a.1" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
-                <li><a href="menu.html" data-eb-editable="link" data-eb-key="menu.a.2" data-eb-role="a" data-eb-kind="link">Menú</a></li>
-                <li><a href="about.html" data-eb-editable="link" data-eb-key="menu.a.3" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
-                <li><a href="contact.html" data-eb-editable="link" data-eb-key="menu.a.4" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="header">
-        <h1 data-eb-editable="text" data-eb-key="menu.h1.5" data-eb-role="h1" data-eb-kind="text">Nuestro Menú</h1>
-        <p data-eb-editable="text" data-eb-key="menu.p.6" data-eb-role="p" data-eb-kind="text">Descubre nuestras opciones de café, panadería, desayunos y alternativas veganas.</p>
-    </section>
-    <section class="coffee-section">
-        <h2 data-eb-editable="text" data-eb-key="menu.h2.7" data-eb-role="h2" data-eb-kind="text">Café de especialidad</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Latte art especial" data-eb-editable="image" data-eb-key="menu.img.8" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.9" data-eb-role="h3" data-eb-kind="text">Latte art especial</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.10" data-eb-role="p" data-eb-kind="text">Café de especialidad con arte en espuma</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.11" data-eb-role="p" data-eb-kind="text">$45</p>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" data-eb-editable="link" data-eb-key="menu.a.1" data-eb-role="a" data-eb-kind="link"><span class="dot"></span> Café Aroma Del Valle</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-eb-editable="link" data-eb-key="menu.a.2" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
+        <li><a href="menu.html" class="active" data-eb-editable="link" data-eb-key="menu.a.3" data-eb-role="a" data-eb-kind="link">Menú</a></li>
+        <li><a href="about.html" data-eb-editable="link" data-eb-key="menu.a.4" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
+        <li><a href="gallery.html" data-eb-editable="link" data-eb-key="menu.a.5" data-eb-role="a" data-eb-kind="link">Galería</a></li>
+        <li><a href="contact.html" data-eb-editable="link" data-eb-key="menu.a.6" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/528112345678" class="nav-cta" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="menu.a.7" data-eb-role="a" data-eb-kind="link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Pedir por WhatsApp
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menú" data-eb-editable="link" data-eb-key="menu.button.8" data-eb-role="button" data-eb-kind="link">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" data-eb-editable="link" data-eb-key="menu.button.9" data-eb-role="button" data-eb-kind="link">&times;</button>
+    <a href="index.html" data-eb-editable="link" data-eb-key="menu.a.10" data-eb-role="a" data-eb-kind="link">Inicio</a>
+    <a href="menu.html" data-eb-editable="link" data-eb-key="menu.a.11" data-eb-role="a" data-eb-kind="link">Menú</a>
+    <a href="about.html" data-eb-editable="link" data-eb-key="menu.a.12" data-eb-role="a" data-eb-kind="link">Nosotros</a>
+    <a href="gallery.html" data-eb-editable="link" data-eb-key="menu.a.13" data-eb-role="a" data-eb-kind="link">Galería</a>
+    <a href="contact.html" data-eb-editable="link" data-eb-key="menu.a.14" data-eb-role="a" data-eb-kind="link">Contacto</a>
+    <a href="https://wa.me/528112345678" class="btn-primary" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="menu.a.15" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg')"></div>
+    <div class="page-hero-content">
+      <span class="section-label">Nuestro menú</span>
+      <h1 data-eb-editable="text" data-eb-key="menu.h1.16" data-eb-role="h1" data-eb-kind="text">Elige tu favorito</h1>
+      <p data-eb-editable="text" data-eb-key="menu.p.17" data-eb-role="p" data-eb-kind="text">Café de origen, panadería artesanal, desayunos y opciones veganas. Todo preparado con ingredientes de primera calidad.</p>
+    </div>
+  </section>
+
+  <!-- MENU CATEGORIES -->
+  <section class="section">
+    <div class="section-center">
+      <div class="menu-categories fade-in">
+        <button class="menu-cat-btn active" data-cat="all" data-eb-editable="link" data-eb-key="menu.button.18" data-eb-role="button" data-eb-kind="link">Todos</button>
+        <button class="menu-cat-btn" data-cat="cafe" data-eb-editable="link" data-eb-key="menu.button.19" data-eb-role="button" data-eb-kind="link">Café</button>
+        <button class="menu-cat-btn" data-cat="panaderia" data-eb-editable="link" data-eb-key="menu.button.20" data-eb-role="button" data-eb-kind="link">Panadería</button>
+        <button class="menu-cat-btn" data-cat="desayunos" data-eb-editable="link" data-eb-key="menu.button.21" data-eb-role="button" data-eb-kind="link">Desayunos</button>
+        <button class="menu-cat-btn" data-cat="vegano" data-eb-editable="link" data-eb-key="menu.button.22" data-eb-role="button" data-eb-kind="link">Veganos</button>
+        <button class="menu-cat-btn" data-cat="bebidas" data-eb-editable="link" data-eb-key="menu.button.23" data-eb-role="button" data-eb-kind="link">Bebidas</button>
+      </div>
+
+      <!-- CAFÉ -->
+      <div class="menu-section" data-category="cafe">
+        <h3 class="menu-section-title fade-in" data-eb-editable="text" data-eb-key="menu.h3.24" data-eb-role="h3" data-eb-kind="text">Café de especialidad</h3>
+        <div class="menu-grid">
+          <div class="menu-item fade-in" data-cat="cafe">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.25" data-eb-role="h3" data-eb-kind="text">Espresso</h3><p data-eb-editable="text" data-eb-key="menu.p.26" data-eb-role="p" data-eb-kind="text">Doble extracción, notas achocolatadas</p></div>
+              <span class="menu-item-price">$55</span>
             </div>
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Capuchino" data-eb-editable="image" data-eb-key="menu.img.12" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.13" data-eb-role="h3" data-eb-kind="text">Capuchino</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.14" data-eb-role="p" data-eb-kind="text">Espresso con leche vaporizada y espuma</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.15" data-eb-role="p" data-eb-kind="text">$40</p>
+          </div>
+          <div class="menu-item fade-in" data-cat="cafe">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.27" data-eb-role="h3" data-eb-kind="text">Capuchino</h3><p data-eb-editable="text" data-eb-key="menu.p.28" data-eb-role="p" data-eb-kind="text">Espresso doble, espuma de leche texturizada</p></div>
+              <span class="menu-item-price">$75</span>
             </div>
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Americano" data-eb-editable="image" data-eb-key="menu.img.16" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.17" data-eb-role="h3" data-eb-kind="text">Americano</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.18" data-eb-role="p" data-eb-kind="text">Espresso con agua caliente</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.19" data-eb-role="p" data-eb-kind="text">$35</p>
+          </div>
+          <div class="menu-item fade-in" data-cat="cafe">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.29" data-eb-role="h3" data-eb-kind="text">Pour Over de Origen</h3><p data-eb-editable="text" data-eb-key="menu.p.30" data-eb-role="p" data-eb-kind="text">Método V60, café de origen único de la semana</p></div>
+              <span class="menu-item-price">$85</span>
             </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="cafe">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.31" data-eb-role="h3" data-eb-kind="text">Cold Brew</h3><p data-eb-editable="text" data-eb-key="menu.p.32" data-eb-role="p" data-eb-kind="text">12 horas de extracción en frío, notas frutales</p></div>
+              <span class="menu-item-price">$80</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="cafe">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.33" data-eb-role="h3" data-eb-kind="text">Latte</h3><p data-eb-editable="text" data-eb-key="menu.p.34" data-eb-role="p" data-eb-kind="text">Espresso suave con leche cremosa y latte art</p></div>
+              <span class="menu-item-price">$75</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="cafe">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.35" data-eb-role="h3" data-eb-kind="text">Affogato</h3><p data-eb-editable="text" data-eb-key="menu.p.36" data-eb-role="p" data-eb-kind="text">Espresso doble sobre helado de vainilla</p></div>
+              <span class="menu-item-price">$90</span>
+            </div>
+          </div>
         </div>
-    </section>
-    <section class="bakery-section">
-        <h2 data-eb-editable="text" data-eb-key="menu.h2.20" data-eb-role="h2" data-eb-kind="text">Panadería artesanal</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Croissant artesanal" data-eb-editable="image" data-eb-key="menu.img.21" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.22" data-eb-role="h3" data-eb-kind="text">Croissant artesanal</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.23" data-eb-role="p" data-eb-kind="text">Croissant recién horneado</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.24" data-eb-role="p" data-eb-kind="text">$30</p>
+      </div>
+
+      <!-- PANADERÍA -->
+      <div class="menu-section" data-category="panaderia">
+        <h3 class="menu-section-title fade-in" data-eb-editable="text" data-eb-key="menu.h3.37" data-eb-role="h3" data-eb-kind="text">Panadería artesanal</h3>
+        <div class="menu-grid">
+          <div class="menu-item fade-in" data-cat="panaderia">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.38" data-eb-role="h3" data-eb-kind="text">Croissant de Mantequilla</h3><p data-eb-editable="text" data-eb-key="menu.p.39" data-eb-role="p" data-eb-kind="text">Horneado diariamente, hojaldre perfecto</p></div>
+              <span class="menu-item-price">$55</span>
             </div>
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Concha" data-eb-editable="image" data-eb-key="menu.img.25" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.26" data-eb-role="h3" data-eb-kind="text">Concha tradicional</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.27" data-eb-role="p" data-eb-kind="text">Pan dulce mexicano</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.28" data-eb-role="p" data-eb-kind="text">$25</p>
+          </div>
+          <div class="menu-item fade-in" data-cat="panaderia">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.40" data-eb-role="h3" data-eb-kind="text">Concha de Vainilla</h3><p data-eb-editable="text" data-eb-key="menu.p.41" data-eb-role="p" data-eb-kind="text">Receta tradicional mexicana, suave y esponjosa</p></div>
+              <span class="menu-item-price">$35</span>
             </div>
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Pan integral" data-eb-editable="image" data-eb-key="menu.img.29" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.30" data-eb-role="h3" data-eb-kind="text">Pan integral</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.31" data-eb-role="p" data-eb-kind="text">Ideal para tostadas</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.32" data-eb-role="p" data-eb-kind="text">$28</p>
+          </div>
+          <div class="menu-item fade-in" data-cat="panaderia">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.42" data-eb-role="h3" data-eb-kind="text">Pay de Queso</h3><p data-eb-editable="text" data-eb-key="menu.p.43" data-eb-role="p" data-eb-kind="text">Base de galleta, relleno cremoso, horneado lento</p></div>
+              <span class="menu-item-price">$65</span>
             </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="panaderia">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.44" data-eb-role="h3" data-eb-kind="text">Cookie de Chocolate</h3><p data-eb-editable="text" data-eb-key="menu.p.45" data-eb-role="p" data-eb-kind="text">Galleta grande con chispas de chocolate belga</p></div>
+              <span class="menu-item-price">$45</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="panaderia">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.46" data-eb-role="h3" data-eb-kind="text">Baguette Integral</h3><p data-eb-editable="text" data-eb-key="menu.p.47" data-eb-role="p" data-eb-kind="text">Harina integral, corteza crujiente, miga suave</p></div>
+              <span class="menu-item-price">$40</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="panaderia">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.48" data-eb-role="h3" data-eb-kind="text">Muffin de Arándanos</h3><p data-eb-editable="text" data-eb-key="menu.p.49" data-eb-role="p" data-eb-kind="text">Horneado fresco, arándanos naturales</p></div>
+              <span class="menu-item-price">$50</span>
+            </div>
+          </div>
         </div>
-    </section>
-    <section class="vegan-section">
-        <h2 data-eb-editable="text" data-eb-key="menu.h2.33" data-eb-role="h2" data-eb-kind="text">Opciones veganas</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Tostada vegana de aguacate" data-eb-editable="image" data-eb-key="menu.img.34" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.35" data-eb-role="h3" data-eb-kind="text">Tostada vegana de aguacate</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.36" data-eb-role="p" data-eb-kind="text">Tostada de pan integral con aguacate y toppings</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.37" data-eb-role="p" data-eb-kind="text">$50</p</div>
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Muffin de plátano vegano" data-eb-editable="image" data-eb-key="menu.img.38" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.39" data-eb-role="h3" data-eb-kind="text">Muffin de plátano vegano</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.40" data-eb-role="p" data-eb-kind="text">Sin lácteos ni huevo</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.41" data-eb-role="p" data-eb-kind="text">$35</p>
+      </div>
+
+      <!-- DESAYUNOS -->
+      <div class="menu-section" data-category="desayunos">
+        <h3 class="menu-section-title fade-in" data-eb-editable="text" data-eb-key="menu.h3.50" data-eb-role="h3" data-eb-kind="text">Desayunos</h3>
+        <div class="menu-grid">
+          <div class="menu-item fade-in" data-cat="desayunos">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.51" data-eb-role="h3" data-eb-kind="text">Huevos Rancheros</h3><p data-eb-editable="text" data-eb-key="menu.p.52" data-eb-role="p" data-eb-kind="text">Huevos estrellados, tortilla, frijoles, salsa verde</p></div>
+              <span class="menu-item-price">$130</span>
             </div>
-            <div class="card">
-                <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=media-fallback%2Fimagen-generica.jpg" alt="Bowl de açai" data-eb-editable="image" data-eb-key="menu.img.42" data-eb-role="img" data-eb-kind="image">
-                <h3 data-eb-editable="text" data-eb-key="menu.h3.43" data-eb-role="h3" data-eb-kind="text">Bowl de açai</h3>
-                <p data-eb-editable="text" data-eb-key="menu.p.44" data-eb-role="p" data-eb-kind="text">Con granola y frutas</p>
-                <p class="price" data-eb-editable="text" data-eb-key="menu.p.45" data-eb-role="p" data-eb-kind="text">$55</p>
+          </div>
+          <div class="menu-item fade-in" data-cat="desayunos">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.53" data-eb-role="h3" data-eb-kind="text">Tostada de Aguacate</h3><p data-eb-editable="text" data-eb-key="menu.p.54" data-eb-role="p" data-eb-kind="text">Aguacate machacado, huevo pochado, semillas</p></div>
+              <span class="menu-item-price">$110</span>
             </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="desayunos">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.55" data-eb-role="h3" data-eb-kind="text">Hot Cakes de Avena</h3><p data-eb-editable="text" data-eb-key="menu.p.56" data-eb-role="p" data-eb-kind="text">Receta ligera con avena, miel y frutas frescas</p></div>
+              <span class="menu-item-price">$105</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="desayunos">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.57" data-eb-role="h3" data-eb-kind="text">Chilaquiles Verdes</h3><p data-eb-editable="text" data-eb-key="menu.p.58" data-eb-role="p" data-eb-kind="text">Tortilla crujiente, salsa verde, crema, queso fresco</p></div>
+              <span class="menu-item-price">$120</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="desayunos">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.59" data-eb-role="h3" data-eb-kind="text">Sándwich de Huevo</h3><p data-eb-editable="text" data-eb-key="menu.p.60" data-eb-role="p" data-eb-kind="text">Huevo revuelto, aguacate, queso, pan artesanal</p></div>
+              <span class="menu-item-price">$95</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="desayunos">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.61" data-eb-role="h3" data-eb-kind="text">Avena Cremosa</h3><p data-eb-editable="text" data-eb-key="menu.p.62" data-eb-role="p" data-eb-kind="text">Avena cocida con leche, canela, frutos secos</p></div>
+              <span class="menu-item-price">$85</span>
+            </div>
+          </div>
         </div>
-    </section>
-    <section class="order-note">
-        <div class="order-box">
-            <h2 data-eb-editable="text" data-eb-key="menu.h2.46" data-eb-role="h2" data-eb-kind="text">¿Listo para ordenar?</h2>
-            <p data-eb-editable="text" data-eb-key="menu.p.47" data-eb-role="p" data-eb-kind="text">Envíanos tu pedido por WhatsApp y lo preparamos con entrega a domicilio.</p>
-            <a href="https://wa.me/528112345678" class="cta-whatsapp" data-eb-editable="link" data-eb-key="menu.a.48" data-eb-role="a" data-eb-kind="link">Ordenar por WhatsApp</a>
+      </div>
+
+      <!-- VEGANOS -->
+      <div class="menu-section" data-category="vegano">
+        <h3 class="menu-section-title fade-in" data-eb-editable="text" data-eb-key="menu.h3.63" data-eb-role="h3" data-eb-kind="text">Especiales veganos</h3>
+        <div class="menu-grid">
+          <div class="menu-item fade-in" data-cat="vegano">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.64" data-eb-role="h3" data-eb-kind="text">Bowl Vegano Tropical</h3><p data-eb-editable="text" data-eb-key="menu.p.65" data-eb-role="p" data-eb-kind="text">Avena, frutas frescas, semillas, leche de avena</p></div>
+              <span class="menu-item-price">$120</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="vegano">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.66" data-eb-role="h3" data-eb-kind="text">Tostada Vegana</h3><p data-eb-editable="text" data-eb-key="menu.p.67" data-eb-role="p" data-eb-kind="text">Aguacate, hummus, microgreens, semillas de calabaza</p></div>
+              <span class="menu-item-price">$105</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="vegano">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.68" data-eb-role="h3" data-eb-kind="text">Smoothie Verde</h3><p data-eb-editable="text" data-eb-key="menu.p.69" data-eb-role="p" data-eb-kind="text">Espinaca, plátano, mango, leche de coco</p></div>
+              <span class="menu-item-price">$90</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="vegano">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.70" data-eb-role="h3" data-eb-kind="text">Croissant Vegano</h3><p data-eb-editable="text" data-eb-key="menu.p.71" data-eb-role="p" data-eb-kind="text">Hecho con manteca vegetal, hojaldre perfecto</p></div>
+              <span class="menu-item-price">$60</span>
+            </div>
+          </div>
         </div>
-    </section>
-    <footer>
-        <p data-eb-editable="text" data-eb-key="menu.p.49" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 - 21:00, Sáb 8:00 - 22:00, Dom 9:00 - 15:00</p>
-        <p data-eb-editable="text" data-eb-key="menu.p.50" data-eb-role="p" data-eb-kind="text">Tel: 8112345678</p>
-    </footer>
+      </div>
+
+      <!-- BEBIDAS -->
+      <div class="menu-section" data-category="bebidas">
+        <h3 class="menu-section-title fade-in" data-eb-editable="text" data-eb-key="menu.h3.72" data-eb-role="h3" data-eb-kind="text">Bebidas de temporada</h3>
+        <div class="menu-grid">
+          <div class="menu-item fade-in" data-cat="bebidas">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.73" data-eb-role="h3" data-eb-kind="text">Chai Latte Especiado</h3><p data-eb-editable="text" data-eb-key="menu.p.74" data-eb-role="p" data-eb-kind="text">Té chai con leche, canela, jengibre, cardamomo</p></div>
+              <span class="menu-item-price">$75</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="bebidas">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.75" data-eb-role="h3" data-eb-kind="text">Limonada de Lavanda</h3><p data-eb-editable="text" data-eb-key="menu.p.76" data-eb-role="p" data-eb-kind="text">Limonada fresca con toque de lavanda y miel</p></div>
+              <span class="menu-item-price">$65</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="bebidas">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.77" data-eb-role="h3" data-eb-kind="text">Chocolate Caliente</h3><p data-eb-editable="text" data-eb-key="menu.p.78" data-eb-role="p" data-eb-kind="text">Chocolate oaxaqueño, leche entera, canela</p></div>
+              <span class="menu-item-price">$70</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="bebidas">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.79" data-eb-role="h3" data-eb-kind="text">Té de Hierbabuena</h3><p data-eb-editable="text" data-eb-key="menu.p.80" data-eb-role="p" data-eb-kind="text">Hierbabuena fresca, servido en taza de cerámica</p></div>
+              <span class="menu-item-price">$50</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="bebidas">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.81" data-eb-role="h3" data-eb-kind="text">Agua de Jamaica</h3><p data-eb-editable="text" data-eb-key="menu.p.82" data-eb-role="p" data-eb-kind="text">Jamaica natural, endulzada con piloncillo</p></div>
+              <span class="menu-item-price">$45</span>
+            </div>
+          </div>
+          <div class="menu-item fade-in" data-cat="bebidas">
+            <div class="menu-item-info">
+              <div><h3 data-eb-editable="text" data-eb-key="menu.h3.83" data-eb-role="h3" data-eb-kind="text">Frappé de Café</h3><p data-eb-editable="text" data-eb-key="menu.p.84" data-eb-role="p" data-eb-kind="text">Café helado batido con leche y hielo</p></div>
+              <span class="menu-item-price">$85</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div style="margin-top: 48px;">
+        <div class="whatsapp-section fade-in">
+          <h2 data-eb-editable="text" data-eb-key="menu.h2.85" data-eb-role="h2" data-eb-kind="text">¿Encontraste lo que buscas?</h2>
+          <p data-eb-editable="text" data-eb-key="menu.p.86" data-eb-role="p" data-eb-kind="text">Haz tu pedido directo por WhatsApp. Te preparamos todo con cariño y lo llevamos hasta tu puerta.</p>
+          <a href="https://wa.me/528112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido" class="btn-primary" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="menu.a.87" data-eb-role="a" data-eb-kind="link">
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3 data-eb-editable="text" data-eb-key="menu.h3.88" data-eb-role="h3" data-eb-kind="text"><span class="dot" style="width:8px;height:8px;background:var(--terracotta);border-radius:50%;display:inline-block;"></span> Café Aroma Del Valle</h3>
+        <p data-eb-editable="text" data-eb-key="menu.p.89" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal y un ambiente que te hace sentir en casa.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-eb-editable="text" data-eb-key="menu.h4.90" data-eb-role="h4" data-eb-kind="text">Navegación</h4>
+        <ul>
+          <li><a href="index.html" data-eb-editable="link" data-eb-key="menu.a.91" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
+          <li><a href="menu.html" data-eb-editable="link" data-eb-key="menu.a.92" data-eb-role="a" data-eb-kind="link">Menú</a></li>
+          <li><a href="about.html" data-eb-editable="link" data-eb-key="menu.a.93" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
+          <li><a href="gallery.html" data-eb-editable="link" data-eb-key="menu.a.94" data-eb-role="a" data-eb-kind="link">Galería</a></li>
+          <li><a href="contact.html" data-eb-editable="link" data-eb-key="menu.a.95" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-eb-editable="text" data-eb-key="menu.h4.96" data-eb-role="h4" data-eb-kind="text">Contacto</h4>
+        <ul>
+          <li><a href="tel:528112345678" data-eb-editable="link" data-eb-key="menu.a.97" data-eb-role="a" data-eb-kind="link">81 1234 5678</a></li>
+          <li><a href="https://wa.me/528112345678" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="menu.a.98" data-eb-role="a" data-eb-kind="link">WhatsApp</a></li>
+          <li><a href="https://maps.google.com/?q=Monterrey" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="menu.a.99" data-eb-role="a" data-eb-kind="link">Ubicación</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-eb-editable="text" data-eb-key="menu.h4.100" data-eb-role="h4" data-eb-kind="text">Horario</h4>
+        <ul>
+          <li>Lun a Vie: 7:00 – 21:00</li>
+          <li>Sáb: 8:00 – 22:00</li>
+          <li>Dom: 9:00 – 15:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Café Aroma Del Valle. Todos los derechos reservados.</span>
+      <span>Hecho con amor en Monterrey</span>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.add('open');
+    });
+    document.getElementById('mobileNavClose').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.remove('open');
+    });
+
+    // Category filter
+    document.querySelectorAll('.menu-cat-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.menu-cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        document.querySelectorAll('.menu-section').forEach(section => {
+          section.style.display = (cat === 'all' || section.dataset.category === cat) ? 'block' : 'none';
+        });
+        document.querySelectorAll('.menu-item').forEach(item => {
+          item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+        });
+      });
+    });
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
 </body>
 </html>
