@@ -1,241 +1,173 @@
 /* ========================================
-   CAFÉ AROMA DEL VALLE — JS
+   Café Aroma Del Valle — Script
    ======================================== */
 
 (function () {
   'use strict';
 
-  // ── STATE ──
-  const cart = [];
+  // ---- Header scroll effect ----
+  const header = document.getElementById('header');
+  const handleScroll = () => {
+    header.classList.toggle('header--scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 
-  // ── ELEMENTS ──
-  const navbar = document.getElementById('navbar');
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const menuCards = document.querySelectorAll('.menu-card');
-  const addOrderBtns = document.querySelectorAll('.add-order-btn');
-  const cartItems = document.getElementById('cartItems');
-  const cartCount = document.getElementById('cartCount');
-  const cartTotal = document.getElementById('cartTotal');
-  const cartTotalPrice = document.getElementById('cartTotalPrice');
-  const sendWhatsApp = document.getElementById('sendWhatsApp');
-  const hero = document.getElementById('hero');
+  // ---- Mobile menu toggle ----
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
 
-  // ── NAVBAR SCROLL ──
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    navbar.classList.toggle('scrolled', scrollY > 50);
-    lastScroll = scrollY;
-
-    // Update active nav link
-    const sections = document.querySelectorAll('section[id]');
-    let current = '';
-    sections.forEach(section => {
-      const top = section.offsetTop - 120;
-      if (scrollY >= top) current = section.id;
-    });
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('header__toggle--active');
+    nav.classList.toggle('header__nav--open');
   });
 
-  // ── MOBILE NAV ──
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
-    navToggle.classList.toggle('active');
-  });
-
-  navLinks.forEach(link => {
+  nav.querySelectorAll('.header__link').forEach(link => {
     link.addEventListener('click', () => {
-      navMenu.classList.remove('open');
-      navToggle.classList.remove('active');
+      toggle.classList.remove('header__toggle--active');
+      nav.classList.remove('header__nav--open');
     });
   });
 
-  // ── HERO ANIMATION ──
-  window.addEventListener('load', () => {
-    hero.classList.add('loaded');
+  // ---- Menu tabs ----
+  const tabs = document.querySelectorAll('.menu__tab');
+  const panels = document.querySelectorAll('.menu__panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('menu__tab--active'));
+      tab.classList.add('menu__tab--active');
+
+      panels.forEach(p => p.classList.remove('menu__panel--active'));
+      const panel = document.querySelector(`[data-panel="${target}"]`);
+      if (panel) panel.classList.add('menu__panel--active');
+    });
   });
 
-  // ── SCROLL REVEAL ──
-  const revealElements = document.querySelectorAll(
-    '.about-images, .about-text, .section-header, .menu-card, .gallery-item, .order-info, .detail-item'
-  );
-  revealElements.forEach(el => el.classList.add('reveal'));
+  // ---- Active nav link on scroll ----
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.header__link');
 
-  const observer = new IntersectionObserver(
-    entries => {
+  const observeSections = () => {
+    const scrollY = window.scrollY + 120;
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+
+      if (scrollY >= top && scrollY < top + height) {
+        navLinks.forEach(link => {
+          link.classList.remove('header__link--active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('header__link--active');
+          }
+        });
+      }
+    });
+  };
+
+  window.addEventListener('scroll', observeSections, { passive: true });
+
+  // ---- Reveal on scroll (Intersection Observer) ----
+  const revealElements = document.querySelectorAll(
+    '.about__text, .about__images, .menu__header, .menu__tabs, .gallery__header, .gallery__grid, .contact__info, .contact__map'
+  );
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          revealObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
   );
 
-  revealElements.forEach(el => observer.observe(el));
+  revealElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    revealObserver.observe(el);
+  });
 
-  // ── MENU FILTERS ──
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
+  // ---- Gallery lightbox ----
+  const galleryItems = document.querySelectorAll('.gallery__item');
 
-      menuCards.forEach(card => {
-        const match = filter === 'all' || card.dataset.category === filter;
-        card.classList.toggle('hidden', !match);
-        if (match) {
-          card.classList.remove('visible');
-          observer.observe(card);
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (!img) return;
+
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position:fixed;inset:0;z-index:9999;
+        background:rgba(0,0,0,0.9);
+        display:flex;align-items:center;justify-content:center;
+        cursor:pointer;
+        animation:fadeIn 0.3s ease;
+      `;
+
+      const fullImg = document.createElement('img');
+      fullImg.src = img.src;
+      fullImg.alt = img.alt;
+      fullImg.style.cssText = `
+        max-width:90vw;max-height:90vh;
+        object-fit:contain;border-radius:8px;
+        box-shadow:0 8px 40px rgba(0,0,0,0.5);
+      `;
+
+      const caption = item.querySelector('.gallery__caption');
+      if (caption) {
+        const cap = document.createElement('p');
+        cap.textContent = caption.textContent;
+        cap.style.cssText = `
+          position:absolute;bottom:32px;left:50%;
+          transform:translateX(-50%);color:#fff;
+          font-size:1rem;font-family:'Inter',sans-serif;
+          background:rgba(0,0,0,0.5);padding:8px 20px;
+          border-radius:8px;white-space:nowrap;
+        `;
+        overlay.appendChild(cap);
+      }
+
+      const closeBtn = document.createElement('div');
+      closeBtn.innerHTML = '&times;';
+      closeBtn.style.cssText = `
+        position:absolute;top:20px;right:24px;
+        color:#fff;font-size:2.5rem;cursor:pointer;
+        width:48px;height:48px;display:flex;align-items:center;
+        justify-content:center;transition:transform 0.2s;
+        line-height:1;
+      `;
+      closeBtn.addEventListener('mouseenter', () => closeBtn.style.transform = 'scale(1.2)');
+      closeBtn.addEventListener('mouseleave', () => closeBtn.style.transform = 'scale(1)');
+
+      overlay.appendChild(fullImg);
+      overlay.appendChild(closeBtn);
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden';
+
+      const close = () => {
+        overlay.remove();
+        document.body.style.overflow = '';
+      };
+
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target === closeBtn) close();
+      });
+
+      document.addEventListener('keydown', function handler(e) {
+        if (e.key === 'Escape') {
+          close();
+          document.removeEventListener('keydown', handler);
         }
       });
-    });
-  });
-
-  // ── CART ──
-  function findCartItem(name) {
-    return cart.find(item => item.name === name);
-  }
-
-  function addToCart(name, price) {
-    const existing = findCartItem(name);
-    if (existing) {
-      existing.qty++;
-    } else {
-      cart.push({ name, price: Number(price), qty: 1 });
-    }
-    renderCart();
-    showToast(`${name} agregado al pedido`);
-  }
-
-  function removeFromCart(name) {
-    const idx = cart.findIndex(item => item.name === name);
-    if (idx !== -1) cart.splice(idx, 1);
-    renderCart();
-  }
-
-  function updateQty(name, delta) {
-    const item = findCartItem(name);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) {
-      removeFromCart(name);
-    } else {
-      renderCart();
-    }
-  }
-
-  function getTotal() {
-    return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-  }
-
-  function renderCart() {
-    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-    cartCount.textContent = totalItems;
-
-    if (cart.length === 0) {
-      cartItems.innerHTML = '<p class="cart-empty">Aún no has agregado productos. Explora el menú y agrega lo que más te guste.</p>';
-      cartTotal.style.display = 'none';
-      sendWhatsApp.style.display = 'none';
-      return;
-    }
-
-    cartItems.innerHTML = cart
-      .map(
-        item => `
-      <div class="cart-item">
-        <div class="cart-item-info">
-          <span class="cart-item-name">${item.name}</span>
-        </div>
-        <div class="cart-item-qty">
-          <button class="qty-btn" data-name="${item.name}" data-delta="-1">−</button>
-          <span>${item.qty}</span>
-          <button class="qty-btn" data-name="${item.name}" data-delta="1">+</button>
-        </div>
-        <span class="cart-item-price">$${item.price * item.qty}</span>
-        <button class="cart-item-remove" data-name="${item.name}" title="Eliminar">✕</button>
-      </div>
-    `
-      )
-      .join('');
-
-    cartTotal.style.display = 'flex';
-    cartTotalPrice.textContent = '$' + getTotal();
-    sendWhatsApp.style.display = 'flex';
-    sendWhatsApp.disabled = false;
-
-    // Bind qty buttons
-    cartItems.querySelectorAll('.qty-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        updateQty(btn.dataset.name, Number(btn.dataset.delta));
-      });
-    });
-
-    // Bind remove buttons
-    cartItems.querySelectorAll('.cart-item-remove').forEach(btn => {
-      btn.addEventListener('click', () => {
-        removeFromCart(btn.dataset.name);
-      });
-    });
-  }
-
-  // ── ADD ORDER BUTTONS ──
-  addOrderBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      addToCart(btn.dataset.name, btn.dataset.price);
-      btn.textContent = '✓ Agregado';
-      btn.classList.add('added');
-      setTimeout(() => {
-        btn.textContent = '+ Ordenar';
-        btn.classList.remove('added');
-      }, 1200);
-    });
-  });
-
-  // ── WHATSAPP SEND ──
-  sendWhatsApp.addEventListener('click', () => {
-    if (cart.length === 0) return;
-
-    const phone = '528112345678';
-    let msg = '☕ *Nuevo Pedido — Café Aroma Del Valle*\n\n';
-    msg += '━━━━━━━━━━━━━━━━━━━━━━━━\n';
-    cart.forEach(item => {
-      msg += `• ${item.name} × ${item.qty}  —  $${item.price * item.qty}\n`;
-    });
-    msg += '━━━━━━━━━━━━━━━━━━━━━━━━\n';
-    msg += `*Total: $${getTotal()}*\n\n`;
-    msg += '📍 Entrega a domicilio\n';
-    msg += '⏰ ' + (new Date().toLocaleDateString('es-MX', { weekday: 'long', hour: '2-digit', minute: '2-digit' }));
-
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
-  });
-
-  // ── TOAST ──
-  function showToast(msg) {
-    let toast = document.querySelector('.toast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.className = 'toast';
-      document.body.appendChild(toast);
-    }
-    toast.textContent = msg;
-    toast.classList.add('show');
-    clearTimeout(toast._timer);
-    toast._timer = setTimeout(() => toast.classList.remove('show'), 2000);
-  }
-
-  // ── SMOOTH ANCHOR CLOSE ──
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', () => {
-      navMenu.classList.remove('open');
-      navToggle.classList.remove('active');
     });
   });
 
