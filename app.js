@@ -1,102 +1,155 @@
 const WA_NUMBER = "528112345678";
 const MENU = [
- // CAFES
- {cat:"cafes", name:"Latte Aroma insignia", price:65, desc:"Doble espresso Veracruz honey + leche cremosa + arte de la casa.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5", tags:["estrella"]},
- {cat:"cafes", name:"Capuchino Valle", price:65, desc:"Espresso Chiapas, espuma densa y toque de cacao.", img:"", tags:[]},
- {cat:"cafes", name:"Pour Over Oaxaca V60", price:85, desc:"Filtrado floral de frutos rojos. Taza limpia y dulce.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc", tags:["origen"]},
- {cat:"cafes", name:"Espresso doble", price:45, desc:"Chiapas lavado, crema avellana, final a piloncillo.", img:"", tags:[]},
- {cat:"cafes", name:"Mocha de la casa", price:75, desc:"Espresso + chocolate oaxaqueño + leche + crema.", img:"", tags:[]},
- {cat:"cafes", name:"Cold Brew 12h", price:70, desc:"Infusión en frío, servido en hielo con naranja.", img:"", tags:["frio"]},
- {cat:"cafes", name:"Chai latte / Matcha latte", price:72, desc:"Chai especiado o matcha ceremonial con tu leche favorita.", img:"", tags:["veg-op"]},
- {cat:"cafes", name:"Café de olla refill", price:55, desc:"Olla tradicional con canela y piloncillo. Rellenable en local.", img:"", tags:[]},
- // DESAYUNOS
- {cat:"desayunos", name:"Chilaquiles + Café", price:135, desc:"Verdes o rojos, pollo o huevo, crema, queso, frijoles + café.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57", tags:["estrella"]},
- {cat:"desayunos", name:"Molletes Valle", price:95, desc:"Pan masa madre, frijoles, queso gratinado y pico de gallo.", img:"", tags:["veg-op"]},
- {cat:"desayunos", name:"Omelette de la casa", price:120, desc:"3 huevos, champiñón, espinaca y queso + pan tostado.", img:"", tags:[]},
- {cat:"desayunos", name:"Hotcakes masa madre", price:110, desc:"Con miel de agave, frutos rojos y mantequilla.", img:"", tags:[]},
- {cat:"desayunos", name:"Bowl Açaí energía", price:125, desc:"Açaí, granola artesanal, plátano, fresa y miel.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0", tags:["veg-op"]},
- // PANADERIA
- {cat:"panaderia", name:"Croissant mantequilla", price:55, desc:"Hojaldre francés, horneado cada mañana.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d", tags:[]},
- {cat:"panaderia", name:"Rol de canela", price:55, desc:"Brioche suave, glaseado de queso y mucha canela.", img:"", tags:["estrella"]},
- {cat:"panaderia", name:"Concha vainilla / chocolate", price:35, desc:"Receta de abuela, migajón esponjoso.", img:"", tags:[]},
- {cat:"panaderia", name:"Pan masa madre 500g", price:85, desc:"Fermentación 48h para llevar a casa.", img:"", tags:["vegano"]},
- {cat:"panaderia", name:"Vitrina del día (2 pzas)", price:79, desc:"Elige 2 piezas de vitrina + café americano chico.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821", tags:[]},
- // VEGANO
- {cat:"vegano", name:"Tofu scramble + pan integral", price:125, desc:"Tofu sazonado, vegetales asados y pan integral.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=435575ff-8529-4fc0-b84f-02cf22dfd14d", tags:["vegano"]},
- {cat:"vegano", name:"Bowl vegano breakfast", price:115, desc:"Quinoa, aguacate, pico, frijoles y aderezo limón.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=a599b91a-a465-4595-8264-1552299a7720", tags:["vegano"]},
- {cat:"vegano", name:"Brownie vegano + latte avena", price:99, desc:"Brownie cacao 70% sin lácteos + latte leche avena.", img:"", tags:["vegano","estrella"]},
- {cat:"vegano", name:"Latte avena / almendra", price:75, desc:"Espresso origen + leche vegetal a elegir.", img:"", tags:["vegano"]},
- // POSTRES
- {cat:"postres", name:"Pastel zanahoria", price:75, desc:"Con betún de queso y nuez tostada. Receta insignia.", img:"", tags:["estrella"]},
- {cat:"postres", name:"Galleta chispas + espresso", price:69, desc:"Galleta tibia recién horneada + espresso doble.", img:"", tags:[]},
- {cat:"postres", name:"Affogato vainilla", price:80, desc:"Helado vainilla ahogado en espresso caliente.", img:"", tags:[]},
- {cat:"postres", name:"Bolsa Café Origen 250g", price:180, desc:"Chiapas / Oaxaca / Veracruz en grano o molido.", img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=17eb13cb-a7ee-49a7-a109-41243b6ce3ab", tags:["para-llevar"]},
+  {group:"Cafés de especialidad", id:"cafes", items:[
+    {id:"espresso",name:"Espresso doble",desc:"Shot doble de origen Chiapas, tueste medio.",price:55,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5"},
+    {id:"latte-aroma",name:"Latte Aroma",desc:"Doble espresso + leche cremosa. Avena/almendra +$10.",price:68,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947"},
+    {id:"capuchino",name:"Capuchino",desc:"Clásico italiano, espuma densa y cacao.",price:65,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5"},
+    {id:"v60",name:"V60Origen invitado",desc:"Filtrado limpio y floral. Chiapas / Oaxaca rotativo.",price:75,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc"},
+    {id:"aeropress",name:"Aeropress",desc:"Dulce, intenso, con notas a piloncillo.",price:78,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc"},
+    {id:"mocha",name:"Mocha Valle",desc:"Espresso + chocolate 70% + leche. Con crema.",price:78,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5"},
+    {id:"cold",name:"Cold brew + naranja",desc:"Extracción 18h, toque cítrico, muy refrescante.",price:72,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc"},
+    {id:"americano",name:"Americano",desc:"Largo y balanceado. Refill $25 en tienda.",price:50,cat:"cafes",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5"},
+  ]},
+  {group:"Desayunos", id:"desayunos", items:[
+    {id:"chilaquiles",name:"Chilaquiles del Valle",desc:"Salsa roja asada, pollo o huevo, frijoles. Incluye americano.",price:135,cat:"desayunos",tag:"Más pedido",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57"},
+    {id:"molletes",name:"Molletes masa madre",desc:"Frijol, queso gratinado, pico de gallo y salsa.",price:98,cat:"desayunos",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d"},
+    {id:"huevos",name:"Huevos al gusto + pan",desc:"Rancheros, a la mexicana o estrellados con pan de masa madre.",price:115,cat:"desayunos",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57"},
+    {id:"croissant",name:"Croissant relleno",desc:"Jamón y queso o caprese. Hojaldre con mantequilla.",price:89,cat:"desayunos",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d"},
+    {id:"hotcakes",name:"Hotcakes de avena + café",desc:"Miel, frutos rojos y mantequilla. Incluye americano chico.",price:110,cat:"desayunos",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d"},
+  ]},
+  {group:"Panadería artesanal", id:"panaderia", items:[
+    {id:"concha",name:"Concha de vainilla",desc:"Receta de la casa, horneada cada mañana.",price:28,cat:"panaderia",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d"},
+    {id:"rol",name:"Rol de canela",desc:"Glaseado de queso crema y nuez.",price:55,cat:"panaderia",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821"},
+    {id:"croissant-m",name:"Croissant mantequilla",desc:"Hojaldre francés 27 capas.",price:48,cat:"panaderia",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821"},
+    {id:"banano",name:"Panqué de plátano",desc:"Con nuez y toque de café. Rebanada generosa.",price:52,cat:"panaderia",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821"},
+    {id:"masa",name:"Hogaza masa madre 600g",desc:"Para llevar. Fermentación 24h.",price:95,cat:"panaderia",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d"},
+  ]},
+  {group:"Vegano / ligero", id:"vegano", items:[
+    {id:"acai",name:"Açaí Bowl Valle",desc:"Açaí, granola, plátano, fresa, agave.",price:128,cat:"vegano",tag:"Vegano",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0"},
+    {id:"bowl-veg",name:"Bowl vegano breakfast",desc:"Quinoa, aguacate, pico de gallo y aderezo.",price:125,cat:"vegano",tag:"Vegano",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=a599b91a-a465-4595-8264-1552299a7720"},
+    {id:"tofu",name:"Tofu scramble + pan integral",desc:"Vegetales asados, cúrcuma y pan integral.",price:118,cat:"vegano",tag:"Vegano",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=435575ff-8529-4fc0-b84f-02cf22dfd14d"},
+    {id:"matcha",name:"Matcha latte (avena)",desc:"Matcha ceremonial + leche de avena.",price:82,cat:"vegano",tag:"Vegano",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc"},
+  ]},
+  {group:"Postres y otras bebidas", id:"postres", items:[
+    {id:"pastel",name:"Rebanada pastel del día",desc:"Zanahoria, chocolate o limón según vitrina.",price:68,cat:"postres",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821"},
+    {id:"galleta",name:"Galleta chispas + espresso",desc:"Horneada aquí, centro suave.",price:42,cat:"postres",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821"},
+    {id:"chocolate",name:"Chocolate oaxaqueño",desc:"Con agua o leche, toque de canela.",price:65,cat:"postres",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5"},
+    {id:"chai",name:"Chai latte",desc:"Especias de la casa, opción vegana.",price:72,cat:"postres",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5"},
+    {id:"jugo",name:"Jugo verde / naranja",desc:"Recién exprimido.",price:58,cat:"postres",img:"https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0"},
+  ]},
 ];
-let activeCat="cafes", cart=JSON.parse(localStorage.getItem("aroma_cart")||"[]"), fulfill="A domicilio";
-const $=s=>document.querySelector(s);
-const money=n=>"$"+n.toLocaleString("es-MX");
-function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._x);t._x=setTimeout(()=>t.classList.remove("show"),2200)}
+const ALL = MENU.flatMap(g=>g.items.map(i=>({...i,group:g.group})));
+const byId = Object.fromEntries(ALL.map(i=>[i.id,i]));
+let cart = {};
+try{ cart = JSON.parse(localStorage.getItem("aroma_cart")||"{}"); }catch(e){ cart={}; }
+let mode = "recoger";
+let activeFilter = "all", query = "";
+
+const $ = s=>document.querySelector(s);
+const money = n=>"$"+n.toLocaleString("es-MX");
+
 function renderMenu(){
- const q=($("#menu-search").value||"").toLowerCase(), vegOnly=$("#veg-only").checked;
- const grid=$("#menu-grid"); grid.innerHTML="";
- const items=MENU.filter(i=>i.cat===activeCat)
-   .filter(i=>!q||(i.name+i.desc).toLowerCase().includes(q))
-   .filter(i=>!vegOnly||i.tags.includes("vegano")||i.tags.includes("veg-op"));
- if(!items.length){grid.innerHTML="<p class='muted'>Sin resultados. Prueba con otra palabra o quita el filtro vegano.</p>";return}
- items.forEach(it=>{
-  const el=document.createElement("article");el.className="card";
-  const pills=[it.tags.includes("vegano")?"<span class='pill veg'>🌱 vegano</span>":"",it.tags.includes("veg-op")?"<span class='pill veg'>🌱 op. vegana</span>":"",it.tags.includes("estrella")?"<span class='pill star'>★ favorito</span>":""].join("");
-  el.innerHTML=(it.img?`<img src="${it.img}" alt="${it.name}" loading="lazy">`:"")+`<div class="card-body"><h3>${it.name} <span class="price">${money(it.price)}</span></h3><p>${it.desc}</p><div class="card-meta">${pills}</div><div class="add-row"><button class="add-btn" data-name="${it.name}" data-price="${it.price}">Agregar · ${money(it.price)}</button></div></div>`;
-  grid.appendChild(el);
- });
- grid.querySelectorAll(".add-btn").forEach(b=>b.onclick=()=>addToCart(b.dataset.name, +b.dataset.price));
+  const box = $("#menuGroups"); box.innerHTML="";
+  MENU.forEach(g=>{
+    const items = g.items.filter(it=>{
+      const okF = activeFilter==="all" || it.cat===activeFilter || (activeFilter==="vegano"&&it.cat==="vegano");
+      const okQ = !query || (it.name+" "+it.desc).toLowerCase().includes(query);
+      return okF && okQ;
+    });
+    if(!items.length) return;
+    const div = document.createElement("div");
+    div.className="menu-group";
+    div.innerHTML = `<h3>${g.group} <span class="muted small">· ${items.length}</span></h3>`;
+    items.forEach(it=>{
+      const el=document.createElement("div");
+      el.className="menu-item";
+      el.innerHTML=`<img src="${it.img}" alt="${it.name}" loading="lazy">
+        <div><h4>${it.name}${it.tag?`<span class="tag">${it.tag}</span>`:""}</h4><p>${it.desc}</p><strong>${money(it.price)}</strong></div>
+        <div class="item-add"><button class="qty-btn" data-add="${it.id}" type="button">Añadir +</button></div>`;
+      div.appendChild(el);
+    });
+    box.appendChild(div);
+  });
+  if(!box.children.length) box.innerHTML=`<p class="muted">Sin resultados para “${query}”. Prueba con “latte”, “vegano” o “pan”.</p>`;
 }
-function saveCart(){localStorage.setItem("aroma_cart",JSON.stringify(cart));renderCart()}
-function addToCart(name,price){
- const f=cart.find(i=>i.name===name);
- if(f)f.qty++;else cart.push({name,price,qty:1});
- saveCart();toast(`Agregado: ${name}`);openCart();
-}
+
+function save(){ localStorage.setItem("aroma_cart", JSON.stringify(cart)); }
+function count(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function subtotal(){ return Object.entries(cart).reduce((a,[id,q])=>a+(byId[id]?byId[id].price*q:0),0); }
+
 function renderCart(){
- const box=$("#cart-items");const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
- $("#cart-count").textContent=cart.reduce((s,i)=>s+i.qty,0);
- $("#cart-total").textContent=money(total);
- if(!cart.length){box.innerHTML="<div class='cart-empty'>☕<br>Tu carrito está vacío.<br>Agrega algo rico del menú.</div>";return}
- box.innerHTML=cart.map((i,idx)=>`<div class="ci"><div><strong>${i.name}</strong><br><small>${money(i.price)} c/u · ${money(i.price*i.qty)}</small></div><div class="ci-controls"><button data-a="dec" data-i="${idx}">−</button><span>${i.qty}</span><button data-a="inc" data-i="${idx}">+</button></div></div>`).join("");
- box.querySelectorAll("button").forEach(b=>b.onclick=()=>{
-  const idx=+b.dataset.i;
-  if(b.dataset.a==="inc")cart[idx].qty++;
-  else{cart[idx].qty--;if(cart[idx].qty<=0)cart.splice(idx,1)}
-  saveCart();
- });
+  $("#cartCount").textContent = count();
+  const box=$("#cartItems"); box.innerHTML="";
+  const ids=Object.keys(cart).filter(id=>cart[id]>0&&byId[id]);
+  if(!ids.length){ box.innerHTML=`<div class="cart-empty">☕<p>Tu carrito está vacío.<br>Añade un latte, unos chilaquiles o un rol de canela.</p><a class="btn btn-primary" href="#menu" id="emptyGo">Ver menú</a></div>`;
+    const g=$("#emptyGo"); if(g) g.addEventListener("click",closeCart);
+  }
+  ids.forEach(id=>{
+    const it=byId[id], q=cart[id];
+    const d=document.createElement("div"); d.className="ci";
+    d.innerHTML=`<div><strong>${it.name}</strong><br><small>${money(it.price)} c/u · ${money(it.price*q)}</small></div>
+    <div class="ci-controls"><button data-dec="${id}" type="button">−</button><strong>${q}</strong><button data-inc="${id}" type="button">+</button></div>`;
+    box.appendChild(d);
+  });
+  const st=subtotal();
+  const ship = ids.length ? (mode==="domicilio"?39:0) : 0;
+  $("#subtotal").textContent=money(st);
+  $("#shipping").textContent= ids.length ? (mode==="domicilio"?money(ship):"Gratis (recoger)") : "—";
+  $("#grandTotal").textContent=money(st+ship);
+  $("#cartSubtitle").textContent = ids.length ? `${count()} productos · ${mode==="domicilio"?"Entrega a domicilio":"Recoger en tienda"}` : "Añade algo rico del menú";
 }
-function openCart(){$("#cart").classList.add("open");$("#overlay").classList.add("show")}
-function closeCart(){$("#cart").classList.remove("open");$("#overlay").classList.remove("show")}
-function sendWA(){
- if(!cart.length){toast("Agrega algo al carrito primero");return}
- const name=$("#c-name").value.trim(), addr=$("#c-addr").value.trim(), notes=$("#c-notes").value.trim();
- const lines=cart.map(i=>`• ${i.qty}x ${i.name} — ${money(i.price*i.qty)}`).join("\n");
- const total=money(cart.reduce((s,i)=>s+i.price*i.qty,0));
- const msg=`Hola Café Aroma Del Valle ☕\nQuiero hacer un pedido:\n${lines}\nTotal: ${total}\nTipo: ${fulfill}\nNombre: ${name||"-"}\n${fulfill==="A domicilio"?"Dirección: "+(addr||"-")+"\n":""}Notas: ${notes||"-"}`;
- window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank");
+
+function add(id){ cart[id]=(cart[id]||0)+1; save(); renderCart(); openCart(); }
+function openCart(){ $("#cartDrawer").classList.add("open"); $("#overlay").hidden=false; $("#cartDrawer").setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
+function closeCart(){ $("#cartDrawer").classList.remove("open"); $("#overlay").hidden=true; $("#cartDrawer").setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
+
+function sendOrder(){
+  const ids=Object.keys(cart).filter(id=>cart[id]>0);
+  if(!ids.length){ alert("Añade al menos un producto al carrito."); return; }
+  const name=$("#custName").value.trim();
+  const notes=$("#custNotes").value.trim();
+  const st=subtotal(), ship=mode==="domicilio"?39:0;
+  let msg=`Hola Café Aroma del Valle, quiero hacer un pedido:%0A`;
+  ids.forEach(id=>{ const it=byId[id]; msg+=`• ${cart[id]}x ${it.name} — ${money(it.price*cart[id])}%0A`; });
+  msg+=`%0ASubtotal: ${money(st)}%0AEnvío: ${mode==="domicilio"?money(ship):"Recoger (gratis)"}%0ATotal aprox: ${money(st+ship)}%0A`;
+  msg+=`Modo: ${mode==="domicilio"?"Entrega a domicilio":"Recoger en tienda"}%0A`;
+  if(name) msg+=`Nombre: ${encodeURIComponent(name)}%0A`;
+  if(notes) msg+=`Notas: ${encodeURIComponent(notes)}%0A`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,"_blank");
 }
-// events
-document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");activeCat=t.dataset.cat;renderMenu()});
-$("#menu-search").oninput=renderMenu;$("#veg-only").onchange=renderMenu;
-$("#open-cart").onclick=openCart;$("#open-cart-2").onclick=openCart;$("#close-cart").onclick=closeCart;$("#overlay").onclick=closeCart;
-$("#clear-cart").onclick=()=>{cart=[];saveCart()};
-$("#send-wa").onclick=sendWA;
-document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>{const[n,p]=b.dataset.add.split("|");addToCart(n,+p)});
-document.querySelectorAll("#fulfill-seg button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#fulfill-seg button").forEach(x=>x.classList.remove("active"));b.classList.add("active");fulfill=b.dataset.f;$("#addr-wrap").style.display=fulfill==="A domicilio"?"block":"none"});
-$("#quick-order").onsubmit=e=>{e.preventDefault();const w=$("#q-what").value,n=$("#q-name").value;window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`Hola Café Aroma Del Valle ☕\nSoy ${n}\nQuiero pedir: ${w}`)}`,"_blank")};
-$("#menu-toggle").onclick=()=>$("#mobile-menu").classList.toggle("show");
-document.querySelectorAll("#mobile-menu a").forEach(a=>a.onclick=()=>$("#mobile-menu").classList.remove("show"));
-// open/closed status
-(function(){
- const now=new Date();const d=now.getDay(),h=now.getHours()+now.getMinutes()/60;
- let open=false;
- if(d>=1&&d<=5)open=h>=7&&h<21;else if(d===6)open=h>=8&&h<22;else open=h>=9&&h<15;
- const el=$("#open-status");el.textContent=open?"● Abierto ahora · Pide por WhatsApp":"● Cerrado ahora · Te esperamos en horario";
- el.style.color=open?"#7DFFA8":"#FFB3B3";
+
+document.addEventListener("click",e=>{
+  const a=e.target.closest("[data-add]"); if(a){ add(a.dataset.add); return; }
+  const inc=e.target.closest("[data-inc]"); if(inc){ cart[inc.dataset.inc]++; save(); renderCart(); return; }
+  const dec=e.target.closest("[data-dec]"); if(dec){ const id=dec.dataset.dec; cart[id]--; if(cart[id]<=0) delete cart[id]; save(); renderCart(); return; }
+  const f=e.target.closest("[data-filter]"); if(f){ document.querySelectorAll("[data-filter]").forEach(b=>b.classList.remove("active")); f.classList.add("active"); activeFilter=f.dataset.filter; renderMenu(); return; }
+  const s=e.target.closest("[data-mode]"); if(s){ document.querySelectorAll("[data-mode]").forEach(b=>b.classList.remove("active")); s.classList.add("active"); mode=s.dataset.mode; renderCart(); return; }
+});
+$("#menuSearch").addEventListener("input",e=>{ query=e.target.value.trim().toLowerCase(); renderMenu(); });
+$("#openCartBtn").addEventListener("click",openCart);
+$("#closeCartBtn").addEventListener("click",closeCart);
+$("#overlay").addEventListener("click",closeCart);
+$("#sendOrderBtn").addEventListener("click",sendOrder);
+$("#sideOrderBtn").addEventListener("click",openCart);
+$("#ctaOrderBtn").addEventListener("click",()=>{ document.querySelector("#menu").scrollIntoView({behavior:"smooth"}); setTimeout(openCart,600); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeCart(); });
+
+// nav mobile + header shadow + open badge
+const nav=$("#mobileNav"), tog=$("#navToggle");
+tog.addEventListener("click",()=>{ const o=nav.classList.toggle("open"); tog.setAttribute("aria-expanded",o); });
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+window.addEventListener("scroll",()=>{ $("#topbar").style.boxShadow = window.scrollY>10 ? "0 6px 24px rgba(0,0,0,.08)" : "none"; },{passive:true});
+
+(function openBadge(){
+  const d=new Date(), day=d.getDay(), mins=d.getHours()*60+d.getMinutes();
+  // Lun-Vie 7-21, Sab 8-22, Dom 9-15
+  let open=false;
+  if(day>=1&&day<=5) open=mins>=420&&mins<1260;
+  else if(day===6) open=mins>=480&&mins<1320;
+  else open=mins>=540&&mins<900;
+  const b=$("#openBadge");
+  b.textContent = open ? "● Abierto ahora" : "● Cerrado ahora";
+  b.style.color = open ? "#1FA855" : "#B4551F";
 })();
-renderMenu();renderCart();
+
+renderMenu(); renderCart();
