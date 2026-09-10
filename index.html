@@ -4,373 +4,456 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Café Aroma Del Valle | Cafetería de Especialidad en Monterrey</title>
-  <meta name="description" content="Café de origen, panadería artesanal, desayunos y opciones veganas en el Valle de Monterrey. Pedidos por WhatsApp con entrega a domicilio.">
+  <meta name="description" content="Cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal, desayunos y opciones veganas. Pedidos por WhatsApp con entrega a domicilio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
-    <div class="navbar-inner">
-      <a href="#" class="navbar-logo" data-eb-editable="link" data-eb-key="index.a.1" data-eb-role="a" data-eb-kind="link">Café <span>Aroma</span></a>
-      <ul class="navbar-links">
-        <li><a href="#inicio" data-eb-editable="link" data-eb-key="index.a.2" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
-        <li><a href="#nosotros" data-eb-editable="link" data-eb-key="index.a.3" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
-        <li><a href="#menu" data-eb-editable="link" data-eb-key="index.a.4" data-eb-role="a" data-eb-kind="link">Menú</a></li>
-        <li><a href="#galeria" data-eb-editable="link" data-eb-key="index.a.5" data-eb-role="a" data-eb-kind="link">Galería</a></li>
-        <li><a href="#contacto" data-eb-editable="link" data-eb-key="index.a.6" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
-      </ul>
-      <a href="https://wa.me/528112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="navbar-cta" data-eb-editable="link" data-eb-key="index.a.7" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
-      <button class="hamburger" id="hamburger" aria-label="Menú" data-eb-editable="link" data-eb-key="index.button.8" data-eb-role="button" data-eb-kind="link">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" data-eb-editable="link" data-eb-key="index.a.1" data-eb-role="a" data-eb-kind="link">
+        <span class="logo-icon">☕</span>
+        <span class="logo-text">Café Aroma <span class="logo-accent">Del Valle</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menú" data-eb-editable="link" data-eb-key="index.button.2" data-eb-role="button" data-eb-kind="link">
         <span></span><span></span><span></span>
       </button>
-    </div>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#inicio" data-eb-editable="link" data-eb-key="index.a.9" data-eb-role="a" data-eb-kind="link">Inicio</a>
-      <a href="#nosotros" data-eb-editable="link" data-eb-key="index.a.10" data-eb-role="a" data-eb-kind="link">Nosotros</a>
-      <a href="#menu" data-eb-editable="link" data-eb-key="index.a.11" data-eb-role="a" data-eb-kind="link">Menú</a>
-      <a href="#galeria" data-eb-editable="link" data-eb-key="index.a.12" data-eb-role="a" data-eb-kind="link">Galería</a>
-      <a href="#contacto" data-eb-editable="link" data-eb-key="index.a.13" data-eb-role="a" data-eb-kind="link">Contacto</a>
-      <a href="https://wa.me/528112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" style="color:var(--color-accent);font-weight:600;" data-eb-editable="link" data-eb-key="index.a.14" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#hero" class="nav-link active" data-eb-editable="link" data-eb-key="index.a.3" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
+        <li><a href="#about" class="nav-link" data-eb-editable="link" data-eb-key="index.a.4" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
+        <li><a href="#menu" class="nav-link" data-eb-editable="link" data-eb-key="index.a.5" data-eb-role="a" data-eb-kind="link">Menú</a></li>
+        <li><a href="#gallery" class="nav-link" data-eb-editable="link" data-eb-key="index.a.6" data-eb-role="a" data-eb-kind="link">Galería</a></li>
+        <li><a href="#contact" class="nav-link" data-eb-editable="link" data-eb-key="index.a.7" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
+        <li><a href="#order" class="nav-cta" data-eb-editable="link" data-eb-key="index.a.8" data-eb-role="a" data-eb-kind="link">Ordenar Ahora</a></li>
+      </ul>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-bg"></div>
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-img-wrapper">
+      <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=e10d7c70-3fc3-4cae-8dee-23ba30b5ed49" alt="Barista preparando café de especialidad" class="hero-bg" data-eb-editable="image" data-eb-key="index.img.9" data-eb-role="img" data-eb-kind="image">
+    </div>
     <div class="hero-content">
-      <div class="hero-tag">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-        Cafetería de Especialidad &middot; Monterrey
-      </div>
-      <h1 data-eb-editable="text" data-eb-key="index.h1.15" data-eb-role="h1" data-eb-kind="text">Café que cuenta <em>historias</em></h1>
-      <p class="hero-desc" data-eb-editable="text" data-eb-key="index.p.16" data-eb-role="p" data-eb-kind="text">Café de origen, panadería artesanal y un ambiente acogedor en el Valle de Monterrey. Baristas certificados, wifi gratis y entrega a domicilio.</p>
-      <div class="hero-actions">
-        <a href="#menu" class="btn btn-primary" data-eb-editable="link" data-eb-key="index.a.17" data-eb-role="a" data-eb-kind="link">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17"/><circle cx="7.5" cy="21.5" r="1.5"/><circle cx="16.5" cy="21.5" r="1.5"/></svg>
-          Ver el Menú
-        </a>
-        <a href="https://wa.me/528112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="btn btn-outline" data-eb-editable="link" data-eb-key="index.a.18" data-eb-role="a" data-eb-kind="link">
-          Pedir por WhatsApp
-        </a>
+      <p class="hero-tagline" data-eb-editable="text" data-eb-key="index.p.10" data-eb-role="p" data-eb-kind="text">Cafetería de Especialidad</p>
+      <h1 class="hero-title" data-eb-editable="text" data-eb-key="index.h1.11" data-eb-role="h1" data-eb-kind="text">Café Aroma<br><span class="hero-title-accent">Del Valle</span></h1>
+      <p class="hero-subtitle" data-eb-editable="text" data-eb-key="index.p.12" data-eb-role="p" data-eb-kind="text">Café de origen, panadería artesanal y sabores que inspiran. En el corazón del Valle de Monterrey.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary" data-eb-editable="link" data-eb-key="index.a.13" data-eb-role="a" data-eb-kind="link">Ver Menú</a>
+        <a href="#order" class="btn btn-secondary" data-eb-editable="link" data-eb-key="index.a.14" data-eb-role="a" data-eb-kind="link">Ordenar por WhatsApp</a>
       </div>
     </div>
     <div class="hero-scroll">
-      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+      <span>Descubre más</span>
+      <div class="scroll-arrow"></div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="section" id="nosotros">
-    <div class="about">
-      <div class="about-image reveal">
-        <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=9d6c26b2-7205-488f-87eb-b3991c91f366" alt="Interior acogedor de la cafetería" data-eb-editable="image" data-eb-key="index.img.19" data-eb-role="img" data-eb-kind="image">
-      </div>
-      <div class="reveal">
-        <span class="section-tag">Nuestra historia</span>
-        <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.20" data-eb-role="h2" data-eb-kind="text">Un espacio para disfrutar el momento</h2>
-        <p class="section-desc" data-eb-editable="text" data-eb-key="index.p.21" data-eb-role="p" data-eb-kind="text">Nacimos en el Valle de Monterrey con la visión de crear un refugio para los amantes del café. Cada grano seleccionado, cada receta artesanal y cada detalle de nuestro espacio está pensado para que vivas una experiencia única.</p>
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-num">12+</div>
-            <div class="stat-label">Orígenes</div>
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images">
+          <div class="about-img-main">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=9d6c26b2-7205-488f-87eb-b3991c91f366" alt="Interior acogedor de la cafetería" loading="lazy" data-eb-editable="image" data-eb-key="index.img.15" data-eb-role="img" data-eb-kind="image">
           </div>
-          <div class="stat">
-            <div class="stat-num">5K+</div>
-            <div class="stat-label">Clientes</div>
+          <div class="about-img-accent">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=3a1cd85e-238e-44e8-bdfb-e5316215ec1d" alt="Interior de cafetería con pared de ladrillo" loading="lazy" data-eb-editable="image" data-eb-key="index.img.16" data-eb-role="img" data-eb-kind="image">
           </div>
-          <div class="stat">
-            <div class="stat-num">4.9</div>
-            <div class="stat-label">Google</div>
+          <div class="about-badge">
+            <span class="badge-number">10+</span>
+            <span class="badge-text">Años de pasión</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="section" style="padding-top:0">
-    <div class="features-row reveal">
-      <div class="feature-card">
-        <div class="feature-icon">☕</div>
-        <h3 data-eb-editable="text" data-eb-key="index.h3.22" data-eb-role="h3" data-eb-kind="text">Café de Origen</h3>
-        <p data-eb-editable="text" data-eb-key="index.p.23" data-eb-role="p" data-eb-kind="text">Seleccionamos granos de fincas con comercio directo de México, Colombia, Ethiopia y Guatemala.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🥐</div>
-        <h3 data-eb-editable="text" data-eb-key="index.h3.24" data-eb-role="h3" data-eb-kind="text">Panadería Artesanal</h3>
-        <p data-eb-editable="text" data-eb-key="index.p.25" data-eb-role="p" data-eb-kind="text">Pan fresco cada mañana: croissants, scones, galletas ypasteles horneados con ingredientes naturales.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌱</div>
-        <h3 data-eb-editable="text" data-eb-key="index.h3.26" data-eb-role="h3" data-eb-kind="text">Opciones Veganas</h3>
-        <p data-eb-editable="text" data-eb-key="index.p.27" data-eb-role="p" data-eb-kind="text">Menú completo con bowls, tofu scramble y bebidas con leches vegetales de avena, almendra o soya.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🚀</div>
-        <h3 data-eb-editable="text" data-eb-key="index.h3.28" data-eb-role="h3" data-eb-kind="text">Entrega a Domicilio</h3>
-        <p data-eb-editable="text" data-eb-key="index.p.29" data-eb-role="p" data-eb-kind="text">Pide por WhatsApp y recibe tu café y comida favorita en la comodidad de tu hogar u oficina.</p>
+        <div class="about-text">
+          <p class="section-label" data-eb-editable="text" data-eb-key="index.p.17" data-eb-role="p" data-eb-kind="text">Nuestra Historia</p>
+          <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.18" data-eb-role="h2" data-eb-kind="text">Un rincón donde el<br>café se convierte en <span class="text-accent">experiencia</span></h2>
+          <p class="about-desc" data-eb-editable="text" data-eb-key="index.p.19" data-eb-role="p" data-eb-kind="text">Somos una cafetería de especialidad en el Valle de Monterrey. Ofrecemos café de origen, panadería artesanal, desayunos y opciones veganas. Ambiente acogedor, baristas certificados y wifi gratuito.</p>
+          <div class="about-features">
+            <div class="feature">
+              <div class="feature-icon">🫘</div>
+              <div>
+                <h4 data-eb-editable="text" data-eb-key="index.h4.20" data-eb-role="h4" data-eb-kind="text">Café de Origen</h4>
+                <p data-eb-editable="text" data-eb-key="index.p.21" data-eb-role="p" data-eb-kind="text">Selección de granos de las mejores fincas</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🥐</div>
+              <div>
+                <h4 data-eb-editable="text" data-eb-key="index.h4.22" data-eb-role="h4" data-eb-kind="text">Panadería Artesanal</h4>
+                <p data-eb-editable="text" data-eb-key="index.p.23" data-eb-role="p" data-eb-kind="text">Horneado fresco cada mañana</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🌿</div>
+              <div>
+                <h4 data-eb-editable="text" data-eb-key="index.h4.24" data-eb-role="h4" data-eb-kind="text">Opciones Veganas</h4>
+                <p data-eb-editable="text" data-eb-key="index.p.25" data-eb-role="p" data-eb-kind="text">Menú completo para todos los gustos</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">🚗</div>
+              <div>
+                <h4 data-eb-editable="text" data-eb-key="index.h4.26" data-eb-role="h4" data-eb-kind="text">Entrega a Domicilio</h4>
+                <p data-eb-editable="text" data-eb-key="index.p.27" data-eb-role="p" data-eb-kind="text">Pedidos por WhatsApp rápidos y sencillos</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- MENU -->
-  <section class="section" id="menu">
-    <div class="menu-header">
-      <div>
-        <span class="section-tag">Nuestro menú</span>
-        <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.30" data-eb-role="h2" data-eb-kind="text">Sabores que inspiran</h2>
-      </div>
-      <div class="menu-filters" id="menuFilters">
-        <button class="menu-filter active" data-filter="all" data-eb-editable="link" data-eb-key="index.button.31" data-eb-role="button" data-eb-kind="link">Todos</button>
-        <button class="menu-filter" data-filter="desayunos" data-eb-editable="link" data-eb-key="index.button.32" data-eb-role="button" data-eb-kind="link">Desayunos</button>
-        <button class="menu-filter" data-filter="cafe" data-eb-editable="link" data-eb-key="index.button.33" data-eb-role="button" data-eb-kind="link">Café</button>
-        <button class="menu-filter" data-filter="bebidas" data-eb-editable="link" data-eb-key="index.button.34" data-eb-role="button" data-eb-kind="link">Bebidas</button>
-        <button class="menu-filter" data-filter="postres" data-eb-editable="link" data-eb-key="index.button.35" data-eb-role="button" data-eb-kind="link">Postres</button>
-      </div>
-    </div>
-
-    <div class="menu-grid" id="menuGrid">
-      <!-- DESAYUNOS -->
-      <div class="menu-item" data-category="desayunos">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57" alt="Chilaquiles con café" data-eb-editable="image" data-eb-key="index.img.36" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Chilaquiles Aroma</div>
-          <div class="menu-item-desc">Tortilla crujiente, salsa verde o roja, crema, queso fresco, huevo estrellado y café de la casa.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$145</span>
-            <button class="menu-item-order" data-item="Chilaquiles Aroma" data-eb-editable="link" data-eb-key="index.button.37" data-eb-role="button" data-eb-kind="link">Pedir</button>
-          </div>
-        </div>
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label" data-eb-editable="text" data-eb-key="index.p.28" data-eb-role="p" data-eb-kind="text">Nuestro Menú</p>
+        <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.29" data-eb-role="h2" data-eb-kind="text">Sabores que <span class="text-accent">inspiran</span></h2>
+        <p class="section-desc" data-eb-editable="text" data-eb-key="index.p.30" data-eb-role="p" data-eb-kind="text">Descubre nuestra selección de café de especialidad, desayunos, panadería y postres. Cada plato es una experiencia.</p>
       </div>
 
-      <div class="menu-item" data-category="desayunos">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=a599b91a-a465-4595-8264-1552299a7720" alt="Bowl vegano de breakfast" data-eb-editable="image" data-eb-key="index.img.38" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Bowl Vegano Sunrise</div>
-          <div class="menu-item-desc">Açaí, granola, frutas frescas, plátano, miel de agave y semillas de chía.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$128</span>
-            <span class="menu-item-tag vegan">Vegano</span>
-            <button class="menu-item-order" data-item="Bowl Vegano Sunrise" data-eb-editable="link" data-eb-key="index.button.39" data-eb-role="button" data-eb-kind="link">Pedir</button>
-          </div>
-        </div>
+      <div class="menu-filters">
+        <button class="filter-btn active" data-filter="all" data-eb-editable="link" data-eb-key="index.button.31" data-eb-role="button" data-eb-kind="link">Todos</button>
+        <button class="filter-btn" data-filter="cafe" data-eb-editable="link" data-eb-key="index.button.32" data-eb-role="button" data-eb-kind="link">Café</button>
+        <button class="filter-btn" data-filter="desayuno" data-eb-editable="link" data-eb-key="index.button.33" data-eb-role="button" data-eb-kind="link">Desayunos</button>
+        <button class="filter-btn" data-filter="vegano" data-eb-editable="link" data-eb-key="index.button.34" data-eb-role="button" data-eb-kind="link">Veganos</button>
+        <button class="filter-btn" data-filter="panaderia" data-eb-editable="link" data-eb-key="index.button.35" data-eb-role="button" data-eb-kind="link">Panadería</button>
+        <button class="filter-btn" data-filter="postre" data-eb-editable="link" data-eb-key="index.button.36" data-eb-role="button" data-eb-kind="link">Postres</button>
+        <button class="filter-btn" data-filter="bebida" data-eb-editable="link" data-eb-key="index.button.37" data-eb-role="button" data-eb-kind="link">Bebidas</button>
       </div>
 
-      <div class="menu-item" data-category="desayunos">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=5959b1a-a465-4595-8264-1552299a7720" alt="Tofu scramble vegano" data-eb-editable="image" data-eb-key="index.img.40" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Tofu Scramble Integral</div>
-          <div class="menu-item-desc">Tofu especiado con cúrcuma, vegetales salteados y pan integral artesanal.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$118</span>
-            <span class="menu-item-tag vegan">Vegano</span>
-            <button class="menu-item-order" data-item="Tofu Scramble Integral" data-eb-editable="link" data-eb-key="index.button.41" data-eb-role="button" data-eb-kind="link">Pedir</button>
-          </div>
-        </div>
-      </div>
+      <div class="menu-grid" id="menuGrid">
 
-      <!-- CAFÉ -->
-      <div class="menu-item" data-category="cafe">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5" alt="Café latte art" data-eb-editable="image" data-eb-key="index.img.42" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Café Latte Clásico</div>
-          <div class="menu-item-desc">Espresso con leche texturizada y latte art de nuestro barista certificado.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$65</span>
-            <button class="menu-item-order" data-item="Café Latte Clásico" data-eb-editable="link" data-eb-key="index.button.43" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <!-- CAFÉ -->
+        <div class="menu-card" data-category="cafe">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5" alt="Café de especialidad con latte art" loading="lazy" data-eb-editable="image" data-eb-key="index.img.38" data-eb-role="img" data-eb-kind="image">
+            <span class="menu-badge popular">Popular</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.39" data-eb-role="h3" data-eb-kind="text">Café con Latte Art</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.40" data-eb-role="p" data-eb-kind="text">Espresso doble con leche texturizada y arte personalizado</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$85</span>
+              <button class="add-order-btn" data-name="Café con Latte Art" data-price="85" data-eb-editable="link" data-eb-key="index.button.41" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="menu-item" data-category="cafe">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc" alt="Café pour over" data-eb-editable="image" data-eb-key="index.img.44" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Pour Over Ethiopia</div>
-          <div class="menu-item-desc">Notas de frutos rojos y florales. Preparado método V60 con agua a temperatura precisa.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$85</span>
-            <span class="menu-item-tag">Especialidad</span>
-            <button class="menu-item-order" data-item="Pour Over Ethiopia" data-eb-editable="link" data-eb-key="index.button.45" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <div class="menu-card" data-category="cafe">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc" alt="Café de método pour over" loading="lazy" data-eb-editable="image" data-eb-key="index.img.42" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.43" data-eb-role="h3" data-eb-kind="text">Pour Over Single Origin</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.44" data-eb-role="p" data-eb-kind="text">Método manual con café de origen único, notas frutales</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$95</span>
+              <button class="add-order-btn" data-name="Pour Over Single Origin" data-price="95" data-eb-editable="link" data-eb-key="index.button.45" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="menu-item" data-category="cafe">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=17eb13cb-a7ee-49a7-a109-41243b6ce3ab" alt="Granos de café" data-eb-editable="image" data-eb-key="index.img.46" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Cappuccino Italiano</div>
-          <div class="menu-item-desc">Doble espresso, leche micro-espumada y una capa perfecta de crema. Recomendado.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$72</span>
-            <span class="menu-item-tag">Popular</span>
-            <button class="menu-item-order" data-item="Cappuccino Italiano" data-eb-editable="link" data-eb-key="index.button.47" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <!-- DESAYUNOS -->
+        <div class="menu-card" data-category="desayuno">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57" alt="Chilaquiles con café" loading="lazy" data-eb-editable="image" data-eb-key="index.img.46" data-eb-role="img" data-eb-kind="image">
+            <span class="menu-badge popular">Popular</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.47" data-eb-role="h3" data-eb-kind="text">Chilaquiles de la Casa</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.48" data-eb-role="p" data-eb-kind="text">Chilaquiles rojos o verdes, crema, queso fresco y café incluido</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$145</span>
+              <button class="add-order-btn" data-name="Chilaquiles de la Casa" data-price="145" data-eb-editable="link" data-eb-key="index.button.49" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- BEBIDAS -->
-      <div class="menu-item" data-category="bebidas">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947" alt="Latte de matcha" data-eb-editable="image" data-eb-key="index.img.48" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Matcha Latte</div>
-          <div class="menu-item-desc">Té matcha ceremonial con leche de avena. Color vibrante y sabor umami suave.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$78</span>
-            <span class="menu-item-tag vegan">Vegano</span>
-            <button class="menu-item-order" data-item="Matcha Latte" data-eb-editable="link" data-eb-key="index.button.49" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <div class="menu-card" data-category="desayuno">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d" alt="Panadería artesanal recién horneada" loading="lazy" data-eb-editable="image" data-eb-key="index.img.50" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.51" data-eb-role="h3" data-eb-kind="text">Desayuno Completo</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.52" data-eb-role="p" data-eb-kind="text">Huevos, pan artesanal, fruta fresca y café o jugo natural</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$165</span>
+              <button class="add-order-btn" data-name="Desayuno Completo" data-price="165" data-eb-editable="link" data-eb-key="index.button.53" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="menu-item" data-category="bebidas">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821" alt="Chocolate artesanal" data-eb-editable="image" data-eb-key="index.img.50" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Chocolate Caliente Artesanal</div>
-          <div class="menu-item-desc">Chocolate de Oaxaca 70% cacao con leche entera, canela y un toque de vainilla.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$70</span>
-            <button class="menu-item-order" data-item="Chocolate Caliente Artesanal" data-eb-editable="link" data-eb-key="index.button.51" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <!-- VEGANOS -->
+        <div class="menu-card" data-category="vegano">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=a599b91a-a465-4595-8264-1552299a7720" alt="Bowl vegano de breakfast" loading="lazy" data-eb-editable="image" data-eb-key="index.img.54" data-eb-role="img" data-eb-kind="image">
+            <span class="menu-badge vegan">Vegano</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.55" data-eb-role="h3" data-eb-kind="text">Bowl Vegano Energético</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.56" data-eb-role="p" data-eb-kind="text">Açaí, granola, frutas frescas y miel de agave</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$155</span>
+              <button class="add-order-btn" data-name="Bowl Vegano Energético" data-price="155" data-eb-editable="link" data-eb-key="index.button.57" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- POSTRES -->
-      <div class="menu-item" data-category="postres">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d" alt="Panadería artesanal" data-eb-editable="image" data-eb-key="index.img.52" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Croissant de Mantequilla</div>
-          <div class="menu-item-desc">Hojaldre laminado con mantequilla francesa. Crujiente por fuera, suave por dentro.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$45</span>
-            <button class="menu-item-order" data-item="Croissant de Mantequilla" data-eb-editable="link" data-eb-key="index.button.53" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <div class="menu-card" data-category="vegano">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=435575ff-8529-4fc0-b84f-02cf22dfd14d" alt="Tofu scramble vegano con vegetales y pan integral" loading="lazy" data-eb-editable="image" data-eb-key="index.img.58" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.59" data-eb-role="h3" data-eb-kind="text">Tofu Scramble Integral</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.60" data-eb-role="p" data-eb-kind="text">Tofu revuelto con vegetales, pan integral y aguacate</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$140</span>
+              <button class="add-order-btn" data-name="Tofu Scramble Integral" data-price="140" data-eb-editable="link" data-eb-key="index.button.61" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="menu-item" data-category="postres">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0" alt="Tarta de frutas" data-eb-editable="image" data-eb-key="index.img.54" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Tarta de Frutas Frescas</div>
-          <div class="menu-item-desc">Base de crema pastelera, frutas de temporada y glaseado brillante. Hecha diariamente.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$58</span>
-            <button class="menu-item-order" data-item="Tarta de Frutas Frescas" data-eb-editable="link" data-eb-key="index.button.55" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <div class="menu-card" data-category="vegano">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0" alt="Bowl vegano colorido con granola, frutas frescas y açaí" loading="lazy" data-eb-editable="image" data-eb-key="index.img.62" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.63" data-eb-role="h3" data-eb-kind="text">Smoothie Bowl Tropical</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.64" data-eb-role="p" data-eb-kind="text">Mango, plátano, coco rallado y semillas de chía</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$135</span>
+              <button class="add-order-btn" data-name="Smoothie Bowl Tropical" data-price="135" data-eb-editable="link" data-eb-key="index.button.65" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="menu-item" data-category="postres">
-        <img class="menu-item-img" src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=435575ff-8529-4fc0-b84f-02cf22dfd14d" alt="Brownie de chocolate" data-eb-editable="image" data-eb-key="index.img.56" data-eb-role="img" data-eb-kind="image">
-        <div class="menu-item-info">
-          <div class="menu-item-name">Brownie de Chocolate Belga</div>
-          <div class="menu-item-desc">Chocolate negro intenso, nuez pecana tostada. Denso, húmedo y adictivo.</div>
-          <div class="menu-item-bottom">
-            <span class="menu-item-price">$52</span>
-            <span class="menu-item-tag">Popular</span>
-            <button class="menu-item-order" data-item="Brownie de Chocolate Belga" data-eb-editable="link" data-eb-key="index.button.57" data-eb-role="button" data-eb-kind="link">Pedir</button>
+        <!-- PANADERÍA -->
+        <div class="menu-card" data-category="panaderia">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d" alt="Panadería artesanal recién horneada" loading="lazy" data-eb-editable="image" data-eb-key="index.img.66" data-eb-role="img" data-eb-kind="image">
+            <span class="menu-badge new">Nuevo</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.67" data-eb-role="h3" data-eb-kind="text">Croissant de Mantequilla</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.68" data-eb-role="p" data-eb-kind="text">Horneado fresco cada mañana, crujiente y hojaldrado</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$55</span>
+              <button class="add-order-btn" data-name="Croissant de Mantequilla" data-price="55" data-eb-editable="link" data-eb-key="index.button.69" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
           </div>
         </div>
+
+        <!-- POSTRES -->
+        <div class="menu-card" data-category="postre">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821" alt="Vitrina de panadería artesanal" loading="lazy" data-eb-editable="image" data-eb-key="index.img.70" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.71" data-eb-role="h3" data-eb-kind="text">Rebanada de Pastel</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.72" data-eb-role="p" data-eb-kind="text">Pastel del día: chocolate, zanahoria o limón con merengue</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$75</span>
+              <button class="add-order-btn" data-name="Rebanada de Pastel" data-price="75" data-eb-editable="link" data-eb-key="index.button.73" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BEBIDAS -->
+        <div class="menu-card" data-category="bebida">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=17eb13cb-a7ee-49a7-a109-41243b6ce3ab" alt="Granos de café de origen" loading="lazy" data-eb-editable="image" data-eb-key="index.img.74" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.75" data-eb-role="h3" data-eb-kind="text">Matcha Latte</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.76" data-eb-role="p" data-eb-kind="text">Matcha japonés ceremonial con leche de avena o entera</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$90</span>
+              <button class="add-order-btn" data-name="Matcha Latte" data-price="90" data-eb-editable="link" data-eb-key="index.button.77" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="cafe">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=957402e9-69da-47fb-a879-35924b6e8401" alt="Barista preparando café" loading="lazy" data-eb-editable="image" data-eb-key="index.img.78" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.79" data-eb-role="h3" data-eb-kind="text">Cold Brew de Origen</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.80" data-eb-role="p" data-eb-kind="text">18 horas de extracción en frío, notas chocolate y caramelo</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$80</span>
+              <button class="add-order-btn" data-name="Cold Brew de Origen" data-price="80" data-eb-editable="link" data-eb-key="index.button.81" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card" data-category="bebida">
+          <div class="menu-card-img">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=68c3f11c-a2a3-4164-8db7-9b88d57aa328" alt="Mesas de catación de café con cucharas y tazas" loading="lazy" data-eb-editable="image" data-eb-key="index.img.82" data-eb-role="img" data-eb-kind="image">
+          </div>
+          <div class="menu-card-body">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.83" data-eb-role="h3" data-eb-kind="text">Soda de Mora con Café</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.84" data-eb-role="p" data-eb-kind="text">Soda artesanal de mora con un toque de espresso</p>
+            <div class="menu-card-footer">
+              <span class="menu-price">$95</span>
+              <button class="add-order-btn" data-name="Soda de Mora con Café" data-price="95" data-eb-editable="link" data-eb-key="index.button.85" data-eb-role="button" data-eb-kind="link">+ Ordenar</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- GALLERY -->
-  <section class="section" id="galeria">
-    <span class="section-tag">Nuestro espacio</span>
-    <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.58" data-eb-role="h2" data-eb-kind="text">Un vistazo a Aroma Del Valle</h2>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=3a1cd85e-238e-44e8-bdfb-e5316215ec1d" alt="Interior de cafetería con pared de ladrillo" data-eb-editable="image" data-eb-key="index.img.59" data-eb-role="img" data-eb-kind="image">
-        <span>Interior acogedor</span>
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label" data-eb-editable="text" data-eb-key="index.p.86" data-eb-role="p" data-eb-kind="text">Nuestro Espacio</p>
+        <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.87" data-eb-role="h2" data-eb-kind="text">Un ambiente <span class="text-accent">acogedor</span></h2>
+        <p class="section-desc" data-eb-editable="text" data-eb-key="index.p.88" data-eb-role="p" data-eb-kind="text">Descubre la magia de nuestro espacio, donde cada rincón invita a disfrutar de una buena taza de café.</p>
       </div>
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=68c3f11c-a2a3-4164-8db7-9b88d57aa328" alt="Mesas de catación de café" data-eb-editable="image" data-eb-key="index.img.60" data-eb-role="img" data-eb-kind="image">
-        <span>Cata de cafés</span>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=301b4b41-a2b3-4a4e-939b-ee1c4879537a" alt="Terraza con plantas" data-eb-editable="image" data-eb-key="index.img.61" data-eb-role="img" data-eb-kind="image">
-        <span>Terraza al aire libre</span>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=957402e9-69da-47fb-a879-35924b6e8401" alt="Barista preparando café" data-eb-editable="image" data-eb-key="index.img.62" data-eb-role="img" data-eb-kind="image">
-        <span>Nuestros baristas</span>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-wide">
+          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=301b4b41-a2b3-4a4e-939b-ee1c4879537a" alt="Terraza de cafetería con plantas y mesas de madera" loading="lazy" data-eb-editable="image" data-eb-key="index.img.89" data-eb-role="img" data-eb-kind="image">
+          <div class="gallery-overlay">
+            <span>Nuestra Terraza</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=1cc31910-7587-4d82-a498-6e8309b23bf3" alt="Interior con pared de ladrillo y estantería de café" loading="lazy" data-eb-editable="image" data-eb-key="index.img.90" data-eb-role="img" data-eb-kind="image">
+          <div class="gallery-overlay">
+            <span>Interior Rústico</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947" alt="Detalle de latte art" loading="lazy" data-eb-editable="image" data-eb-key="index.img.91" data-eb-role="img" data-eb-kind="image">
+          <div class="gallery-overlay">
+            <span>Latte Art</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=dedb754c-cbdd-4aa8-b8d0-1f2723c79d06" alt="Vista exterior de la cafetería en el Valle de Monterrey" loading="lazy" data-eb-editable="image" data-eb-key="index.img.92" data-eb-role="img" data-eb-kind="image">
+          <div class="gallery-overlay">
+            <span>Nuestra Fachada</span>
+          </div>
+        </div>
+        <div class="gallery-item gallery-tall">
+          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=3a1cd85e-238e-44e8-bdfb-e5316215ec1d" alt="Interior de cafetería con pared de ladrillo y clientes" loading="lazy" data-eb-editable="image" data-eb-key="index.img.93" data-eb-role="img" data-eb-kind="image">
+          <div class="gallery-overlay">
+            <span>Ambiente Cálido</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" aria-label="Cerrar" data-eb-editable="link" data-eb-key="index.button.63" data-eb-role="button" data-eb-kind="link">&times;</button>
-    <img id="lightboxImg" src="" alt="" data-eb-editable="image" data-eb-key="index.img.64" data-eb-role="img" data-eb-kind="image">
-  </div>
+  <!-- ORDER / WHATSAPP -->
+  <section class="order" id="order">
+    <div class="container">
+      <div class="order-grid">
+        <div class="order-info">
+          <p class="section-label" data-eb-editable="text" data-eb-key="index.p.94" data-eb-role="p" data-eb-kind="text">Pide a Domicilio</p>
+          <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.95" data-eb-role="h2" data-eb-kind="text">Ordena por <span class="text-accent">WhatsApp</span></h2>
+          <p class="order-desc" data-eb-editable="text" data-eb-key="index.p.96" data-eb-role="p" data-eb-kind="text">Selecciona tus productos del menú, arma tu pedido y envíalo por WhatsApp. ¡Es rápido y sencillo!</p>
 
-  <!-- CTA / CONTACT -->
-  <section class="cta-section" id="contacto">
-    <div class="cta-inner">
-      <div class="cta-content reveal">
-        <span class="section-tag">Visítanos</span>
-        <h2 class="section-title" data-eb-editable="text" data-eb-key="index.h2.65" data-eb-role="h2" data-eb-kind="text">Te esperamos en el Valle</h2>
-        <p class="section-desc" data-eb-editable="text" data-eb-key="index.p.66" data-eb-role="p" data-eb-kind="text">Ven a disfrutar de un café excepcional o pide a domicilio por WhatsApp. Estamos aquí para ti.</p>
-        <div class="cta-info">
-          <div class="cta-info-row">
-            <div class="cta-info-icon">📍</div>
-            <div class="cta-info-text">
-              <h4 data-eb-editable="text" data-eb-key="index.h4.67" data-eb-role="h4" data-eb-kind="text">Ubicación</h4>
-              <p data-eb-editable="text" data-eb-key="index.p.68" data-eb-role="p" data-eb-kind="text">Valle de Monterrey, Nuevo León</p>
+          <div class="order-cart" id="orderCart">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.97" data-eb-role="h3" data-eb-kind="text">Tu Pedido <span id="cartCount" class="cart-count">0</span></h3>
+            <div class="cart-items" id="cartItems">
+              <p class="cart-empty" data-eb-editable="text" data-eb-key="index.p.98" data-eb-role="p" data-eb-kind="text">Aún no has agregado productos. Explora el menú y agrega lo que más te guste.</p>
             </div>
-          </div>
-          <div class="cta-info-row">
-            <div class="cta-info-icon">🕐</div>
-            <div class="cta-info-text">
-              <h4 data-eb-editable="text" data-eb-key="index.h4.69" data-eb-role="h4" data-eb-kind="text">Horario</h4>
-              <p data-eb-editable="text" data-eb-key="index.p.70" data-eb-role="p" data-eb-kind="text">Lun a Vie 7:00 – 21:00 &middot; Sáb 8:00 – 22:00 &middot; Dom 9:00 – 15:00</p>
+            <div class="cart-total" id="cartTotal" style="display:none;">
+              <span>Total:</span>
+              <span id="cartTotalPrice">$0</span>
             </div>
+            <button class="btn btn-whatsapp" id="sendWhatsApp" style="display:none;" disabled data-eb-editable="link" data-eb-key="index.button.99" data-eb-role="button" data-eb-kind="link">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enviar Pedido por WhatsApp
+            </button>
           </div>
-          <div class="cta-info-row">
-            <div class="cta-info-icon">📞</div>
-            <div class="cta-info-text">
-              <h4 data-eb-editable="text" data-eb-key="index.h4.71" data-eb-role="h4" data-eb-kind="text">Teléfono / WhatsApp</h4>
-              <p data-eb-editable="text" data-eb-key="index.p.72" data-eb-role="p" data-eb-kind="text">81 1234 5678</p>
+
+          <div class="order-details">
+            <div class="detail-item">
+              <span class="detail-icon">📱</span>
+              <div>
+                <h4 data-eb-editable="text" data-eb-key="index.h4.100" data-eb-role="h4" data-eb-kind="text">WhatsApp</h4>
+                <a href="https://wa.me/528112345678" target="_blank" data-eb-editable="link" data-eb-key="index.a.101" data-eb-role="a" data-eb-kind="link">81 1234 5678</a>
+              </div>
             </div>
-          </div>
-          <div class="cta-info-row">
-            <div class="cta-info-icon">📶</div>
-            <div class="cta-info-text">
-              <h4 data-eb-editable="text" data-eb-key="index.h4.73" data-eb-role="h4" data-eb-kind="text">Extras</h4>
-              <p data-eb-editable="text" data-eb-key="index.p.74" data-eb-role="p" data-eb-kind="text">Wi-Fi gratis · Estacionamiento · Terraza</p>
+            <div class="detail-item">
+              <span class="detail-icon">📍</span>
+              <div>
+                <h4 data-eb-editable="text" data-eb-key="index.h4.102" data-eb-role="h4" data-eb-kind="text">Ubicación</h4>
+                <a href="https://maps.google.com/?q=Monterrey" target="_blank" data-eb-editable="link" data-eb-key="index.a.103" data-eb-role="a" data-eb-kind="link">Valle de Monterrey, NL</a>
+              </div>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon">🕐</span>
+              <div>
+                <h4 data-eb-editable="text" data-eb-key="index.h4.104" data-eb-role="h4" data-eb-kind="text">Horario</h4>
+                <p data-eb-editable="text" data-eb-key="index.p.105" data-eb-role="p" data-eb-kind="text">Lun-Vie 7:00–21:00 · Sáb 8:00–22:00 · Dom 9:00–15:00</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="cta-actions">
-          <a href="https://wa.me/528112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="btn btn-whatsapp" data-eb-editable="link" data-eb-key="index.a.75" data-eb-role="a" data-eb-kind="link">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Pedir por WhatsApp
-          </a>
-          <a href="https://maps.google.com/?q=Monterrey" target="_blank" class="btn btn-map" data-eb-editable="link" data-eb-key="index.a.76" data-eb-role="a" data-eb-kind="link">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Cómo llegar
-          </a>
-        </div>
-      </div>
-      <div class="cta-map reveal">
-        <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=dedb754c-cbdd-4aa8-b8d0-1f2723c79d06" alt="Vista exterior de la cafetería" data-eb-editable="image" data-eb-key="index.img.77" data-eb-role="img" data-eb-kind="image">
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">Café <span>Aroma</span> Del Valle</div>
-      <p class="footer-copy" data-eb-editable="text" data-eb-key="index.p.78" data-eb-role="p" data-eb-kind="text">&copy; 2026 Café Aroma Del Valle. Todos los derechos reservados.</p>
-      <div class="footer-socials">
-        <a href="#" class="footer-social" aria-label="Instagram" data-eb-editable="link" data-eb-key="index.a.79" data-eb-role="a" data-eb-kind="link">IG</a>
-        <a href="#" class="footer-social" aria-label="Facebook" data-eb-editable="link" data-eb-key="index.a.80" data-eb-role="a" data-eb-kind="link">FB</a>
-        <a href="#" class="footer-social" aria-label="TikTok" data-eb-editable="link" data-eb-key="index.a.81" data-eb-role="a" data-eb-kind="link">TK</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo" data-eb-editable="link" data-eb-key="index.a.106" data-eb-role="a" data-eb-kind="link">
+            <span class="logo-icon">☕</span>
+            <span>Café Aroma Del Valle</span>
+          </a>
+          <p data-eb-editable="text" data-eb-key="index.p.107" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal y mucho más.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-eb-editable="text" data-eb-key="index.h4.108" data-eb-role="h4" data-eb-kind="text">Navegación</h4>
+          <ul>
+            <li><a href="#hero" data-eb-editable="link" data-eb-key="index.a.109" data-eb-role="a" data-eb-kind="link">Inicio</a></li>
+            <li><a href="#about" data-eb-editable="link" data-eb-key="index.a.110" data-eb-role="a" data-eb-kind="link">Nosotros</a></li>
+            <li><a href="#menu" data-eb-editable="link" data-eb-key="index.a.111" data-eb-role="a" data-eb-kind="link">Menú</a></li>
+            <li><a href="#gallery" data-eb-editable="link" data-eb-key="index.a.112" data-eb-role="a" data-eb-kind="link">Galería</a></li>
+            <li><a href="#order" data-eb-editable="link" data-eb-key="index.a.113" data-eb-role="a" data-eb-kind="link">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4 data-eb-editable="text" data-eb-key="index.h4.114" data-eb-role="h4" data-eb-kind="text">Servicios</h4>
+          <ul>
+            <li>Desayunos</li>
+            <li>Bebidas</li>
+            <li>Postres</li>
+            <li>Entrega a domicilio</li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4 data-eb-editable="text" data-eb-key="index.h4.115" data-eb-role="h4" data-eb-kind="text">Contacto</h4>
+          <p data-eb-editable="text" data-eb-key="index.p.116" data-eb-role="p" data-eb-kind="text">📱 <a href="https://wa.me/528112345678" data-eb-editable="link" data-eb-key="index.a.117" data-eb-role="a" data-eb-kind="link">81 1234 5678</a></p>
+          <p data-eb-editable="text" data-eb-key="index.p.118" data-eb-role="p" data-eb-kind="text">📍 <a href="https://maps.google.com/?q=Monterrey" data-eb-editable="link" data-eb-key="index.a.119" data-eb-role="a" data-eb-kind="link">Valle de Monterrey</a></p>
+          <p data-eb-editable="text" data-eb-key="index.p.120" data-eb-role="p" data-eb-kind="text">🕐 Lun-Vie 7–21 · Sáb 8–22 · Dom 9–15</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-eb-editable="text" data-eb-key="index.p.121" data-eb-role="p" data-eb-kind="text">&copy; 2026 Café Aroma Del Valle. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
+
+  <!-- WHATSAPP FAB -->
+  <a href="https://wa.me/528112345678" class="whatsapp-fab" target="_blank" aria-label="Contactar por WhatsApp" data-eb-editable="link" data-eb-key="index.a.122" data-eb-role="a" data-eb-kind="link">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
   <script src="script.js"></script>
 </body>
