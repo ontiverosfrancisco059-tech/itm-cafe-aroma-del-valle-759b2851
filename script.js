@@ -1,362 +1,735 @@
 /* ==========================================================================
    Café Aroma Del Valle — script.js
-   Menú dinámico, pedidos por WhatsApp, navegación y galería.
+   Menú dinámico, pedidos por WhatsApp, galería y navegación
    ========================================================================== */
 
-const PHONE = "528112345678";
+(function () {
+  "use strict";
 
-const MENU = [
-  // Desayunos
-  {
-    id: "chilaquiles",
-    cat: "desayunos",
-    name: "Chilaquiles con Café",
-    desc: "Tortilla crocante, salsa roja o verde, crema, queso y frijoles. Acompañado de café de la casa.",
-    price: 95,
-    tag: "Clásico",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57",
-    alt: "Chilaquiles con café",
-  },
-  {
-    id: "bowl-breakfast",
-    cat: "desayunos",
-    name: "Bowl de Breakfast Vegano",
-    desc: "Granola, frutas frescas, açaí y mantequilla de almendra. Energía limpia para tu mañana.",
-    price: 115,
-    tag: "Vegano",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=a599b91a-a465-4595-8264-1552299a7720",
-    alt: "Bowl vegano de breakfast",
-  },
-  {
-    id: "tofu-scramble",
-    cat: "desayunos",
-    name: "Tofu Scramble",
-    desc: "Tofu sazonado con cúrcuma, vegetales salteados y pan integral tostado.",
-    price: 105,
-    tag: "Vegano",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=435575ff-8529-4fc0-b84f-02cf22dfd14d",
-    alt: "Tofu scramble vegano con vegetales y pan integral",
-  },
-  {
-    id: "bowl-acai",
-    cat: "desayunos",
-    name: "Bowl de Granola y Açaí",
-    desc: "Granola crujiente, frutas de temporada y açaí, con un toque de miel orgánica.",
-    price: 99,
-    tag: "Vegano",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0",
-    alt: "Bowl vegano colorido con granola, frutas frescas y açaí",
-  },
-  // Cafés y bebidas
-  {
-    id: "cappuccino",
-    cat: "bebidas",
-    name: "Cappuccino de Especialidad",
-    desc: "Espresso de origen con leche vaporizada y latte art. Doble shot como se debe.",
-    price: 62,
-    tag: "Caliente",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5",
-    alt: "Café de especialidad con latte art",
-  },
-  {
-    id: "pour-over",
-    cat: "bebidas",
-    name: "Café Pour Over",
-    desc: "Método de filtrado que resalta las notas del grano de origen. Pregunta por los orígenes del día.",
-    price: 78,
-    tag: "Método",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc",
-    alt: "Café de método pour over",
-  },
-  {
-    id: "espresso-origen",
-    cat: "bebidas",
-    name: "Espresso de Origen",
-    desc: "Granos seleccionados de productores mexicanos, tostado medio con cuerpo y dulzor.",
-    price: 42,
-    tag: "Corto",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=17eb13cb-a7ee-49a7-a109-41243b6ce3ab",
-    alt: "Granos de café de origen",
-  },
-  {
-    id: "latte-casa",
-    cat: "bebidas",
-    name: "Latte Tostado de la Casa",
-    desc: "Espresso, leche cremosa y un toque de caramelo tostado. Ideal con panadería.",
-    price: 65,
-    tag: "Popular",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947",
-    alt: "Detalle de latte art",
-  },
-  // Panadería y postres
-  {
-    id: "panaderia",
-    cat: "panaderia",
-    name: "Panadería Artesanal",
-    desc: "Croissants, cuernitos y pan de masa madre horneados cada mañana.",
-    price: 45,
-    tag: "Fresco",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d",
-    alt: "Panadería artesanal recién horneada",
-  },
-  {
-    id: "postre-dia",
-    cat: "panaderia",
-    name: "Postres del Día",
-    desc: "Cheesecake, tartas y brownies de la casa. Pregunta por las opciones veganas.",
-    price: 55,
-    tag: "Del día",
-    img: "https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821",
-    alt: "Vitrina de panadería artesanal",
-  },
-];
+  /* ---------- Configuración ---------- */
+  var WHATSAPP_NUMBER = "528112345678";
+  var BUSINESS_NAME = "Café Aroma Del Valle";
+  var CART_STORAGE_KEY = "cadv-cart-v1";
 
-/* ==================== Estado del carrito ==================== */
+  var waBase = "https://wa.me/" + WHATSAPP_NUMBER + "?text=";
 
-const cart = {};
+  function waLink(message) {
+    return waBase + encodeURIComponent(message);
+  }
 
-function buildMessage() {
-  const lines = Object.values(cart).map(
-    (item) => `• ${item.qty} × ${item.name} — $${item.qty * item.price}`
-  );
-  const total = Object.values(cart).reduce((acc, i) => acc + i.qty * i.price, 0);
-  return (
-    `Hola, Café Aroma Del Valle 👋\n\nQuiero hacer este pedido:\n\n${lines.join("\n")}\n\n` +
-    `Total: $${total}\n\nMi nombre y dirección: ` 
-  );
-}
+  function formatMXN(n) {
+    return "$" + Number(n).toLocaleString("es-MX");
+  }
 
-function sendOrder() {
-  const msg = encodeURIComponent(buildMessage());
-  window.open(`https://wa.me/${PHONE}?text=${msg}`, "_blank", "noopener");
-}
-
-/* ==================== Render del menú ==================== */
-
-const menuGrid = document.getElementById("menuGrid");
-
-function renderMenu(filter = "desayunos") {
-  const items = filter === "todo" ? MENU : MENU.filter((i) => i.cat === filter);
-  menuGrid.innerHTML = items
-    .map(
-      (item) => `
-      <article class="menu-item">
-        <img class="menu-item__img" src="${item.img}" alt="${item.alt}" loading="lazy" data-zoom="${item.img}" data-alt="${item.alt}">
-        <div class="menu-item__body">
-          <div class="menu-item__top">
-            <h3 class="menu-item__name">${item.name}</h3>
-            ${item.tag ? `<span class="menu-item__tag">${item.tag}</span>` : ""}
-          </div>
-          <p class="menu-item__desc">${item.desc}</p>
-          <div class="menu-item__foot">
-            <span class="menu-item__price">$${item.price} <small>MXN</small></span>
-            <button class="menu-item__add" data-add="${item.id}">Agregar</button>
-          </div>
-        </div>
-      </article>`
-    )
-    .join("");
-}
-
-/* ==================== Tabs del menú ==================== */
-
-document.getElementById("menuTabs").addEventListener("click", (e) => {
-  const btn = e.target.closest(".menu__tab");
-  if (!btn) return;
-  document.querySelectorAll(".menu__tab").forEach((t) => t.classList.remove("is-active"));
-  btn.classList.add("is-active");
-  renderMenu(btn.dataset.cat);
-});
-
-/* ==================== Delegación del menú ==================== */
-
-menuGrid.addEventListener("click", (e) => {
-  const addBtn = e.target.closest("[data-add]");
-  if (addBtn) {
-    const id = addBtn.dataset.add;
-    cart[id] = cart[id] || { ...MENU.find((m) => m.id === id), qty: 0 };
-    cart[id].qty += 1;
-    updateCart();
-    if (cartCount.textContent === "1" && !cart.classList.contains("is-open")) {
-      pulseFloating();
-    } else {
-      openCart();
+  /* ---------- Datos del menú ---------- */
+  var MENU = [
+    {
+      id: "desayunos",
+      label: "Desayunos",
+      icon: "\u{1F953}",
+      items: [
+        {
+          id: "chilaquiles",
+          name: "Chilaquiles con café",
+          price: 95,
+          img: "assets/chilaquiles.jpg",
+          alt: "Chilaquiles con café",
+          tags: ["favorite"],
+          desc: "Totopos bañados en salsa roja o verde, frijoles, huevo al gusto, crema y queso. Incluye café de la casa."
+        },
+        {
+          id: "bowl-vegano",
+          name: "Bowl vegano de breakfast",
+          price: 115,
+          img: "assets/bowl-vegano.webp",
+          alt: "Bowl vegano de breakfast",
+          tags: ["vegan"],
+          desc: "Avena con leche vegetal, granola crujiente, frutas frescas y semillas. Endulzado con miel de agave."
+        },
+        {
+          id: "bowl-acai",
+          name: "Bowl de açaí con granola",
+          price: 125,
+          img: "assets/bowl-acai.webp",
+          alt: "Bowl vegano colorido con granola, frutas frescas y açaí",
+          tags: ["vegan"],
+          desc: "Granola crujiente, frutas frescas de temporada, crema de açaí y semillas."
+        },
+        {
+          id: "tofu-scramble",
+          name: "Tofu scramble vegano",
+          price: 125,
+          img: "assets/tofu-scramble.webp",
+          alt: "Tofu scramble vegano con vegetales y pan integral",
+          tags: ["vegan"],
+          desc: "Tofu revuelto con vegetales salteados y cúrcuma, acompañado de pan integral tostado."
+        },
+        {
+          id: "omelet",
+          name: "Omelet de campo",
+          price: 105,
+          tags: [],
+          desc: "Tres huevos con espinaca, champiñones y queso panela. Incluye pan tostado."
+        },
+        {
+          id: "tostada-aguacate",
+          name: "Tostada de aguacate",
+          price: 90,
+          tags: ["nuevo"],
+          desc: "Pan artesanal con guacamole, jitomate cherry, rábano y huevo poché opcional."
+        }
+      ]
+    },
+    {
+      id: "bebidas",
+      label: "Bebidas",
+      icon: "\u2615",
+      items: [
+        {
+          id: "espresso",
+          name: "Espresso doble",
+          price: 45,
+          tags: ["favorite"],
+          desc: "Doble shot de nuestras mezclas de origen, extraído al momento en taza caliente."
+        },
+        {
+          id: "americano",
+          name: "Americano",
+          price: 50,
+          tags: [],
+          desc: "Espresso diluido con agua caliente, suave y aromático."
+        },
+        {
+          id: "cappuccino",
+          name: "Cappuccino",
+          price: 60,
+          img: "assets/latte-art.webp",
+          alt: "Café de especialidad con latte art",
+          tags: ["favorite"],
+          desc: "Espresso con leche vaporizada y espuma sedosa, terminado con arte latte."
+        },
+        {
+          id: "latte-casa",
+          name: "Latte de la casa",
+          price: 60,
+          img: "assets/latte-art-detalle.webp",
+          alt: "Detalle de latte art",
+          tags: [],
+          desc: "Suave, cremoso y delicadamente dulce. Con vainilla o caramelo a elección."
+        },
+        {
+          id: "flat-white",
+          name: "Flat white",
+          price: 65,
+          tags: [],
+          desc: "Doble ristretto con microespuma aterciopelada. Intenso y balanceado."
+        },
+        {
+          id: "pour-over",
+          name: "Café de método (V60 / Chemex)",
+          price: 75,
+          img: "assets/pour-over.webp",
+          alt: "Café de método pour over",
+          tags: [],
+          desc: "Granos de temporada preparados en taza. Pregunta por el origen del día."
+        },
+        {
+          id: "cold-brew",
+          name: "Cold brew",
+          price: 65,
+          tags: [],
+          desc: "Extracción en frío por 18 horas. Suave y redondo. Con leche si lo prefieres."
+        },
+        {
+          id: "mocha",
+          name: "Mocha artesanal",
+          price: 70,
+          tags: [],
+          desc: "Espresso con chocolate, leche vaporizada y crema. Decadentemente delicioso."
+        },
+        {
+          id: "cafe-olla",
+          name: "Café de olla",
+          price: 55,
+          tags: [],
+          desc: "Clásico mexicano con piloncillo y canela, servido bien caliente."
+        },
+        {
+          id: "chai-latte",
+          name: "Chai latte",
+          price: 70,
+          tags: [],
+          desc: "Té chai especiado con espuma de leche. Versión vegetal disponible."
+        },
+        {
+          id: "matcha-latte",
+          name: "Matcha latte",
+          price: 75,
+          tags: [],
+          desc: "Matcha ceremonial con leche vaporizada. Dulce, cremoso y lleno de energía."
+        }
+      ]
+    },
+    {
+      id: "postres",
+      label: "Postres y panadería",
+      icon: "\u{1F9C1}",
+      items: [
+        {
+          id: "panaderia",
+          name: "Panadería artesanal",
+          price: 48,
+          img: "assets/panaderia.webp",
+          alt: "Panadería artesanal recién horneada",
+          tags: ["favorite"],
+          desc: "Croissants, conchas, cuernitos y más, horneados cada mañana en nuestra vitrina."
+        },
+        {
+          id: "croissant",
+          name: "Croissant de mantequilla",
+          price: 45,
+          tags: [],
+          desc: "Hojaldrado, crujiente por fuera y suave por dentro. Perfecto con tu café."
+        },
+        {
+          id: "brownie",
+          name: "Brownie de chocolate",
+          price: 65,
+          tags: [],
+          desc: "Chocolate intenso, corona crujiente y centro suave y fondant."
+        },
+        {
+          id: "cheesecake",
+          name: "Cheesecake de la casa",
+          price: 75,
+          tags: [],
+          desc: "Horneado al estilo neoyorquino con base de galleta y mermelada de temporada."
+        },
+        {
+          id: "galletas",
+          name: "Galletas artesanales",
+          price: 38,
+          tags: [],
+          desc: "Chispas de chocolate o avena con nuez. Venta por pieza."
+        }
+      ]
     }
-    return;
+  ];
+
+  var TAG_LABELS = {
+    favorite: "\u2605 Favorito",
+    vegan: "\uD83C\uDF31 Vegano",
+    nuevo: "\u2728 Nuevo"
+  };
+
+  /* ---------- Galería ---------- */
+  var GALLERY = [
+    { src: "assets/exterior.webp", alt: "Vista exterior de la cafetería en el Valle de Monterrey", caption: "Vista exterior de la cafetería", span: "wide" },
+    { src: "assets/barista-sirviendo.jpg", alt: "Barista preparando café de especialidad", caption: "La barra, en acción", span: "tall" },
+    { src: "assets/interior.jpg", alt: "Interior de la cafetería con mesas y luz cálida", caption: "Luz cálida en el interior", span: "tall" },
+    { src: "assets/vitrina-panaderia.webp", alt: "Vitrina de panadería artesanal", caption: "Vitrina de panadería", span: "" },
+    { src: "assets/interior-ladrillo.webp", alt: "Interior con pared de ladrillo y estantería de café", caption: "Rincón de ladrillo y café", span: "" },
+    { src: "assets/latte-art-detalle.webp", alt: "Detalle de latte art", caption: "Latte art, un detalle a la vez", span: "" },
+    { src: "assets/catacion.jpg", alt: "Mesas de catación de café con cucharas y tazas", caption: "Catación de café de origen", span: "wide" },
+    { src: "assets/interior-estanteria.jpg", alt: "Interior con pared de ladrillo y estantería de café", caption: "Estantería de café", span: "tall" },
+    { src: "assets/barista-preparando.jpg", alt: "Barista preparando café", caption: "Preparación en barra", span: "" },
+    { src: "assets/terraza.jpg", alt: "Terraza de cafetería con plantas y mesas de madera bajo luz natural", caption: "Terraza con luz natural", span: "tall" },
+    { src: "assets/latte-art.webp", alt: "Café de especialidad con latte art", caption: "Cappuccino de especialidad", span: "" }
+  ];
+
+  /* ---------- Estado del carrito ---------- */
+  var cart = loadCart();
+
+  function loadCart() {
+    try {
+      var raw = localStorage.getItem(CART_STORAGE_KEY);
+      var data = raw ? JSON.parse(raw) : {};
+      var clean = {};
+      Object.keys(data).forEach(function (id) {
+        var q = parseInt(data[id], 10);
+        if (q > 0) clean[id] = q;
+      });
+      return clean;
+    } catch (e) {
+      return {};
+    }
   }
 
-  const zoomImg = e.target.closest("[data-zoom]");
-  if (zoomImg) openLightbox(zoomImg.dataset.zoom, zoomImg.dataset.alt);
-});
-
-/* ==================== Carrito ==================== */
-
-const cartEl = document.getElementById("cart");
-const cartItems = document.getElementById("cartItems");
-const cartTotal = document.getElementById("cartTotal");
-const cartCount = document.getElementById("cartCount");
-const cartBtn = document.getElementById("cartBtn");
-const cartClose = document.getElementById("cartClose");
-const cartBackdrop = document.getElementById("cartBackdrop");
-const cartSend = document.getElementById("cartSend");
-
-function updateCart() {
-  const ids = Object.keys(cart);
-  const count = ids.reduce((acc, id) => acc + cart[id].qty, 0);
-  cartCount.textContent = count;
-
-  cartItems.innerHTML =
-    count === 0
-      ? `<li class="cart__empty">Tu pedido está vacío.<br>Agrega algo rico del menú ☕</li>`
-      : ids.map(
-          (id) => `
-          <li class="cart-line">
-            <div class="cart-line__info">
-              <p class="cart-line__name">${cart[id].name}</p>
-              <p class="cart-line__price">$${cart[id].price} c/u</p>
-            </div>
-            <div class="cart-line__controls">
-              <button class="cart-line__btn" data-dec="${id}" aria-label="Quitar uno">−</button>
-              <span class="cart-line__qty">${cart[id].qty}</span>
-              <button class="cart-line__btn" data-inc="${id}" aria-label="Agregar uno">+</button>
-              <button class="cart-line__remove" data-rm="${id}" aria-label="Eliminar">×</button>
-            </div>
-          </li>`
-        )
-        .join("");
-
-  const total = ids.reduce((acc, id) => acc + cart[id].qty * cart[id].price, 0);
-  cartTotal.textContent = `$${total}`;
-  cartSend.disabled = count === 0;
-}
-
-cartItems.addEventListener("click", (e) => {
-  const inc = e.target.closest("[data-inc]");
-  const dec = e.target.closest("[data-dec]");
-  const rm = e.target.closest("[data-rm]");
-  if (inc) {
-    cart[inc.dataset.inc].qty += 1;
-  } else if (dec) {
-    cart[dec.dataset.dec].qty -= 1;
-    if (cart[dec.dataset.dec].qty <= 0) delete cart[dec.dataset.dec];
-  } else if (rm) {
-    delete cart[rm.dataset.rm];
-  } else {
-    return;
+  function saveCart() {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    } catch (e) { /* almacenamiento no disponible */ }
   }
-  updateCart();
-});
 
-function openCart() {
-  cartEl.classList.add("is-open");
-  cartBackdrop.classList.add("is-visible");
-  cartEl.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
-
-function closeCart() {
-  cartEl.classList.remove("is-open");
-  cartBackdrop.classList.remove("is-visible");
-  cartEl.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-
-let pulseTimer;
-function pulseFloating() {
-  cartBtn.style.transform = "translateY(-6px) scale(1.06)";
-  clearTimeout(pulseTimer);
-  pulseTimer = setTimeout(() => (cartBtn.style.transform = ""), 400);
-}
-
-cartBtn.addEventListener("click", () => {
-  if (cartCount.textContent === "0") {
-    pulseFloating();
-  } else {
-    openCart();
+  function findItem(id) {
+    for (var c = 0; c < MENU.length; c++) {
+      for (var i = 0; i < MENU[c].items.length; i++) {
+        if (MENU[c].items[i].id === id) return MENU[c].items[i];
+      }
+    }
+    return null;
   }
-});
-cartClose.addEventListener("click", closeCart);
-cartBackdrop.addEventListener("click", closeCart);
-cartSend.addEventListener("click", () => {
-  if (Object.keys(cart).length === 0) return;
-  openWhatsApp();
-});
 
-function openWhatsApp() {
-  sendOrder();
-  setTimeout(() => {
-    closeCart();
-    clearCart();
-  }, 1200);
-}
-
-function clearCart() {
-  Object.keys(cart).forEach((k) => delete cart[k]);
-  updateCart();
-}
-
-/* ==================== Lightbox ==================== */
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-
-function openLightbox(src, alt) {
-  lightboxImg.src = src;
-  lightboxImg.alt = alt;
-  lightbox.classList.add("is-open");
-  lightbox.setAttribute("aria-hidden", "false");
-}
-
-function closeLightbox() {
-  lightbox.classList.remove("is-open");
-  lightbox.setAttribute("aria-hidden", "true");
-}
-
-lightbox.querySelector(".lightbox__close").addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeLightbox();
-    closeCart();
+  function itemQty(id) {
+    return cart[id] || 0;
   }
-});
 
-/* Galería click → lightbox */
-document.getElementById("galleryGrid").addEventListener("click", (e) => {
-  const img = e.target.closest("img");
-  if (img) {
-    openLightbox(img.src, img.alt);
+  function cartCount() {
+    return Object.keys(cart).reduce(function (sum, id) { return sum + cart[id]; }, 0);
   }
-});
 
-/* ==================== Navegación ==================== */
+  function cartTotal() {
+    return Object.keys(cart).reduce(function (sum, id) {
+      var it = findItem(id);
+      return sum + (it ? it.price * cart[id] : 0);
+    }, 0);
+  }
 
-const nav = document.getElementById("nav");
-const navLinks = document.getElementById("navLinks");
+  function addToCart(id, delta) {
+    var qty = itemQty(id) + delta;
+    if (qty <= 0) {
+      delete cart[id];
+    } else {
+      cart[id] = qty;
+    }
+    saveCart();
+    renderCart();
+    syncCard(id);
+    updateCartCount();
+  }
 
-window.addEventListener("scroll", () => {
-  nav.classList.toggle("is-scrolled", window.scrollY > 40);
-});
+  /* ---------- Referencias DOM ---------- */
+  var els = {
+    body: document.body,
+    header: document.getElementById("siteHeader"),
+    navToggle: document.getElementById("navToggle"),
+    navLinks: document.getElementById("navLinks"),
+    menuTabs: document.getElementById("menuTabs"),
+    menuGrid: document.getElementById("menuGrid"),
+    galleryGrid: document.getElementById("galleryGrid"),
+    cartBtn: document.getElementById("cartBtn"),
+    cartCount: document.getElementById("cartCount"),
+    cartDrawer: document.getElementById("cartDrawer"),
+    cartClose: document.getElementById("cartClose"),
+    cartItems: document.getElementById("cartItems"),
+    cartEmpty: document.getElementById("cartEmpty"),
+    cartForm: document.getElementById("cartForm"),
+    cartFoot: document.getElementById("cartFoot"),
+    cartTotal: document.getElementById("cartTotal"),
+    cartCountLabel: document.getElementById("cartCountLabel"),
+    cartName: document.getElementById("cartName"),
+    cartAddress: document.getElementById("cartAddress"),
+    cartNote: document.getElementById("cartNote"),
+    cartSend: document.getElementById("cartSend"),
+    overlay: document.getElementById("overlay"),
+    lightbox: document.getElementById("lightbox"),
+    lightboxImg: document.getElementById("lightboxImg"),
+    lightboxCaption: document.getElementById("lightboxCaption"),
+    lightboxClose: document.getElementById("lightboxClose"),
+    toTop: document.getElementById("toTop"),
+    year: document.getElementById("year")
+  };
 
-document.getElementById("navToggle").addEventListener("click", function () {
-  const open = navLinks.classList.toggle("is-open");
-  this.classList.toggle("is-open", open);
-  this.setAttribute("aria-expanded", String(open));
-  document.body.style.overflow = open ? "hidden" : "";
-});
+  var cardNodes = {}; // id -> { addBtn, stepper, qtyEl }
 
-navLinks.addEventListener("click", (e) => {
-  if (e.target.closest("a")) {
-    navLinks.classList.remove("is-open");
-    document.getElementById("navToggle").classList.remove("is-open");
+  /* ---------- Render del menú ---------- */
+  function renderTabs() {
+    els.menuTabs.innerHTML = "";
+    MENU.forEach(function (cat, index) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "menu-tab";
+      btn.setAttribute("role", "tab");
+      btn.setAttribute("aria-selected", index === 0 ? "true" : "false");
+      btn.setAttribute("aria-controls", "menuGrid");
+      btn.textContent = cat.icon + "  " + cat.label;
+      btn.addEventListener("click", function () { setActiveCategory(cat.id, btn); });
+      els.menuTabs.appendChild(btn);
+    });
+  }
+
+  function setActiveCategory(catId) {
+    var buttons = els.menuTabs.querySelectorAll(".menu-tab");
+    buttons.forEach(function (btn) {
+      var isActive = btn.textContent === (catByName(catId).icon + "  " + catByName(catId).label);
+      btn.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+    renderGrid(catId);
+  }
+
+  function catByName(id) {
+    for (var c = 0; c < MENU.length; c++) if (MENU[c].id === id) return MENU[c];
+    return MENU[0];
+  }
+
+  var activeCategory = MENU[0].id;
+
+  function renderGrid(catId) {
+    activeCategory = catId;
+    var cat = catByName(catId);
+    els.menuGrid.innerHTML = "";
+    cat.items.forEach(function (item, index) {
+      els.menuGrid.appendChild(buildCard(item, index));
+    });
+  }
+
+  function buildCard(item, index) {
+    var card = document.createElement("article");
+    card.className = "menu-card";
+    card.style.animationDelay = Math.min(index * 0.05, 0.4) + "s";
+    card.dataset.id = item.id;
+
+    var photo = document.createElement("div");
+    photo.className = "menu-card-photo";
+
+    if (item.img) {
+      var img = document.createElement("img");
+      img.src = item.img;
+      img.alt = item.alt || item.name;
+      img.loading = "lazy";
+      photo.appendChild(img);
+    } else {
+      var ph = document.createElement("div");
+      ph.className = "photo-placeholder";
+      ph.setAttribute("aria-hidden", "true");
+      ph.textContent = "\u2615";
+      photo.appendChild(ph);
+    }
+
+    if (item.tags && item.tags.length) {
+      var tag = document.createElement("span");
+      tag.className = "menu-tag " + item.tags[0];
+      tag.textContent = TAG_LABELS[item.tags[0]];
+      photo.appendChild(tag);
+    }
+
+    var body = document.createElement("div");
+    body.className = "menu-card-body";
+
+    var line = document.createElement("div");
+    line.className = "menu-card-line";
+    var name = document.createElement("h3");
+    name.className = "menu-card-name";
+    name.textContent = item.name;
+    var dots = document.createElement("span");
+    dots.className = "menu-card-dots";
+    dots.setAttribute("aria-hidden", "true");
+    var price = document.createElement("span");
+    price.className = "menu-card-price";
+    price.textContent = formatMXN(item.price);
+    line.appendChild(name);
+    line.appendChild(dots);
+    line.appendChild(price);
+
+    var desc = document.createElement("p");
+    desc.className = "menu-card-desc";
+    desc.textContent = item.desc;
+
+    var cta = document.createElement("div");
+    cta.className = "menu-card-cta";
+
+    var addBtn = document.createElement("button");
+    addBtn.type = "button";
+    addBtn.className = "add-btn";
+    addBtn.innerHTML = '<span class="plus" aria-hidden="true">+</span> Agregar';
+    addBtn.setAttribute("aria-label", "Agregar " + item.name + " por " + formatMXN(item.price));
+    addBtn.addEventListener("click", function () { addToCart(item.id, 1); });
+
+    var stepper = document.createElement("div");
+    stepper.className = "qty-stepper";
+    var minus = document.createElement("button");
+    minus.type = "button";
+    minus.setAttribute("aria-label", "Quitar " + item.name);
+    minus.textContent = "\u2212";
+    var qtyEl = document.createElement("span");
+    qtyEl.className = "qty";
+    qtyEl.setAttribute("aria-live", "polite");
+    var plus = document.createElement("button");
+    plus.type = "button";
+    plus.setAttribute("aria-label", "Agregar más " + item.name);
+    plus.textContent = "+";
+    minus.addEventListener("click", function () { addToCart(item.id, -1); });
+    plus.addEventListener("click", function () { addToCart(item.id, 1); });
+    stepper.appendChild(minus);
+    stepper.appendChild(qtyEl);
+    stepper.appendChild(plus);
+
+    cta.appendChild(addBtn);
+    cta.appendChild(stepper);
+
+    body.appendChild(line);
+    body.appendChild(desc);
+    body.appendChild(cta);
+
+    card.appendChild(photo);
+    card.appendChild(body);
+
+    cardNodes[item.id] = { addBtn: addBtn, stepper: stepper, qtyEl: qtyEl };
+    syncCard(item.id);
+    return card;
+  }
+
+  function syncCard(id) {
+    var node = cardNodes[id];
+    if (!node) return;
+    var qty = itemQty(id);
+    var has = qty > 0;
+    node.qtyEl.textContent = qty;
+    node.addBtn.parentNode.classList.toggle("has-qty", has);
+  }
+
+  /* ---------- Render del carrito ---------- */
+  function renderCart() {
+    var ids = Object.keys(cart);
+    els.cartItems.innerHTML = "";
+    els.cartForm.hidden = ids.length === 0;
+    els.cartFoot.hidden = ids.length === 0;
+    els.cartEmpty.hidden = ids.length > 0;
+
+    if (ids.length === 0) {
+      els.cartCountLabel.textContent = "Tu carrito está vacío";
+      updateCartCount();
+      return;
+    }
+
+    var n = cartCount();
+    els.cartCountLabel.textContent = n === 1 ? "1 artículo" : n + " artículos";
+
+    ids.forEach(function (id) {
+      var item = findItem(id);
+      if (!item) return;
+      els.cartItems.appendChild(buildCartRow(item, cart[id]));
+    });
+
+    els.cartTotal.textContent = formatMXN(cartTotal());
+    updateCartCount();
+  }
+
+  function buildCartRow(item, qty) {
+    var row = document.createElement("div");
+    row.className = "cart-item";
+
+    var thumb = document.createElement("div");
+    thumb.className = "cart-item-thumb";
+    if (item.img) {
+      var img = document.createElement("img");
+      img.src = item.img;
+      img.alt = item.alt || item.name;
+      thumb.appendChild(img);
+    } else {
+      var ph = document.createElement("div");
+      ph.className = "ph";
+      ph.textContent = "\u2615";
+      thumb.appendChild(ph);
+    }
+
+    var info = document.createElement("div");
+    info.className = "cart-item-info";
+    var nEl = document.createElement("p");
+    nEl.className = "cart-item-name";
+    nEl.textContent = item.name;
+    var pEl = document.createElement("p");
+    pEl.className = "cart-item-price";
+    pEl.textContent = formatMXN(item.price) + " c/u";
+    info.appendChild(nEl);
+    info.appendChild(pEl);
+
+    var side = document.createElement("div");
+    side.className = "cart-item-side";
+    var totalEl = document.createElement("span");
+    totalEl.className = "cart-item-line-total";
+    totalEl.textContent = formatMXN(item.price * qty);
+    var qStepper = document.createElement("div");
+    qStepper.className = "qty-stepper";
+    var minus = document.createElement("button");
+    minus.type = "button";
+    minus.setAttribute("aria-label", "Quitar un " + item.name);
+    minus.textContent = "\u2212";
+    minus.addEventListener("click", function () { addToCart(item.id, -1); });
+    var qtyEl = document.createElement("span");
+    qtyEl.className = "qty";
+    qtyEl.textContent = qty;
+    var plus = document.createElement("button");
+    plus.type = "button";
+    plus.setAttribute("aria-label", "Agregar otro " + item.name);
+    plus.textContent = "+";
+    plus.addEventListener("click", function () { addToCart(item.id, 1); });
+    qStepper.appendChild(minus);
+    qStepper.appendChild(qtyEl);
+    qStepper.appendChild(plus);
+    side.appendChild(totalEl);
+    side.appendChild(qStepper);
+
+    row.appendChild(thumb);
+    row.appendChild(info);
+    row.appendChild(side);
+    return row;
+  }
+
+  function updateCartCount() {
+    var n = cartCount();
+    els.cartCount.textContent = n;
+    els.cartCount.hidden = n === 0;
+  }
+
+  /* ---------- Carrito: apertura y cierre ---------- */
+  function openDrawer() {
+    els.cartDrawer.setAttribute("aria-hidden", "false");
+    els.body.classList.add("drawer-open");
+    els.overlay.hidden = false;
+  }
+
+  function closeDrawer() {
+    els.cartDrawer.setAttribute("aria-hidden", "true");
+    els.body.classList.remove("drawer-open");
+    els.overlay.hidden = true;
+  }
+
+  els.cartBtn.addEventListener("click", openDrawer);
+  els.cartClose.addEventListener("click", closeDrawer);
+  els.overlay.addEventListener("click", closeDrawer);
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      if (!els.lightbox.hidden) closeLightbox();
+      if (els.body.classList.contains("drawer-open")) closeDrawer();
+      if (els.navLinks.classList.contains("open")) toggleNav(false);
+    }
+  });
+
+  /* ---------- Enviar pedido por WhatsApp ---------- */
+  els.cartSend.addEventListener("click", function () {
+    var ids = Object.keys(cart);
+    if (ids.length === 0) return;
+
+    var lines = ids.map(function (id) {
+      var item = findItem(id);
+      var qty = cart[id];
+      return "\u2022 " + qty + "x " + item.name + " \u2014 " + formatMXN(item.price * qty);
+    });
+
+    var name = els.cartName.value.trim();
+    var address = els.cartAddress.value.trim();
+    var note = els.cartNote.value.trim();
+
+    var msg = "\u00A1Hola " + BUSINESS_NAME + "! \u2615 Quiero hacer un pedido:\n\n";
+    msg += lines.join("\n") + "\n\n";
+    msg += "Total estimado: " + formatMXN(cartTotal()) + "\n\n";
+    if (name) msg += "Nombre: " + name + "\n";
+    if (address) msg += "Direcci\u00F3n para entrega a domicilio: " + address + "\n";
+    else msg += "Recogida en tienda: S\u00ED\n";
+    if (note) msg += "Nota: " + note + "\n";
+    msg += "\n\u00A1Gracias!";
+
+    window.open(waLink(msg), "_blank", "noopener");
+  });
+
+  /* ---------- Galería + lightbox ---------- */
+  function renderGallery() {
+    els.galleryGrid.innerHTML = "";
+    GALLERY.forEach(function (g) {
+      var figure = document.createElement("figure");
+      figure.className = "gallery-item" + (g.span ? " " + g.span : "");
+      figure.tabIndex = 0;
+
+      var img = document.createElement("img");
+      img.src = g.src;
+      img.alt = g.alt;
+      img.loading = "lazy";
+
+      var cap = document.createElement("figcaption");
+      cap.textContent = g.caption;
+
+      function open() { openLightbox(g); }
+      figure.appendChild(img);
+      figure.appendChild(cap);
+      figure.addEventListener("click", open);
+      figure.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+      });
+      els.galleryGrid.appendChild(figure);
+    });
+  }
+
+  function openLightbox(g) {
+    els.lightboxImg.src = g.src;
+    els.lightboxImg.alt = g.alt;
+    els.lightboxCaption.textContent = g.caption;
+    els.lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    els.lightbox.hidden = true;
     document.body.style.overflow = "";
   }
-});
 
-/* ==================== Inicialización ==================== */
+  els.lightboxClose.addEventListener("click", closeLightbox);
+  els.lightbox.addEventListener("click", function (e) {
+    if (e.target === els.lightbox) closeLightbox();
+  });
 
-document.getElementById("year").textContent = new Date().getFullYear();
-renderMenu("desayunos");
-updateCart();
+  /* ---------- Navegación ---------- */
+  function toggleNav(force) {
+    var open = typeof force === "boolean" ? force : !els.navLinks.classList.contains("open");
+    els.navLinks.classList.toggle("open", open);
+    els.navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  els.navToggle.addEventListener("click", function () { toggleNav(); });
+  els.navLinks.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { toggleNav(false); });
+  });
+
+  var headerScroll = function () {
+    els.header.classList.toggle("is-scrolled", window.scrollY > 24);
+    var show = window.scrollY > 640;
+    els.toTop.classList.toggle("is-visible", show);
+  };
+  window.addEventListener("scroll", headerScroll, { passive: true });
+  headerScroll();
+
+  els.toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+  document.querySelectorAll(".reveal").forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+  /* ---------- Footer año ---------- */
+  if (els.year) els.year.textContent = new Date().getFullYear();
+
+  /* ---------- Init ---------- */
+  renderTabs();
+  renderGrid(MENU[0].id);
+  renderGallery();
+  renderCart();
+
+  /* Resaltar enlace de navegación activo */
+  var sectionLinks = els.navLinks.querySelectorAll("a[href^='#']");
+  var sectionObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        sectionLinks.forEach(function (link) {
+          link.style.color = link.getAttribute("href") === "#" + entry.target.id ? "var(--gold)" : "";
+        });
+      }
+    });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+
+  ["inicio", "menu", "nosotros", "galeria", "visitanos"].forEach(function (id) {
+    var sec = document.getElementById(id);
+    if (sec) sectionObserver.observe(sec);
+  });
+})();
