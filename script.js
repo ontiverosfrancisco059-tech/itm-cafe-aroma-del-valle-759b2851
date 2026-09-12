@@ -1,323 +1,495 @@
-/* ============================================================
-   Café Aroma Del Valle — script.js
-   ============================================================ */
+/* Café Aroma del Valle · Menú + pedido por WhatsApp */
 (function () {
   "use strict";
 
   var WHATSAPP_NUMBER = "528112345678";
-
-  /* ---------- helpers ---------- */
-  function $(sel, scope) { return (scope || document).querySelector(sel); }
-  function $all(sel, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(sel)); }
-  function formatMoney(n) { return "$" + n.toLocaleString("es-MX"); }
-
-  var store = {
-    items: {}, // key -> { name, price, qty }
-    added: 0
+  var ASSET = function (id) {
+    return "https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=" + id;
   };
 
-  var toastTimer = null;
+  /* ---------- Datos del menú ---------- */
+  var MENU = [
+    /* Desayunos */
+    {
+      cat: "desayunos",
+      name: "Chilaquiles con café de olla",
+      desc: "Totopos crujientes con salsa de jitomate o verde, crema, queso fresco y huevo. Acompañados de café de olla.",
+      price: 95,
+      img: "bc41521f-3bce-417a-9e3e-bae88d760211",
+      alt: "Chilaquiles con café",
+      tag: "Desayuno"
+    },
+    {
+      cat: "desayunos",
+      name: "Bowl vegano de breakfast",
+      desc: "Frijoles, guacamole, tofu revuelto, jitomate y pan integral. Opción 100% vegana.",
+      price: 120,
+      img: "6e4bfb6f-aa63-4c35-aea8-5c66a75dde8e",
+      alt: "Bowl vegano de breakfast",
+      tag: "Vegano"
+    },
+    {
+      cat: "desayunos",
+      name: "Bowl de açaí con granola",
+      desc: "Açaí, granola artesanal, frutas frescas y semillas. Ligero, colorido y fresco.",
+      price: 110,
+      img: "8f706439-4477-416e-9daf-f9ce58ed35dd",
+      alt: "Bowl vegano colorido con granola, frutas frescas y açaí",
+      tag: "Vegano"
+    },
+    {
+      cat: "desayunos",
+      name: "Tofu scramble con vegetales",
+      desc: "Tofu revuelto con cúrcuma, vegetales salteados y pan integral tostado.",
+      price: 115,
+      img: "5fcc3e0a-f201-428c-906e-e8ccf0062700",
+      alt: "Tofu scramble vegano con vegetales y pan integral",
+      tag: "Vegano"
+    },
+    {
+      cat: "desayunos",
+      name: "Huevos al gusto de la casa",
+      desc: "Estilo ranchero, revueltos o tibios. Con frijoles refritos, aguacate y pan artesanal.",
+      price: 89,
+      img: null,
+      alt: "",
+      tag: "Desayuno",
+      mono: "H"
+    },
 
-  function showToast(msg) {
-    var el = $("#toast");
-    el.textContent = msg;
-    el.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { el.classList.remove("show"); }, 2200);
-  }
+    /* Café & bebidas */
+    {
+      cat: "cafe",
+      name: "Espresso de origen",
+      desc: "Shot de espresso con notas de cacao y frutos secos. Extracción de especialidad.",
+      price: 40,
+      img: null,
+      alt: "",
+      tag: "Café",
+      mono: "E"
+    },
+    {
+      cat: "cafe",
+      name: "Cappuccino clásico",
+      desc: "Espresso balanceado con leche vaporizada y microfoam sedoso.",
+      price: 55,
+      img: null,
+      alt: "",
+      tag: "Café",
+      mono: "C"
+    },
+    {
+      cat: "cafe",
+      name: "Latte con latte art",
+      desc: "Espresso, leche aterciopelada y latte art servido con cariño.",
+      price: 60,
+      img: "beca28a3-0ed7-4b80-9182-da15dc597cf0",
+      alt: "Café de especialidad con latte art",
+      tag: "Café"
+    },
+    {
+      cat: "cafe",
+      name: "Pour over de especialidad",
+      desc: "Método manual que resalta las notas de origen del grano. Servido en taza cerámica.",
+      price: 70,
+      img: "ae614cbc-ebee-4c3b-bb58-d9e4690dd2f9",
+      alt: "Café de método pour over",
+      tag: "Método"
+    },
+    {
+      cat: "cafe",
+      name: "Cold brew de 12 h",
+      desc: "Extracción en frío durante 12 horas. Suave, dulce y muy refrescante.",
+      price: 60,
+      img: null,
+      alt: "",
+      tag: "Bebida",
+      mono: "CB"
+    },
+    {
+      cat: "cafe",
+      name: "Matcha latte",
+      desc: "Matcha ceremonial con leche, endulzado al gusto. Opción también en versión vegana.",
+      price: 65,
+      img: null,
+      alt: "",
+      tag: "Bebida",
+      mono: "M"
+    },
 
-  /* ---------- header scroll state ---------- */
-  var header = $("#siteHeader");
-  function onScroll() {
-    header.classList.toggle("scrolled", window.scrollY > 40);
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+    /* Panadería & postres */
+    {
+      cat: "panaderia",
+      name: "Panadería artesanal",
+      desc: "Pan de masa madre, croissants y panes dulces horneados cada mañana. Precio por pieza.",
+      price: 45,
+      img: "8b6a5725-084e-4d52-92ba-28a61870b5e5",
+      alt: "Panadería artesanal recién horneada",
+      tag: "Panadería"
+    },
+    {
+      cat: "panaderia",
+      name: "Croissant de mantequilla",
+      desc: "Laminado a mano, crujiente por fuera y suave por dentro.",
+      price: 42,
+      img: null,
+      alt: "",
+      tag: "Panadería",
+      mono: "Cr"
+    },
+    {
+      cat: "panaderia",
+      name: "Cheesecake de la casa",
+      desc: "Base de galleta especiada y crema suave. Acompaña con tu café favorito.",
+      price: 78,
+      img: null,
+      alt: "",
+      tag: "Postre",
+      mono: "Cs"
+    },
+    {
+      cat: "panaderia",
+      name: "Brownie con nuez",
+      desc: "Intenso, húmedo y con nuez. Porción generosa para compartir. Versión vegana disponible.",
+      price: 55,
+      img: null,
+      alt: "",
+      tag: "Postre",
+      mono: "B"
+    }
+  ];
 
-  /* ---------- mobile nav ---------- */
-  var navToggle = $("#navToggle");
-  var mainNav = $("#mainNav");
+  var PARA_LLEVAR = [
+    {
+      cat: "para-llevar",
+      name: "Granos de café de origen 250 g",
+      desc: "Tostado de especialidad. Ideal para disfrutar el aroma de la casa en tu cocina.",
+      price: 280,
+      img: "0199d294-99dd-44e8-9a70-5e27dcd42ccc",
+      alt: "Granos de café de origen",
+      tag: "Para llevar"
+    },
+    {
+      cat: "para-llevar",
+      name: "Mezcla de la casa 250 g",
+      desc: "Blend balanceado por nuestros baristas. Cuerpo medio, notas dulces.",
+      price: 240,
+      img: null,
+      alt: "",
+      tag: "Para llevar",
+      mono: "C"
+    },
+    {
+      cat: "para-llevar",
+      name: "Frasco de miel de agave",
+      desc: "Endulzante natural que complementa tus bebidas frías y calientes.",
+      price: 90,
+      img: null,
+      alt: "",
+      tag: "Tienda",
+      mono: "M"
+    }
+  ];
 
-  navToggle.addEventListener("click", function () {
-    var open = mainNav.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  MENU = MENU.concat(PARA_LLEVAR);
+
+  var CATEGORIES = {
+    desayunos: "Desayunos",
+    cafe: "Café & bebidas",
+    panaderia: "Panadería & postres",
+    "para-llevar": "Para llevar"
+  };
+  var CAT_ORDER = ["desayunos", "cafe", "panaderia", "para-llevar"];
+
+  /* ---------- Estado del pedido ---------- */
+  var cart = {}; // id -> qty
+  var currentCat = "desayunos";
+
+  var byId = {};
+  MENU.forEach(function (item) {
+    byId[item.name] = item;
   });
 
-  $all(".main-nav a").forEach(function (a) {
+  function itemKey(item) {
+    return item.name;
+  }
+  function money(n) {
+    return "$" + n.toLocaleString("es-MX");
+  }
+
+  /* ---------- Render del menú ---------- */
+  var grid = document.getElementById("menu-grid");
+
+  function renderMenu() {
+    grid.innerHTML = "";
+    var items = MENU.filter(function (m) { return m.cat === currentCat; });
+    items.forEach(function (item) {
+      var card = document.createElement("article");
+      card.className = "menu-card reveal in" + (item.img ? " has-img" : "");
+
+      var media = document.createElement("div");
+      media.className = "menu-card__img";
+      if (item.img) {
+        var im = document.createElement("img");
+        im.src = ASSET(item.img);
+        im.alt = item.alt || item.name;
+        im.loading = "lazy";
+        media.appendChild(im);
+      } else {
+        media.textContent = item.mono || "·";
+      }
+
+      var body = document.createElement("div");
+      body.className = "menu-card__body";
+
+      var tag = document.createElement("span");
+      tag.className = "menu-card__tag";
+      tag.textContent = item.tag || CATEGORIES[item.cat];
+      body.appendChild(tag);
+
+      var h3 = document.createElement("h3");
+      h3.textContent = item.name;
+      body.appendChild(h3);
+
+      var p = document.createElement("p");
+      p.textContent = item.desc;
+      body.appendChild(p);
+
+      var foot = document.createElement("div");
+      foot.className = "menu-card__foot";
+
+      var price = document.createElement("span");
+      price.className = "menu-card__price";
+      price.textContent = money(item.price);
+      foot.appendChild(price);
+
+      var add = document.createElement("button");
+      add.className = "menu-card__add";
+      add.type = "button";
+      add.innerHTML = '<span class="plus" aria-hidden="true">＋</span> Agregar';
+      add.setAttribute("aria-label", "Agregar " + item.name + " al pedido");
+      add.addEventListener("click", function () {
+        addToCart(item);
+      });
+      foot.appendChild(add);
+
+      body.appendChild(foot);
+      card.appendChild(media);
+      card.appendChild(body);
+      grid.appendChild(card);
+    });
+  }
+
+  /* ---------- Pestañas de categoría ---------- */
+  var tabs = document.querySelectorAll(".menu-tab");
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(function (t) { t.classList.remove("active"); t.setAttribute("aria-selected", "false"); });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      currentCat = tab.getAttribute("data-cat");
+      renderMenu();
+    });
+  });
+
+  /* ---------- Carrito ---------- */
+  var panel = document.getElementById("cart-panel");
+  var backdrop = document.getElementById("cart-backdrop");
+  var fab = document.getElementById("cart-fab");
+  var countEl = document.getElementById("cart-count");
+  var itemsEl = document.getElementById("cart-items");
+  var emptyEl = document.getElementById("cart-empty");
+  var totalEl = document.getElementById("cart-total");
+  var sendBtn = document.getElementById("cart-send");
+  var cartOpen = false;
+
+  function cartSize() {
+    var n = 0;
+    Object.keys(cart).forEach(function (k) { n += cart[k]; });
+    return n;
+  }
+  function cartTotal() {
+    var sum = 0;
+    Object.keys(cart).forEach(function (k) {
+      var it = byId[k];
+      if (it) sum += it.price * cart[k];
+    });
+    return sum;
+  }
+
+  function addToCart(item) {
+    var k = itemKey(item);
+    cart[k] = (cart[k] || 0) + 1;
+    updateCart();
+    toast(item.name + " agregado al pedido.");
+  }
+  function setQty(k, q) {
+    if (q <= 0) delete cart[k];
+    else cart[k] = q;
+    updateCart();
+  }
+
+  function updateCart() {
+    var n = cartSize();
+    countEl.hidden = n === 0;
+    countEl.textContent = n;
+    fab.classList.toggle("has-items", n > 0);
+
+    itemsEl.innerHTML = "";
+    Object.keys(cart).forEach(function (k) {
+      var item = byId[k];
+      if (!item) return;
+      var q = cart[k];
+
+      var li = document.createElement("li");
+      li.className = "cart-item";
+
+      var name = document.createElement("span");
+      name.className = "cart-item__name";
+      name.textContent = item.name;
+
+      var line = document.createElement("span");
+      line.className = "cart-item__line";
+      line.textContent = money(item.price * q);
+
+      var unit = document.createElement("span");
+      unit.className = "cart-item__unit";
+      unit.textContent = money(item.price) + " c/u";
+
+      var controls = document.createElement("div");
+      controls.className = "cart-item__controls";
+
+      var minus = document.createElement("button");
+      minus.type = "button";
+      minus.textContent = "−";
+      minus.setAttribute("aria-label", "Quitar uno de " + item.name);
+      minus.addEventListener("click", function () { setQty(k, q - 1); });
+
+      var qtyEl = document.createElement("span");
+      qtyEl.className = "cart-item__qty";
+      qtyEl.textContent = q;
+
+      var plus = document.createElement("button");
+      plus.type = "button";
+      plus.textContent = "+";
+      plus.setAttribute("aria-label", "Agregar uno a " + item.name);
+      plus.addEventListener("click", function () { setQty(k, q + 1); });
+
+      var remove = document.createElement("button");
+      remove.type = "button";
+      remove.textContent = "✕";
+      remove.setAttribute("aria-label", "Quitar " + item.name + " del pedido");
+      remove.addEventListener("click", function () { setQty(k, 0); });
+
+      controls.appendChild(minus);
+      controls.appendChild(qtyEl);
+      controls.appendChild(plus);
+      controls.appendChild(remove);
+
+      li.appendChild(name);
+      li.appendChild(line);
+      li.appendChild(unit);
+      li.appendChild(controls);
+      itemsEl.appendChild(li);
+    });
+
+    emptyEl.style.display = n === 0 ? "block" : "none";
+    sendBtn.disabled = n === 0;
+    totalEl.textContent = money(cartTotal());
+  }
+
+  /* ---------- Enviar por WhatsApp ---------- */
+  function openWhatsApp() {
+    var lines = [];
+    lines.push("Hola, Café Aroma del Valle ☕");
+    lines.push("Quiero hacer el siguiente pedido:");
+    lines.push("");
+
+    Object.keys(cart).forEach(function (k) {
+      var item = byId[k];
+      if (!item) return;
+      lines.push("• " + item.name + " ×" + cart[k] + " — " + money(item.price * cart[k]));
+    });
+
+    lines.push("");
+    lines.push("Total estimado: " + money(cartTotal()));
+    lines.push("");
+    lines.push("¿Me confirman disponibilidad y tiempo de entrega?");
+
+    var url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(lines.join("\n"));
+    window.open(url, "_blank", "noopener");
+  }
+
+  sendBtn.addEventListener("click", openWhatsApp);
+
+  /* ---------- Abrir / cerrar carrito ---------- */
+  function setCartOpen(open) {
+    cartOpen = open;
+    panel.classList.toggle("open", open);
+    panel.setAttribute("aria-hidden", String(!open));
+    backdrop.hidden = false;
+    backdrop.classList.toggle("show", open);
+    document.body.classList.toggle("no-scroll", open);
+  }
+  fab.addEventListener("click", function () { setCartOpen(true); });
+  document.getElementById("cart-close").addEventListener("click", function () { setCartOpen(false); });
+  backdrop.addEventListener("click", function () { setCartOpen(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && cartOpen) setCartOpen(false);
+  });
+
+  /* ---------- Toast ---------- */
+  var toastEl = document.getElementById("toast");
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2600);
+  }
+
+  /* ---------- Navegación móvil ---------- */
+  var navToggle = document.getElementById("nav-toggle");
+  var nav = document.getElementById("main-nav");
+  navToggle.addEventListener("click", function () {
+    var open = nav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
+  nav.querySelectorAll("a").forEach(function (a) {
     a.addEventListener("click", function () {
-      mainNav.classList.remove("open");
+      nav.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     });
   });
 
-  /* ---------- reveal on scroll ---------- */
-  var revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  /* ---------- Header con scroll ---------- */
+  var header = document.getElementById("site-header");
+  function onScroll() {
+    header.classList.toggle("scrolled", window.scrollY > 10);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  $all(".reveal").forEach(function (el) { revealObserver.observe(el); });
+  /* ---------- Año en el pie ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-  /* ---------- active nav link ---------- */
-  var sections = $all("section[id]");
-  var navLinks = $all(".nav-link");
-
-  var sectionObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var id = entry.target.getAttribute("id");
-        navLinks.forEach(function (link) {
-          link.classList.toggle("active", link.getAttribute("href") === "#" + id);
-        });
-      }
-    });
-  }, { threshold: 0.35 });
-
-  sections.forEach(function (s) { sectionObserver.observe(s); });
-
-  /* ---------- menu tabs ---------- */
-  var tabs = $all(".menu-tab");
-  var grids = $all(".menu-grid");
-
-  tabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      tabs.forEach(function (t) {
-        t.classList.remove("active");
-        t.setAttribute("aria-selected", "false");
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
       });
-      tab.classList.add("active");
-      tab.setAttribute("aria-selected", "true");
-
-      var cat = tab.getAttribute("data-cat");
-      grids.forEach(function (grid) {
-        var show = grid.getAttribute("data-cat") === cat;
-        grid.hidden = !show;
-      });
-    });
-  });
-
-  /* ---------- cart / order tray ---------- */
-  var cartFab = $("#cartFab");
-  var cartCount = $("#cartCount");
-  var orderTray = $("#orderTray");
-  var trayBackdrop = $("#trayBackdrop");
-  var trayClose = $("#trayClose");
-  var trayItems = $("#trayItems");
-  var trayEmpty = $("#trayEmpty");
-  var trayTotal = $("#trayTotal");
-  var trayWhatsapp = $("#trayWhatsapp");
-  var trayClear = $("#trayClear");
-
-  function addItem(name, price) {
-    var key = name.toLowerCase();
-    if (store.items[key]) {
-      store.items[key].qty += 1;
-    } else {
-      store.items[key] = { name: name, price: price, qty: 1 };
-    }
-    store.added += 1;
-    renderCart();
-    showToast("✓ " + name + " agregado a tu pedido");
-    cartFab.classList.remove("bump");
-    void cartFab.offsetWidth;
-    cartFab.classList.add("bump");
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  function removeItem(key) { delete store.items[key]; renderCart(); }
-
-  function changeQty(key, delta) {
-    var item = store.items[key];
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) { delete store.items[key]; }
-    renderCart();
-  }
-
-  function updateFab() {
-    var total = Object.keys(store.items).reduce(function (sum, k) {
-      return sum + store.items[k].qty;
-    }, 0);
-    if (total > 0) {
-      cartCount.hidden = false;
-      cartCount.textContent = total;
-    } else {
-      cartCount.hidden = true;
-    }
-  }
-
-  var PRICE_RX = /^\$?([\d,.]+)\s*$/;
-
-  function parsePrice(raw) {
-    var m = String(raw || "").replace(/desde\s*/i, "").match(PRICE_RX);
-    return m ? parseFloat(m[1].replace(/,/g, ".")) : 0;
-  }
-
-  function renderCart() {
-    updateFab();
-    var keys = Object.keys(store.items);
-    trayEmpty.hidden = keys.length > 0;
-    trayItems.innerHTML = "";
-    var total = 0;
-
-    keys.forEach(function (k) {
-      var item = store.items[k];
-      total += item.price * item.qty;
-
-      var li = document.createElement("li");
-      li.className = "tray-item";
-
-      var nameBox = document.createElement("div");
-      nameBox.className = "tray-item-name";
-      nameBox.innerHTML = item.name + "<small>" + formatMoney(item.price) + " c/u</small>";
-
-      var qtyBox = document.createElement("div");
-      qtyBox.className = "qty";
-      var btnMinus = document.createElement("button");
-      btnMinus.textContent = "−";
-      btnMinus.setAttribute("aria-label", "Quitar uno de " + item.name);
-      btnMinus.addEventListener("click", function () { changeQty(k, -1); });
-      var qtySpan = document.createElement("span");
-      qtySpan.textContent = item.qty;
-      var btnPlus = document.createElement("button");
-      btnPlus.textContent = "+";
-      btnPlus.setAttribute("aria-label", "Agregar uno más de " + item.name);
-      btnPlus.addEventListener("click", function () { changeQty(k, 1); });
-      qtyBox.appendChild(btnMinus);
-      qtyBox.appendChild(qtySpan);
-      qtyBox.appendChild(btnPlus);
-
-      var priceEl = document.createElement("span");
-      priceEl.className = "tray-item-price";
-      priceEl.textContent = formatMoney(item.price * item.qty);
-
-      li.appendChild(nameBox);
-      li.appendChild(qtyBox);
-      li.appendChild(priceEl);
-      trayItems.appendChild(li);
-    });
-
-    trayTotal.textContent = formatMoney(total);
-    trayWhatsapp.disabled = keys.length === 0;
-  }
-
-  function openTray() {
-    orderTray.classList.add("open");
-    trayBackdrop.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeTray() {
-    orderTray.classList.remove("open");
-    trayBackdrop.hidden = true;
-    document.body.style.overflow = "";
-  }
-
-  cartFab.addEventListener("click", openTray);
-  trayClose.addEventListener("click", closeTray);
-  trayBackdrop.addEventListener("click", closeTray);
-  trayClear.addEventListener("click", function () {
-    store.items = {};
-    renderCart();
-    showToast("Pedido vaciado");
-  });
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      closeTray();
-      closeLightbox();
-    }
-  });
-
-  /* add buttons (delegation) */
-  document.addEventListener("click", function (e) {
-    var btn = e.target.closest(".add-btn");
-    if (!btn) return;
-    e.preventDefault();
-    var card = btn.closest("[data-name]");
-    if (!card) return;
-    var raw = card.getAttribute("data-price");
-    addItem(card.getAttribute("data-name"), parsePrice(raw));
-  });
-
-  /* whatsapp order */
-  function buildWhatsAppUrl(message) {
-    return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
-  }
-
-  trayWhatsapp.addEventListener("click", function () {
-    var keys = Object.keys(store.items);
-    if (!keys.length) return;
-
-    var lines = ["¡Hola Café Aroma Del Valle! ☕ Quiero hacer un pedido:"];
-    var total = 0;
-    keys.forEach(function (k) {
-      var item = store.items[k];
-      lines.push("• " + item.qty + "x " + item.name + " — " + formatMoney(item.price * item.qty));
-      total += item.price * item.qty;
-    });
-    lines.push("");
-    lines.push("Total estimado: " + formatMoney(total));
-    lines.push("");
-    lines.push("¿Me confirman disponibilidad y envío? Gracias.");
-
-    window.open(buildWhatsAppUrl(lines.join("\n")), "_blank", "noopener");
-  });
-
-  /* ---------- gallery lightbox ---------- */
-  var lightbox = $("#lightbox");
-  var lbImg = $("#lbImg");
-  var lbCaption = $("#lbCaption");
-  var galleryFigures = $all(".gallery-item");
-  var lbIndex = 0;
-
-  function openLightbox(index) {
-    lbIndex = index;
-    updateLightbox();
-    lightbox.hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-
-  function updateLightbox() {
-    var fig = galleryFigures[lbIndex];
-    var img = fig ? fig.querySelector("img") : null;
-    var cap = fig ? fig.querySelector("figcaption") : null;
-    if (!img) return;
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lbCaption.textContent = cap ? cap.textContent : img.alt;
-  }
-
-  function closeLightbox() {
-    if (lightbox.hidden) return;
-    lightbox.hidden = true;
-    document.body.style.overflow = "";
-  }
-
-  galleryFigures.forEach(function (fig, i) {
-    fig.addEventListener("click", function () { openLightbox(i); });
-  });
-
-  $("#lbClose").addEventListener("click", closeLightbox);
-  $("#lbPrev").addEventListener("click", function () {
-    lbIndex = (lbIndex - 1 + galleryFigures.length) % galleryFigures.length;
-    updateLightbox();
-  });
-  $("#lbNext").addEventListener("click", function () {
-    lbIndex = (lbIndex + 1) % galleryFigures.length;
-    updateLightbox();
-  });
-  lightbox.addEventListener("click", function (e) {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  /* ---------- footer year ---------- */
-  var yearEl = $("#year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ---------- init ---------- */
-  renderCart();
+  /* ---------- Inicialización ---------- */
+  renderMenu();
+  updateCart();
 })();
