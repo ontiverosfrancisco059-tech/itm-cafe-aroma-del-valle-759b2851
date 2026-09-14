@@ -1,80 +1,86 @@
-(function(){
-  var header=document.getElementById('header');
-  var toggle=document.getElementById('menuToggle');
-  var nav=document.getElementById('mainNav');
-  var tabs=document.querySelectorAll('.menu-tab');
-  var cards=document.querySelectorAll('.menu-card');
+/* ============================================================
+   Café Aroma Del Valle — Interactividad
+   ============================================================ */
 
-  // Header scroll effect
-  window.addEventListener('scroll',function(){
-    header.classList.toggle('scrolled',window.scrollY>40);
-  });
+(function () {
+    'use strict';
 
-  // Mobile menu toggle
-  toggle.addEventListener('click',function(){
-    toggle.classList.toggle('active');
-    nav.classList.toggle('open');
-  });
+    var header = document.getElementById('header');
+    var navToggle = document.getElementById('navToggle');
+    var navMenu = document.getElementById('navMenu');
 
-  // Close mobile nav on link click
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      toggle.classList.remove('active');
-      nav.classList.remove('open');
-    });
-  });
-
-  // Menu tabs filter
-  tabs.forEach(function(tab){
-    tab.addEventListener('click',function(){
-      tabs.forEach(function(t){t.classList.remove('active')});
-      tab.classList.add('active');
-      var filter=tab.getAttribute('data-tab');
-      cards.forEach(function(card){
-        if(filter==='all'||card.getAttribute('data-category')===filter){
-          card.style.display='';
-          card.style.opacity='0';
-          card.style.transform='translateY(12px)';
-          requestAnimationFrame(function(){
-            card.style.transition='opacity .35s,transform .35s';
-            card.style.opacity='1';
-            card.style.transform='translateY(0)';
-          });
-        }else{
-          card.style.display='none';
+    function onScroll() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
-      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    navToggle.addEventListener('click', function () {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('open');
+        document.body.classList.toggle('no-scroll');
     });
-  });
 
-  // Scroll reveal
-  var observer=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('revealed');
-        observer.unobserve(e.target);
-      }
+    navMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('open');
+            document.body.classList.remove('no-scroll');
+        });
     });
-  },{threshold:0.1});
 
-  document.querySelectorAll('.nosotros-img,.menu-card,.info-card,.gallery-item,.cta-content').forEach(function(el){
-    el.style.opacity='0';
-    el.style.transform='translateY(20px)';
-    observer.observe(el);
-  });
+    var tabs = document.querySelectorAll('.menu-tab');
+    var categories = document.querySelectorAll('.menu-category');
 
-  var style=document.createElement('style');
-  style.textContent='.revealed{opacity:1!important;transform:translateY(0)!important;transition:opacity .6s ease,transform .6s ease!important}';
-  document.head.appendChild(style);
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            tabs.forEach(function (t) { t.classList.remove('active'); });
+            tab.classList.add('active');
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click',function(e){
-      var target=document.querySelector(a.getAttribute('href'));
-      if(target){
-        e.preventDefault();
-        target.scrollIntoView({behavior:'smooth'});
-      }
+            var target = tab.getAttribute('data-tab');
+            categories.forEach(function (category) {
+                if (category.getAttribute('data-category') === target) {
+                    category.classList.add('active');
+                } else {
+                    category.classList.remove('active');
+                }
+            });
+        });
     });
-  });
+
+    function loadComments() {
+        var widgetUrl = 'https://itm-void-excepcional.pages.dev/comments.js';
+        var widget = document.querySelector('.comments-widget');
+
+        if (!widget) return;
+
+        var script = document.createElement('script');
+        script.src = widgetUrl;
+        script.async = true;
+
+        script.onload = function () {
+            var loader = widget.querySelector('.comments-loading');
+            if (loader) loader.style.display = 'none';
+        };
+
+        script.onerror = function () {
+            var loader = widget.querySelector('.comments-loading');
+            if (loader) {
+                loader.innerHTML = '<p>Los comentarios no están disponibles en este momento. Intenta más tarde.</p>';
+            }
+        };
+
+        widget.appendChild(script);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadComments);
+    } else {
+        loadComments();
+    }
 })();
