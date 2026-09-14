@@ -1,70 +1,57 @@
 (function () {
-  "use strict";
+  'use strict';
 
-  var header = document.getElementById("site-header");
-  var navToggle = document.getElementById("nav-toggle");
-  var siteNav = document.getElementById("site-nav");
+  var header = document.getElementById('header');
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  var headerCta = document.querySelector('.header__cta');
 
-  header.classList.toggle("scrolled", window.scrollY > 8);
-
-  window.addEventListener("scroll", function () {
-    header.classList.toggle("scrolled", window.scrollY > 8);
-  }, { passive: true });
-
-  function closeNav() {
-    siteNav.classList.remove("open");
-    navToggle.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
-    navToggle.setAttribute("aria-label", "Abrir menú");
+  function onScroll() {
+    if (window.scrollY > 40) {
+      header.classList.add('header--scrolled');
+    } else {
+      header.classList.remove('header--scrolled');
+    }
   }
 
-  navToggle.addEventListener("click", function () {
-    var open = siteNav.classList.toggle("open");
-    navToggle.classList.toggle("open", open);
-    navToggle.setAttribute("aria-expanded", String(open));
-    navToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  function toggleMenu() {
+    burger.classList.toggle('active');
+    nav.classList.toggle('active');
+    if (headerCta) headerCta.classList.toggle('active');
+  }
+
+  function closeMenu() {
+    burger.classList.remove('active');
+    nav.classList.remove('active');
+    if (headerCta) headerCta.classList.remove('active');
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  burger.addEventListener('click', toggleMenu);
+
+  nav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
   });
 
-  siteNav.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", closeNav);
-  });
+  /* ---- Menu category tabs ---- */
+  var tabs = document.querySelectorAll('.menu__tab');
+  var items = document.querySelectorAll('.menu__item');
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") closeNav();
-  });
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var category = tab.getAttribute('data-category');
 
-  var revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
+      tabs.forEach(function (t) {
+        t.classList.toggle('menu__tab--active', t === tab);
       });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add("visible"); });
-  }
 
-  var sections = document.querySelectorAll("main section[id]");
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-list a"));
-
-  if ("IntersectionObserver" in window) {
-    var sectionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var id = entry.target.getAttribute("id");
-          navLinks.forEach(function (link) {
-            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
-          });
-        }
+      items.forEach(function (item) {
+        var matches = item.getAttribute('data-category') === category;
+        item.classList.toggle('menu__item--hidden', !matches);
+        item.classList.toggle('menu__item--visible', matches);
       });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    sections.forEach(function (section) { sectionObserver.observe(section); });
-  }
-
-  var yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    });
+  });
 })();
