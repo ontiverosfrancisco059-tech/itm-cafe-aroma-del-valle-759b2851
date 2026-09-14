@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página no encontrada — Café Aroma Del Valle</title>
+  <meta name="description" content="La página que buscas no existe. Regresa al inicio de Café Aroma Del Valle.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-page { min-height: 100vh; display: flex; align-items: center; text-align: center; background: var(--espresso-deep); color: var(--blanco); position: relative; overflow: hidden; }
+    .error-page .bg { position: absolute; inset: 0; background-image: url("assets/interior-ladrillo.webp"); background-size: cover; background-position: center; opacity: .25; }
+    .error-page .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(32,19,15,.5), rgba(32,19,15,.96)); }
+    .error-inner { position: relative; z-index: 2; max-width: 640px; margin-inline: auto; padding: 120px 24px; }
+    .error-num { font-family: var(--serif); font-size: clamp(5rem, 16vw, 9rem); font-weight: 700; color: var(--dorado); line-height: 1; margin: 0; }
+    .error-inner h1 { color: var(--blanco); font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 18px 0 12px; }
+    .error-inner p { color: rgba(250,250,245,.8); margin-bottom: 30px; }
+    .error-inner .ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="error-page">
+      <div class="bg" role="presentation"></div>
+      <div class="overlay"></div>
+      <div class="error-inner">
+        <p class="error-num" data-eb-editable="text" data-eb-key="404.p.1" data-eb-role="p" data-eb-kind="text">404</p>
+        <h1 data-eb-editable="text" data-eb-key="404.h1.2" data-eb-role="h1" data-eb-kind="text">Este café se enfrió y se fue</h1>
+        <p data-eb-editable="text" data-eb-key="404.p.3" data-eb-role="p" data-eb-kind="text">La página que buscas no existe o se movió de lugar. Pero no te preocupes: el buen café sigue aquí.</p>
+        <div class="ctas">
+          <a class="btn btn-dorado" href="index.html" data-eb-editable="link" data-eb-key="404.a.4" data-eb-role="a" data-eb-kind="link">Volver al inicio</a>
+          <a class="btn btn-ghost" href="menu.html" data-eb-editable="link" data-eb-key="404.a.5" data-eb-role="a" data-eb-kind="link">Ver el menú</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+<section id="perfil-usuario" aria-label="Perfil del visitante">
+  <div data-itm-profile data-project-id="759b2851-ad6c-43f7-a90e-e5f7d4232976"></div>
+</section>
+
+<section id="comentarios" aria-label="Comentarios">
+  <div data-itm-comments data-project-id="759b2851-ad6c-43f7-a90e-e5f7d4232976"></div>
+</section>
+
+<script src="https://itm-void-excepcional.pages.dev/comments.js" defer></script>
+</body>
+</html>
