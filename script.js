@@ -1,199 +1,273 @@
-/* Café Aroma Del Valle — interacciones del sitio */
+/* ========================================
+   Café Aroma Del Valle - Scripts
+   ======================================== */
 
-(function () {
-  "use strict";
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Header scroll effect ---
+    const header = document.getElementById('header');
+    let lastScroll = 0;
 
-  var WHATSAPP_NUMBER = "528112345678";
+    const handleScroll = () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+    };
 
-  function phone(text) {
-    return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
-  }
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-  /* ---------- Header: sombra al hacer scroll ---------- */
+    // --- Mobile navigation toggle ---
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
 
-  var header = document.getElementById("site-header");
-  function onScroll() {
-    if (window.scrollY > 10) header.classList.add("is-scrolled");
-    else header.classList.remove("is-scrolled");
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  /* ---------- Menú móvil ---------- */
-
-  var navToggle = document.getElementById("nav-toggle");
-  var mobileMenu = document.getElementById("mobile-menu");
-
-  navToggle.addEventListener("click", function () {
-    var open = mobileMenu.hidden;
-    mobileMenu.hidden = !open;
-    navToggle.classList.toggle("is-open", open);
-    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  mobileMenu.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      mobileMenu.hidden = true;
-      navToggle.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  /* ---------- Tabs del menú ---------- */
-
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".menu-tab"));
-  var categories = Array.prototype.slice.call(document.querySelectorAll(".menu-category"));
-
-  tabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      var cat = tab.getAttribute("data-cat");
-      tabs.forEach(function (t) {
-        var active = t === tab;
-        t.classList.toggle("is-active", active);
-        t.setAttribute("aria-selected", active ? "true" : "false");
-      });
-      categories.forEach(function (c) {
-        c.hidden = c.getAttribute("data-cat") !== cat;
-        c.classList.remove("is-active");
-        if (c.getAttribute("data-cat") === cat) c.classList.add("is-active");
-      });
-    });
-  });
-
-  /* ---------- Carrito / pedido ---------- */
-
-  var cart = {};
-  var cartHandle = document.getElementById("cart-handle");
-  var cartPanel = document.getElementById("cart-panel");
-  var cartCount = document.getElementById("cart-count");
-  var cartItems = document.getElementById("cart-items");
-  var cartEmpty = document.getElementById("cart-empty");
-  var cartTotal = document.getElementById("cart-total");
-  var cartSend = document.getElementById("cart-send");
-  var cartClear = document.getElementById("cart-clear");
-
-  cartHandle.addEventListener("click", function () {
-    var open = cartPanel.hidden;
-    cartPanel.hidden = !open;
-    cartHandle.setAttribute("aria-expanded", !open ? "true" : "false");
-  });
-
-  function fmt(n) {
-    return "$" + n.toLocaleString("es-MX");
-  }
-
-  function render() {
-    var names = Object.keys(cart);
-    cartItems.innerHTML = "";
-
-    names.forEach(function (name) {
-      var item = cart[name];
-      var li = document.createElement("li");
-      li.className = "cart-item";
-
-      var nameEl = document.createElement("span");
-      nameEl.className = "cart-item-name";
-
-      var nameText = document.createElement("span");
-      nameText.textContent = name;
-      nameEl.appendChild(nameText);
-
-      var em = document.createElement("em");
-      em.textContent = " × " + item.qty;
-      nameEl.appendChild(em);
-
-      var priceEl = document.createElement("span");
-      priceEl.className = "cart-item-price";
-      priceEl.textContent = fmt(item.price * item.qty);
-
-      var removeEl = document.createElement("button");
-      removeEl.className = "cart-item-remove";
-      removeEl.setAttribute("aria-label", "Quitar " + name);
-      removeEl.textContent = "✕";
-      removeEl.addEventListener("click", function () {
-        delete cart[name];
-        render();
-      });
-
-      li.appendChild(nameEl);
-      li.appendChild(priceEl);
-      li.appendChild(removeEl);
-      cartItems.appendChild(li);
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    var total = Object.keys(cart).reduce(function (sum, name) {
-      return sum + cart[name].price * cart[name].qty;
-    }, 0);
-    cartTotal.textContent = fmt(total);
-
-    var count = Object.keys(cart).reduce(function (sum, name) {
-      return sum + cart[name].qty;
-    }, 0);
-    cartCount.hidden = count === 0;
-    cartCount.textContent = count;
-
-    cartEmpty.hidden = count !== 0;
-    cartSend.disabled = count === 0;
-  }
-
-  function addItem(name, price) {
-    if (!cart[name]) cart[name] = { price: price, qty: 0 };
-    cart[name].qty += 1;
-    render();
-    toast("Agregado: " + name);
-  }
-
-  /* Botones "Agregar al pedido" */
-  document.querySelectorAll(".btn-add").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      addItem(btn.getAttribute("data-name"), parseFloat(btn.getAttribute("data-price")));
+    // Close menu when clicking a link
+    navMenu.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
     });
-  });
 
-  cartClear.addEventListener("click", function () {
-    cart = {};
-    render();
-  });
-
-  /* Enviar pedido por WhatsApp */
-  cartSend.addEventListener("click", function () {
-    var lines = ["Hola Café Aroma Del Valle, quiero hacer este pedido:"];
-    Object.keys(cart).forEach(function (name) {
-      var item = cart[name];
-      lines.push("• " + item.qty + " × " + name + " (" + fmt(item.price * item.qty) + ")");
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
-    var total = Object.keys(cart).reduce(function (s, n) {
-      return s + cart[n].price * cart[n].qty;
-    }, 0);
-    lines.push("Total: " + fmt(total));
-    lines.push("");
-    lines.push(
-      "Nombre: ____" +
-        "\nDirección de entrega: ____" +
-        "\nPago: ____"
-    );
-    window.open(phone(lines.join("\n")), "_blank", "noopener");
-  });
 
-  /* ---------- Toast ---------- */
+    // --- Menu category filter ---
+    const filterButtons = document.querySelectorAll('.menu__filter');
+    const menuItems = document.querySelectorAll('.menu__item');
 
-  var toastTimer;
-  function toast(msg) {
-    var el = document.getElementById("toast");
-    if (!el) {
-      el = document.createElement("div");
-      el.id = "toast";
-      el.className = "toast";
-      el.setAttribute("role", "status");
-      document.body.appendChild(el);
-    }
-    el.textContent = msg;
-    el.classList.add("is-visible");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
-      el.classList.remove("is-visible");
-    }, 1600);
-  }
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
 
-  render();
-})();
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('menu__filter--active'));
+            button.classList.add('menu__filter--active');
+
+            // Filter items
+            menuItems.forEach(item => {
+                const category = item.dataset.category;
+                if (filter === 'all' || category === filter) {
+                    item.classList.remove('hidden');
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        });
+                    });
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // --- Scroll animations (Intersection Observer) ---
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Add fade-in class to sections
+    const sections = document.querySelectorAll('.about__content, .about__images, .section__header, .menu__filters, .gallery__grid, .contact__info, .contact__whatsapp, .menu__item');
+    sections.forEach(section => {
+        section.classList.add('fade-in');
+        fadeObserver.observe(section);
+    });
+
+    // --- Smooth scroll for anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = anchor.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
+            if (target) {
+                const headerHeight = header.offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // --- Active nav link on scroll ---
+    const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
+    const observerNav = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('nav__link--active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('nav__link--active');
+                    }
+                });
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '-80px 0px -50% 0px'
+    });
+
+    document.querySelectorAll('section[id]').forEach(section => {
+        observerNav.observe(section);
+    });
+
+    // --- Gallery lightbox ---
+    const galleryItems = document.querySelectorAll('.gallery__item');
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            if (!img) return;
+
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                inset: 0;
+                z-index: 2000;
+                background: rgba(44, 24, 16, 0.92);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px;
+                cursor: pointer;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            const lightboxImg = document.createElement('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxImg.style.cssText = `
+                max-width: 90%;
+                max-height: 85vh;
+                object-fit: contain;
+                border-radius: 12px;
+                box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+                animation: scaleIn 0.3s ease;
+            `;
+
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 20px;
+                right: 24px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 2.5rem;
+                cursor: pointer;
+                line-height: 1;
+                padding: 0 8px;
+            `;
+
+            const caption = document.createElement('p');
+            const captionText = item.querySelector('.gallery__item-overlay span');
+            if (captionText) {
+                caption.textContent = captionText.textContent;
+                caption.style.cssText = `
+                    position: absolute;
+                    bottom: 24px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    color: white;
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                `;
+            }
+
+            overlay.appendChild(lightboxImg);
+            overlay.appendChild(closeBtn);
+            if (captionText) overlay.appendChild(caption);
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+
+            const closeLightbox = () => {
+                overlay.style.opacity = '0';
+                overlay.style.transition = 'opacity 0.2s ease';
+                setTimeout(() => {
+                    overlay.remove();
+                    document.body.style.overflow = '';
+                }, 200);
+            };
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeLightbox();
+            });
+            closeBtn.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', function handler(e) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                    document.removeEventListener('keydown', handler);
+                }
+            });
+        });
+    });
+
+    // --- Add CSS animations for lightbox ---
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .nav__link--active {
+            color: var(--color-brown-900) !important;
+            font-weight: 600;
+        }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // --- WhatsApp order tracking ---
+    document.querySelectorAll('.menu__item-order').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.menu__item');
+            const name = item.querySelector('.menu__item-name').textContent;
+
+            // Visual feedback
+            btn.textContent = '¡Enviado!';
+            btn.style.background = '#1DA851';
+            setTimeout(() => {
+                btn.textContent = 'Pedir';
+                btn.style.background = '';
+            }, 2000);
+        });
+    });
+});
