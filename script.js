@@ -1,147 +1,136 @@
-/* ================================================================
-   Café Aroma Del Valle · Interacciones
-   Nav móvil, filtros de carta, galería con lightbox, animaciones.
-================================================================= */
-
 (function () {
-  "use strict";
+  'use strict';
 
-  /* ---------- Año del pie de página ---------- */
-  document.querySelectorAll("[data-anio]").forEach(function (el) {
-    el.textContent = new Date().getFullYear();
-  });
+  var yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
-  /* ---------- Cabecera compacta al hacer scroll ---------- */
-  var cabecera = document.getElementById("cabecera");
-  var enScroll = function () {
-    if (window.scrollY > 30) {
-      cabecera.classList.add("compacta");
+  var navEl = document.getElementById('nav');
+  var onScrollHeader = function () {
+    if (window.scrollY > 8) {
+      navEl.classList.add('is-scrolled');
     } else {
-      cabecera.classList.remove("compacta");
+      navEl.classList.remove('is-scrolled');
     }
   };
-  enScroll();
-  window.addEventListener("scroll", enScroll, { passive: true });
+  window.addEventListener('scroll', onScrollHeader, { passive: true });
+  onScrollHeader();
 
-  /* ---------- Navegación móvil ---------- */
-  var nav = document.getElementById("nav");
-  var botonMovil = document.querySelector("[data-nav-movil]");
-  var botonCerrar = document.querySelector("[data-nav-cerrar]");
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  var body = document.body;
 
-  function abrirNav(abierta) {
-    nav.classList.toggle("abierta", abierta);
-    botonMovil.setAttribute("aria-expanded", abierta ? "true" : "false");
-    document.body.style.overflow = abierta ? "hidden" : "";
-  }
+  var closeMenu = function () {
+    links.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menú');
+    body.style.overflow = '';
+  };
 
-  if (botonMovil && botonCerrar) {
-    botonMovil.addEventListener("click", function () {
-      abrirNav(true);
+  var openMenu = function () {
+    links.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Cerrar menú');
+    body.style.overflow = 'hidden';
+  };
+
+  if (toggle && links) {
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      body.style.overflow = open ? 'hidden' : '';
     });
-    botonCerrar.addEventListener("click", function () {
-      abrirNav(false);
+
+    links.addEventListener('click', function (event) {
+      if (event.target.closest('a')) {
+        closeMenu();
+      }
     });
-    nav.querySelectorAll("a").forEach(function (enlace) {
-      enlace.addEventListener("click", function () {
-        abrirNav(false);
-      });
-    });
-    window.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && nav.classList.contains("abierta")) {
-        abrirNav(false);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeMenu();
       }
     });
   }
 
-  /* ---------- Filtros de la carta ---------- */
-  var filtros = document.querySelectorAll("[data-filtro]");
-  var platillos = document.querySelectorAll("[data-categoria]");
+  var filterButtons = Array.prototype.slice.call(document.querySelectorAll('#menuFilters .chip'));
+  var menuCards = Array.prototype.slice.call(document.querySelectorAll('#menuGrid .menu-card'));
 
-  filtros.forEach(function (boton) {
-    boton.addEventListener("click", function () {
-      filtros.forEach(function (b) {
-        var activo = b === boton;
-        b.classList.toggle("activo", activo);
-        b.setAttribute("aria-selected", activo ? "true" : "false");
+  filterButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      filterButtons.forEach(function (btn) {
+        btn.classList.remove('chip--active');
+        btn.setAttribute('aria-selected', 'false');
       });
+      button.classList.add('chip--active');
+      button.setAttribute('aria-selected', 'true');
 
-      var criterio = boton.getAttribute("data-filtro");
-      platillos.forEach(function (platillo) {
-        var categorias = platillo.getAttribute("data-categoria").split(" ");
-        var coincide = criterio === "todos" || categorias.indexOf(criterio) !== -1;
-        platillo.classList.toggle("fuera", !coincide);
+      var filter = button.getAttribute('data-filter');
+      menuCards.forEach(function (card) {
+        var match = filter === 'all' || card.getAttribute('data-category') === filter;
+        card.classList.toggle('is-hidden', !match);
       });
     });
   });
 
-  /* ---------- Galería con lightbox ---------- */
-  var boveda = document.getElementById("boveda");
-  var botonesFoto = document.querySelectorAll("[data-abre-foto]");
-  var botonCerrarBoveda = document.querySelector("[data-boveda-cerrar]");
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
 
-  function abrirBoveda(fuente, alt) {
-    var imagen = boveda.querySelector(".boveda-imagen");
-    imagen.src = fuente;
-    imagen.alt = alt || "";
-    boveda.hidden = false;
-    document.body.style.overflow = "hidden";
-    botonCerrarBoveda.focus();
-  }
-
-  function cerrarBoveda() {
-    boveda.hidden = true;
-    document.body.style.overflow = "";
-    var imagen = boveda.querySelector(".boveda-imagen");
-    imagen.src = "";
-  }
-
-  botonesFoto.forEach(function (boton) {
-    boton.addEventListener("click", function () {
-      var img = boton.querySelector("img");
-      if (img) {
-        abrirBoveda(img.currentSrc || img.src, img.alt);
-      }
-    });
-  });
-
-  if (botonCerrarBoveda) {
-    botonCerrarBoveda.addEventListener("click", cerrarBoveda);
-    boveda.addEventListener("click", function (e) {
-      if (e.target === boveda) {
-        cerrarBoveda();
-      }
-    });
-    window.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !boveda.hidden) {
-        cerrarBoveda();
-      }
-    });
-  }
-
-  /* ---------- Aparición suave al hacer scroll ---------- */
-  var elementosRevelar = document.querySelectorAll(
-    ".seccion, .sello, .filtros, .resenas-perfil, .resenas-comentarios, .pedidos, .pie"
-  );
-
-  if ("IntersectionObserver" in window) {
-    var observadorRevelar = new IntersectionObserver(
-      function (entradas) {
-        entradas.forEach(function (entrada) {
-          if (entrada.isIntersecting) {
-            entrada.target.classList.add("visible");
-            observadorRevelar.unobserve(entrada.target);
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            revealObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.08 }
+      { threshold: 0.12 }
     );
-    elementosRevelar.forEach(function (el) {
-      el.classList.add("revelar");
-      observadorRevelar.observe(el);
+
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
     });
   } else {
-    elementosRevelar.forEach(function (el) {
-      el.classList.add("visible");
+    revealEls.forEach(function (el) {
+      el.classList.add('is-revealed');
     });
   }
+
+  var navLinkEls = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
+  var sections = [];
+
+  window.addEventListener('load', function () {
+    navLinkEls.forEach(function (link) {
+      var id = link.getAttribute('href');
+      if (id && id.charAt(0) === '#') {
+        var section = document.querySelector(id);
+        if (section) {
+          sections.push({ id: id, section: section, link: link });
+        }
+      }
+    });
+
+    if ('IntersectionObserver' in window && sections.length) {
+      var linkObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              sections.forEach(function (item) {
+                item.link.classList.toggle('is-active', item.section === entry.target);
+              });
+            }
+          });
+        },
+        { rootMargin: '-45% 0px -50% 0px' }
+      );
+
+      sections.forEach(function (item) {
+        linkObserver.observe(item.section);
+      });
+    }
+  });
 })();
