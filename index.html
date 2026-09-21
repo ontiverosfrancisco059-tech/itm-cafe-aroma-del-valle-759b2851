@@ -1,233 +1,431 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Café Aroma Del Valle | Cafetería de especialidad en Monterrey</title>
-  <meta name="description" content="Cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal, desayunos y opciones veganas. Pide por WhatsApp con entrega a domicilio.">
-  <meta property="og:title" content="Café Aroma Del Valle">
-  <meta property="og:description" content="Café de origen, panadería artesanal, desayunos y opciones veganas en Monterrey. Pide por WhatsApp.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/interior-cafe.jpg">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Café Aroma Del Valle, cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal, desayunos y opciones veganas. Pide por WhatsApp." />
+  <meta property="og:title" content="Café Aroma Del Valle" />
+  <meta property="og:description" content="Cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal, desayunos y opciones veganas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233a2a1f'/%3E%3Cpath d='M20 26h24v12a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8z' fill='none' stroke='%23e8dcc8' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M44 28h4a6 6 0 0 1 0 12h-4' fill='none' stroke='%23c08552' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 18h16' stroke='%23e8dcc8' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <a class="skip-link" href="#menu">Saltar al menú</a>
+  <a class="skip-link" href="#inicio" data-eb-editable="link" data-eb-key="index.a.1" data-eb-role="a" data-eb-kind="link">Saltar al contenido</a>
 
-  <header class="site-header" id="siteHeader">
-    <nav class="nav container" aria-label="Navegación principal">
-      <a class="brand" href="#inicio">
-        <span class="brand-mark" aria-hidden="true">☕</span>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" data-itm-editor data-eb-editable="link" data-eb-key="index.a.2" data-eb-role="a" data-eb-kind="link">
+        <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-text">
           <strong>Café Aroma Del Valle</strong>
           <small>Cafetería de especialidad</small>
         </span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú">
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-link" data-eb-editable="link" data-eb-key="index.a.3" data-eb-role="a" data-eb-kind="link">Inicio</a>
+        <a href="#nosotros" class="nav-link" data-eb-editable="link" data-eb-key="index.a.4" data-eb-role="a" data-eb-kind="link">Nosotros</a>
+        <a href="#menu" class="nav-link" data-eb-editable="link" data-eb-key="index.a.5" data-eb-role="a" data-eb-kind="link">Menú</a>
+        <a href="#galeria" class="nav-link" data-eb-editable="link" data-eb-key="index.a.6" data-eb-role="a" data-eb-kind="link">Galería</a>
+        <a href="#ubicacion" class="nav-link" data-eb-editable="link" data-eb-key="index.a.7" data-eb-role="a" data-eb-kind="link">Ubicación</a>
+        <a href="#comentarios" class="nav-link" data-eb-editable="link" data-eb-key="index.a.8" data-eb-role="a" data-eb-kind="link">Comentarios</a>
+        <a class="nav-cta" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.9" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú" data-eb-editable="link" data-eb-key="index.button.10" data-eb-role="button" data-eb-kind="link">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#menu">Menú</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#visitanos">Visítanos</a></li>
-        <li><a class="btn btn-primary btn-sm" href="#menu">Ordenar ahora</a></li>
-      </ul>
-    </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="inicio">
-      <picture class="hero-bg">
-        <source media="(max-width: 760px)" srcset="assets/interior-cafe.jpg">
-        <img src="assets/interior-cafe.jpg" alt="Interior de la cafetería con mesas y luz cálida">
-      </picture>
+  <main id="main">
+
+    
+    <section class="hero" id="inicio" data-itm-editor>
+      <div class="hero-media" aria-hidden="true">
+        <img
+          src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=9d6c26b2-7205-488f-87eb-b3991c91f366"
+          alt=""
+          fetchpriority="high" / data-eb-editable="image" data-eb-key="index.img.11" data-eb-role="img" data-eb-kind="image">
+      </div>
       <div class="hero-overlay"></div>
       <div class="container hero-content">
-        <p class="hero-eyebrow" id="heroEyebrow">Café de especialidad · Valle de Monterrey</p>
-        <h1>Café Aroma <span>Del Valle</span></h1>
-        <p class="hero-lead">Café de origen, panadería artesanal, desayunos y opciones veganas en un ambiente acogedor con baristas certificados y wifi gratuito.</p>
+        <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.12" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad · Monterrey</p>
+        <h1 data-eb-editable="text" data-eb-key="index.h1.13" data-eb-role="h1" data-eb-kind="text">Café Aroma Del Valle</h1>
+        <p class="hero-lead" data-eb-editable="text" data-eb-key="index.p.14" data-eb-role="p" data-eb-kind="text">
+          Café de origen, panadería artesanal, desayunos y opciones veganas en un
+          ambiente acogedor del Valle. Baristas certificados, wifi gratuito y
+          entrega a domicilio.
+        </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#menu" id="heroOrderBtn">Ver menú y pedir</a>
-          <a class="btn btn-whatsapp" href="https://wa.me/528112345678?text=Hola%20Caf%C3%A9%20Aroma%20Del%20Valle%2C%20quisiera%20hacer%20un%20pedido." target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35zM12 2a10 10 0 0 0-8.6 15L2 22l5.15-1.35A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.17-.43-4.54-1.24l-.33-.2-3.05.8.81-2.98-.21-.34A8.2 8.2 0 1 1 12 20.2z"/></svg>
-            Pedir por WhatsApp
-          </a>
+          <a class="btn btn-primary" href="#menu" data-eb-editable="link" data-eb-key="index.a.15" data-eb-role="a" data-eb-kind="link">Ver menú</a>
+          <a class="btn btn-ghost" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.16" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
         </div>
-        <div class="hero-badges">
-          <span>✓ Entrega a domicilio</span>
-          <span>✓ Opciones veganas</span>
-          <span>✓ Wifi gratuito</span>
-        </div>
+        <ul class="hero-notes">
+          <li>Café de origen</li>
+          <li>Baristas certificados</li>
+          <li>Wifi gratuito</li>
+          <li>Delivery</li>
+        </ul>
       </div>
-      <a class="hero-scroll" href="#nosotros" aria-label="Bajar a nosotros"><span></span></a>
     </section>
 
-    <section class="about section" id="nosotros">
+    
+    <section class="section about" id="nosotros" data-itm-editor>
       <div class="container about-grid">
-        <figure class="about-media">
-          <img src="assets/barista-preparando.png" alt="Barista preparando café de especialidad">
-          <figcaption>Café de origen, tostado con esmero.</figcaption>
+        <figure class="about-media reveal">
+          <img
+            src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=e10d7c70-3fc3-4cae-8dee-23ba30b5ed49"
+            alt="Barista sirviendo café de especialidad"
+            loading="lazy" / data-eb-editable="image" data-eb-key="index.img.17" data-eb-role="img" data-eb-kind="image">
         </figure>
-        <div class="about-text">
-          <p class="eyebrow">Nuestra historia</p>
-          <h2>Café de especialidad <br>con sabor a hogar</h2>
-          <p>Somos una cafetería de especialidad en el Valle de Monterrey. Ofrecemos café de origen con trazabilidad, panadería artesanal horneada cada mañana, desayunos completos y opciones veganas.</p>
-          <p>Nuestro equipo de baristas certificados prepara cada taza con técnica y cariño, en un ambiente acogedor ideal para trabajar, estudiar o convivir. Y si prefieres quedarte en casa, llevamos tu pedido hasta tu puerta.</p>
-          <ul class="about-points">
-            <li><strong>Baristas certificados</strong> — SCAA / SCA</li>
-            <li><strong>Café de origen</strong> — Chiapas y Veracruz</li>
-            <li><strong>Panadería propia</strong> — sin conservadores</li>
-            <li><strong>Wifi gratuito</strong> — ideal para remoto</li>
+        <div class="about-body reveal">
+          <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.18" data-eb-role="p" data-eb-kind="text">Nuestra casa</p>
+          <h2 data-eb-editable="text" data-eb-key="index.h2.19" data-eb-role="h2" data-eb-kind="text">Un rincón cálido en el Valle de Monterrey</h2>
+          <p data-eb-editable="text" data-eb-key="index.p.20" data-eb-role="p" data-eb-kind="text">
+            Somos una cafetería de especialidad en el Valle de Monterrey. Seleccionamos
+            café de origen, horneamos nuestra panadería artesanal y preparamos desayunos
+            pensados para empezar bien el día, incluyendo opciones veganas.
+          </p>
+          <p data-eb-editable="text" data-eb-key="index.p.21" data-eb-role="p" data-eb-kind="text">
+            Nuestro equipo de baristas certificados cuida cada taza, desde el grano hasta
+            el latte art. Tacas sanas, mesas para trabajar con wifi gratuito y un patio
+            con plantas donde el tiempo va más lento.
+          </p>
+          <ul class="feature-list">
+            <li>Café de origen y métodos de filtrado</li>
+            <li>Panadería artesanal recién horneada</li>
+            <li>Desayunos y bowls veganos</li>
+            <li>Wifi gratuito y espacio de trabajo</li>
+            <li>Pedidos por WhatsApp con entrega a domicilio</li>
           </ul>
-          <a class="btn btn-outline" href="#menu">Explorar el menú</a>
+          <a class="btn btn-primary" href="#menu" data-eb-editable="link" data-eb-key="index.a.22" data-eb-role="a" data-eb-kind="link">Conoce nuestro menú</a>
         </div>
       </div>
     </section>
 
-    <section class="quote-strip" aria-hidden="true">
-      <div class="container quote-marquee">
-        <span>☕ Café de origen</span><span>🥐 Panadería artesanal</span><span>🌱 Opciones veganas</span><span>🍳 Desayunos completos</span>
-      </div>
-    </section>
-
-    <section class="menu section" id="menu">
+    
+    <section class="section menu" id="menu" data-itm-editor>
       <div class="container">
-        <header class="section-head">
-          <p class="eyebrow">Nuestro menú</p>
-          <h2>Lo que preparamos <br>para ti</h2>
-          <p class="section-sub">Agrega al pedido y envíalo por WhatsApp. Precios en pesos mexicanos (MXN).</p>
-        </header>
+        <div class="section-head reveal">
+          <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.23" data-eb-role="p" data-eb-kind="text">Menú</p>
+          <h2 data-eb-editable="text" data-eb-key="index.h2.24" data-eb-role="h2" data-eb-kind="text">Lo que preparamos hoy</h2>
+          <p data-eb-editable="text" data-eb-key="index.p.25" data-eb-role="p" data-eb-kind="text">
+            Selección diaria de café, desayunos, opciones veganas y panadería.
+            Los precios del día se confirman por WhatsApp.
+          </p>
+        </div>
 
-        <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Categorías del menú"></div>
+        <div class="menu-filters reveal" role="tablist" aria-label="Filtrar menú">
+          <button class="menu-filter is-active" data-filter="todo" role="tab" aria-selected="true" data-eb-editable="link" data-eb-key="index.button.26" data-eb-role="button" data-eb-kind="link">Todo</button>
+          <button class="menu-filter" data-filter="cafe" role="tab" aria-selected="false" data-eb-editable="link" data-eb-key="index.button.27" data-eb-role="button" data-eb-kind="link">Café</button>
+          <button class="menu-filter" data-filter="desayunos" role="tab" aria-selected="false" data-eb-editable="link" data-eb-key="index.button.28" data-eb-role="button" data-eb-kind="link">Desayunos</button>
+          <button class="menu-filter" data-filter="vegano" role="tab" aria-selected="false" data-eb-editable="link" data-eb-key="index.button.29" data-eb-role="button" data-eb-kind="link">Vegano</button>
+          <button class="menu-filter" data-filter="panaderia" role="tab" aria-selected="false" data-eb-editable="link" data-eb-key="index.button.30" data-eb-role="button" data-eb-kind="link">Panadería</button>
+        </div>
 
-        <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+        <div class="menu-grid" id="menu-grid">
+
+          <article class="menu-card reveal" data-category="cafe">
+            <figure class="menu-media">
+              <img
+                src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5"
+                alt="Café de especialidad con latte art"
+                loading="lazy" / data-eb-editable="image" data-eb-key="index.img.31" data-eb-role="img" data-eb-kind="image">
+            </figure>
+            <div class="menu-body">
+              <h3 data-eb-editable="text" data-eb-key="index.h3.32" data-eb-role="h3" data-eb-kind="text">Café de especialidad con latte art</h3>
+              <p data-eb-editable="text" data-eb-key="index.p.33" data-eb-role="p" data-eb-kind="text">Expreso y leche vaporizada de origen, servido con latte art.</p>
+              <a class="order-link" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20pedir%20el%20Caf%C3%A9%20de%20especialidad%20con%20latte%20art" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.34" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="cafe">
+            <figure class="menu-media">
+              <img
+                src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc"
+                alt="Café de método pour over"
+                loading="lazy" / data-eb-editable="image" data-eb-key="index.img.35" data-eb-role="img" data-eb-kind="image">
+            </figure>
+            <div class="menu-body">
+              <h3 data-eb-editable="text" data-eb-key="index.h3.36" data-eb-role="h3" data-eb-kind="text">Café de método pour over</h3>
+              <p data-eb-editable="text" data-eb-key="index.p.37" data-eb-role="p" data-eb-kind="text">Filtrado artesanal que resalta la acidez y dulzura natural del grano.</p>
+              <a class="order-link" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20pedir%20un%20caf%C3%A9%20de%20m%C3%A9todo%20pour%20over" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.38" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="desayunos">
+            <figure class="menu-media">
+              <img
+                src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57"
+                alt="Chilaquiles con café"
+                loading="lazy" / data-eb-editable="image" data-eb-key="index.img.39" data-eb-role="img" data-eb-kind="image">
+            </figure>
+            <div class="menu-body">
+              <h3 data-eb-editable="text" data-eb-key="index.h3.40" data-eb-role="h3" data-eb-kind="text">Chilaquiles con café</h3>
+              <p data-eb-editable="text" data-eb-key="index.p.41" data-eb-role="p" data-eb-kind="text">El clásico desayuno mexicano acompañado de un café de la casa.</p>
+              <a class="order-link" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20pedir%20chilaquiles%20con%20caf%C3%A9" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.42" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="vegano desayunos">
+            <figure class="menu-media">
+              <img
+                src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=a599b91a-a465-4595-8264-1552299a7720"
+                alt="Bowl vegano de breakfast"
+                loading="lazy" / data-eb-editable="image" data-eb-key="index.img.43" data-eb-role="img" data-eb-kind="image">
+            </figure>
+            <div class="menu-body">
+              <h3 data-eb-editable="text" data-eb-key="index.h3.44" data-eb-role="h3" data-eb-kind="text">Bowl vegano de breakfast</h3>
+              <p data-eb-editable="text" data-eb-key="index.p.45" data-eb-role="p" data-eb-kind="text">Combinación fresca de frutas, granola y base vegana para arrancar el día.</p>
+              <a class="order-link" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20pedir%20el%20bowl%20vegano%20de%20breakfast" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.46" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="vegano desayunos">
+            <figure class="menu-media">
+              <img
+                src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0"
+                alt="Bowl vegano colorido con granola, frutas frescas y açaí"
+                loading="lazy" / data-eb-editable="image" data-eb-key="index.img.47" data-eb-role="img" data-eb-kind="image">
+            </figure>
+            <div class="menu-body">
+              <h3 data-eb-editable="text" data-eb-key="index.h3.48" data-eb-role="h3" data-eb-kind="text">Bowl vegano con frutas y açaí</h3>
+              <p data-eb-editable="text" data-eb-key="index.p.49" data-eb-role="p" data-eb-kind="text">Granola, frutas frescas y açaí en un bowl colorido y lleno de sabor.</p>
+              <a class="order-link" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20pedir%20el%20bowl%20vegano%20con%20frutas%20y%20a%C3%A7a%C3%AD" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.50" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="vegano desayunos">
+            <figure class="menu-media">
+              <img
+                src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=435575ff-8529-4fc0-b84f-02cf22dfd14d"
+                alt="Tofu scramble vegano con vegetales y pan integral"
+                loading="lazy" / data-eb-editable="image" data-eb-key="index.img.51" data-eb-role="img" data-eb-kind="image">
+            </figure>
+            <div class="menu-body">
+              <h3 data-eb-editable="text" data-eb-key="index.h3.52" data-eb-role="h3" data-eb-kind="text">Tofu scramble vegano</h3>
+              <p data-eb-editable="text" data-eb-key="index.p.53" data-eb-role="p" data-eb-kind="text">Tofu revuelto con vegetales y pan integral para un desayuno completo.</p>
+              <a class="order-link" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20pedir%20el%20tofu%20scramble%20vegano" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.54" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" data-category="panaderia">
+            <figure class="menu-media">
+              <img
+                src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d"
+                alt="Panadería artesanal recién horneada"
+                loading="lazy" / data-eb-editable="image" data-eb-key="index.img.55" data-eb-role="img" data-eb-kind="image">
+            </figure>
+            <div class="menu-body">
+              <h3 data-eb-editable="text" data-eb-key="index.h3.56" data-eb-role="h3" data-eb-kind="text">Panadería artesanal</h3>
+              <p data-eb-editable="text" data-eb-key="index.p.57" data-eb-role="p" data-eb-kind="text">Pan horneado cada mañana con masa madre y harinas seleccionadas.</p>
+              <a class="order-link" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20pedir%20panader%C3%ADa%20artesanal" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.58" data-eb-role="a" data-eb-kind="link">Pedir por WhatsApp</a>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 
-    <section class="gallery section" id="galeria">
+    
+    <section class="section origin" id="origen" data-itm-editor>
+      <div class="container origin-grid">
+        <div class="origin-body reveal">
+          <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.59" data-eb-role="p" data-eb-kind="text">Para llevar a casa</p>
+          <h2 data-eb-editable="text" data-eb-key="index.h2.60" data-eb-role="h2" data-eb-kind="text">Granos de café de origen</h2>
+          <p data-eb-editable="text" data-eb-key="index.p.61" data-eb-role="p" data-eb-kind="text">
+            Llévate a casa el café que servimos en la cafetería: granos de origen,
+            tostados con cuidado y listos para preparar con tu método favorito.
+          </p>
+          <a class="btn btn-primary" href="https://wa.me/528112345678?text=Hola%2C%20quiero%20comprar%20granos%20de%20caf%C3%A9%20de%20origen" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.62" data-eb-role="a" data-eb-kind="link">Solicitar mi bolsa</a>
+        </div>
+        <figure class="origin-media reveal">
+          <img
+            src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=17eb13cb-a7ee-49a7-a109-41243b6ce3ab"
+            alt="Granos de café de origen"
+            loading="lazy" / data-eb-editable="image" data-eb-key="index.img.63" data-eb-role="img" data-eb-kind="image">
+        </figure>
+      </div>
+    </section>
+
+    
+    <section class="section gallery" id="galeria" data-itm-editor>
       <div class="container">
-        <header class="section-head">
-          <p class="eyebrow">Galería</p>
-          <h2>Un vistazo a nuestro espacio</h2>
-        </header>
-        <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="section-head reveal">
+          <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.64" data-eb-role="p" data-eb-kind="text">Galería</p>
+          <h2 data-eb-editable="text" data-eb-key="index.h2.65" data-eb-role="h2" data-eb-kind="text">Nuestro día a día</h2>
+          <p data-eb-editable="text" data-eb-key="index.p.66" data-eb-role="p" data-eb-kind="text">Ambiente, pan recién horneado, latte art y rincones en los que el café sabe mejor.</p>
+        </div>
+
+        <div class="gallery-grid reveal" id="gallery-grid">
+
+          <button class="gallery-item gallery-tall" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821" aria-label="Abrir imagen: Vitrina de panadería artesanal" data-eb-editable="link" data-eb-key="index.button.67" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821" alt="Vitrina de panadería artesanal" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.68" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Vitrina de panadería artesanal</span>
+          </button>
+
+          <button class="gallery-item" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947" aria-label="Abrir imagen: Detalle de latte art" data-eb-editable="link" data-eb-key="index.button.69" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947" alt="Detalle de latte art" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.70" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Detalle de latte art</span>
+          </button>
+
+          <button class="gallery-item" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=68c3f11c-a2a3-4164-8db7-9b88d57aa328" aria-label="Abrir imagen: Mesas de catación de café con cucharas y tazas" data-eb-editable="link" data-eb-key="index.button.71" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=68c3f11c-a2a3-4164-8db7-9b88d57aa328" alt="Mesas de catación de café con cucharas y tazas" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.72" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Mesas de catación</span>
+          </button>
+
+          <button class="gallery-item" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=957402e9-69da-47fb-a879-35924b6e8401" aria-label="Abrir imagen: Barista preparando café" data-eb-editable="link" data-eb-key="index.button.73" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=957402e9-69da-47fb-a879-35924b6e8401" alt="Barista preparando café" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.74" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Barista en acción</span>
+          </button>
+
+          <button class="gallery-item gallery-wide" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=1cc31910-7587-4d82-a498-6e8309b23bf3" aria-label="Abrir imagen: Interior con pared de ladrillo y estantería de café" data-eb-editable="link" data-eb-key="index.button.75" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=1cc31910-7587-4d82-a498-6e8309b23bf3" alt="Interior con pared de ladrillo y estantería de café" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.76" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Interior de ladrillo</span>
+          </button>
+
+          <button class="gallery-item" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=301b4b41-a2b3-4a4e-939b-ee1c4879537a" aria-label="Abrir imagen: Terraza de cafetería con plantas y mesas de madera" data-eb-editable="link" data-eb-key="index.button.77" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=301b4b41-a2b3-4a4e-939b-ee1c4879537a" alt="Terraza de cafetería con plantas y mesas de madera bajo luz natural" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.78" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Terraza</span>
+          </button>
+
+          <button class="gallery-item" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=3a1cd85e-238e-44e8-bdfb-e5316215ec1d" aria-label="Abrir imagen: Interior de cafetería con pared de ladrillo y estantería de café" data-eb-editable="link" data-eb-key="index.button.79" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=3a1cd85e-238e-44e8-bdfb-e5316215ec1d" alt="Interior de cafetería con pared de ladrillo, estantería de café y clientes" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.80" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Estantería de café</span>
+          </button>
+
+          <button class="gallery-item" type="button" data-full="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=dedb754c-cbdd-4aa8-b8d0-1f2723c79d06" aria-label="Abrir imagen: Vista exterior de la cafetería en el Valle de Monterrey" data-eb-editable="link" data-eb-key="index.button.81" data-eb-role="button" data-eb-kind="link">
+            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=dedb754c-cbdd-4aa8-b8d0-1f2723c79d06" alt="Vista exterior de la cafetería en el Valle de Monterrey" loading="lazy" / data-eb-editable="image" data-eb-key="index.img.82" data-eb-role="img" data-eb-kind="image">
+            <span class="gallery-caption">Fachada</span>
+          </button>
+
+        </div>
       </div>
     </section>
 
-    <section class="visit section" id="visitanos">
-      <div class="container visit-grid">
-        <div class="visit-info">
-          <p class="eyebrow">Visítanos</p>
-          <h2>Te esperamos en el <br>Valle de Monterrey</h2>
-          <div class="visit-row">
-            <span class="visit-icon" aria-hidden="true">📍</span>
-            <div>
-              <h3>Ubicación</h3>
-              <p>Monterrey, Nuevo León, México</p>
-              <a href="https://maps.google.com/?q=Monterrey" target="_blank" rel="noopener">Ver en Google Maps →</a>
-            </div>
-          </div>
-          <div class="visit-row">
-            <span class="visit-icon" aria-hidden="true">🕗</span>
-            <div>
-              <h3>Horario</h3>
-              <p>Lunes a Viernes · 7:00 – 21:00<br>Sábado · 8:00 – 22:00<br>Domingo · 9:00 – 15:00</p>
-            </div>
-          </div>
-          <div class="visit-row">
-            <span class="visit-icon" aria-hidden="true">📞</span>
-            <div>
-              <h3>Pedidos y reserva de mesa</h3>
-              <p><a href="tel:+528112345678">81 1234 5678</a></p>
-              <p>Entrega a domicilio en Monterrey. Pedidos por WhatsApp.</p>
-            </div>
-          </div>
-          <a class="btn btn-primary" href="https://wa.me/528112345678?text=Hola%20Caf%C3%A9%20Aroma%20Del%20Valle%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+    
+    <section class="section location" id="ubicacion" data-itm-editor>
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.83" data-eb-role="p" data-eb-kind="text">Ubicación y horario</p>
+          <h2 data-eb-editable="text" data-eb-key="index.h2.84" data-eb-role="h2" data-eb-kind="text">Ven a visitarnos</h2>
         </div>
-        <div class="visit-map">
-          <img src="assets/interior-brick.webp" alt="Interior de cafetería con pared de ladrillo y estantería de café">
+
+        <div class="location-grid reveal">
+          <div class="location-card">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.85" data-eb-role="h3" data-eb-kind="text">Horario</h3>
+            <ul class="schedule-list">
+              <li><span>Lunes a viernes</span><span>7:00 – 21:00</span></li>
+              <li><span>Sábado</span><span>8:00 – 22:00</span></li>
+              <li><span>Domingo</span><span>9:00 – 15:00</span></li>
+            </ul>
+          </div>
+
+          <div class="location-card">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.86" data-eb-role="h3" data-eb-kind="text">A domicilio</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.87" data-eb-role="p" data-eb-kind="text">
+              Recibimos pedidos por WhatsApp con entrega a domicilio en el Valle
+              de Monterrey. Cuéntanos qué quieres y lo preparamos.
+            </p>
+            <a class="btn btn-primary" href="https://wa.me/528112345678" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.88" data-eb-role="a" data-eb-kind="link">WhatsApp 811 234 5678</a>
+          </div>
+
+          <div class="location-card">
+            <h3 data-eb-editable="text" data-eb-key="index.h3.89" data-eb-role="h3" data-eb-kind="text">¿Cómo llegar?</h3>
+            <p data-eb-editable="text" data-eb-key="index.p.90" data-eb-role="p" data-eb-kind="text">Estamos en Monterrey, en pleno Valle. Abre el mapa para trazar tu ruta.</p>
+            <a class="btn btn-ghost" href="https://maps.google.com/?q=Monterrey" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.91" data-eb-role="a" data-eb-kind="link">Abrir en Google Maps</a>
+          </div>
         </div>
       </div>
     </section>
+
+    
+    <section class="section profile" id="perfil" data-itm-profile>
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.92" data-eb-role="p" data-eb-kind="text">Tu espacio</p>
+          <h2 data-eb-editable="text" data-eb-key="index.h2.93" data-eb-role="h2" data-eb-kind="text">Bienvenido de nuevo</h2>
+          <p data-eb-editable="text" data-eb-key="index.p.94" data-eb-role="p" data-eb-kind="text">
+            Tu nombre se muestra públicamente cuando participas. Tu teléfono
+            nunca queda visible para otros visitantes.
+          </p>
+        </div>
+        <div class="profile-card reveal" id="profile-card">
+          <div class="profile-avatar" id="profile-avatar" aria-hidden="true">?</div>
+          <div class="profile-info">
+            <p class="profile-name" id="profile-name" data-eb-editable="text" data-eb-key="index.p.95" data-eb-role="p" data-eb-kind="text">Inicia sesión con Google</p>
+            <p class="profile-hint" data-eb-editable="text" data-eb-key="index.p.96" data-eb-role="p" data-eb-kind="text">Para dejar comentarios y marcadores en esta cafetería.</p>
+          </div>
+          <button class="btn btn-primary" id="profile-action" type="button" data-eb-editable="link" data-eb-key="index.button.97" data-eb-role="button" data-eb-kind="link">Iniciar sesión</button>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section comments" id="comentarios"
+      data-itm-comments
+      data-project-id="759b2851-ad6c-43f7-a90e-e5f7d4232976">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow" data-eb-editable="text" data-eb-key="index.p.98" data-eb-role="p" data-eb-kind="text">Comentarios</p>
+          <h2 data-eb-editable="text" data-eb-key="index.h2.99" data-eb-role="h2" data-eb-kind="text">Lo que dicen los visitantes</h2>
+          <p data-eb-editable="text" data-eb-key="index.p.100" data-eb-role="p" data-eb-kind="text">
+            Comparte tu experiencia en Café Aroma Del Valle. Inicia sesión con
+            Google; solo tu nombre será público.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
+    <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="brand-mark" aria-hidden="true">☕</span>
-        <p><strong>Café Aroma Del Valle</strong></p>
-        <p>Cafetería de especialidad en Monterrey. Hecho de origen a taza.</p>
+        <strong>Café Aroma Del Valle</strong>
+        <p data-eb-editable="text" data-eb-key="index.p.101" data-eb-role="p" data-eb-kind="text">Cafetería de especialidad en el Valle de Monterrey.</p>
       </div>
       <div class="footer-col">
-        <h3>Contacto</h3>
-        <p>Monterrey, Nuevo León</p>
-        <p><a href="tel:+528112345678">81 1234 5678</a></p>
-        <a class="btn-whatsapp-text" href="https://wa.me/528112345678" target="_blank" rel="noopener">WhatsApp</a>
+        <h3 data-eb-editable="text" data-eb-key="index.h3.102" data-eb-role="h3" data-eb-kind="text">Contacto</h3>
+        <p data-eb-editable="text" data-eb-key="index.p.103" data-eb-role="p" data-eb-kind="text">WhatsApp: <a href="https://wa.me/528112345678" target="_blank" rel="noopener" data-eb-editable="link" data-eb-key="index.a.104" data-eb-role="a" data-eb-kind="link">811 234 5678</a></p>
+        <p data-eb-editable="text" data-eb-key="index.p.105" data-eb-role="p" data-eb-kind="text">Monterrey, Nuevo León</p>
       </div>
       <div class="footer-col">
-        <h3>Horario</h3>
-        <p>Lun a Vie · 7:00 – 21:00</p>
-        <p>Sáb · 8:00 – 22:00</p>
-        <p>Dom · 9:00 – 15:00</p>
+        <h3 data-eb-editable="text" data-eb-key="index.h3.106" data-eb-role="h3" data-eb-kind="text">Horario</h3>
+        <p data-eb-editable="text" data-eb-key="index.p.107" data-eb-role="p" data-eb-kind="text">Lun – Vie · 7:00 a 21:00</p>
+        <p data-eb-editable="text" data-eb-key="index.p.108" data-eb-role="p" data-eb-kind="text">Sáb · 8:00 a 22:00</p>
+        <p data-eb-editable="text" data-eb-key="index.p.109" data-eb-role="p" data-eb-kind="text">Dom · 9:00 a 15:00</p>
       </div>
       <div class="footer-col">
-        <h3>Menú</h3>
-        <p><a href="#menu">Café de especialidad</a></p>
-        <p><a href="#menu">Desayunos</a></p>
-        <p><a href="#menu">Opciones veganas</a></p>
+        <h3 data-eb-editable="text" data-eb-key="index.h3.110" data-eb-role="h3" data-eb-kind="text">Navegación</h3>
+        <a href="#nosotros" data-eb-editable="link" data-eb-key="index.a.111" data-eb-role="a" data-eb-kind="link">Nosotros</a>
+        <a href="#menu" data-eb-editable="link" data-eb-key="index.a.112" data-eb-role="a" data-eb-kind="link">Menú</a>
+        <a href="#galeria" data-eb-editable="link" data-eb-key="index.a.113" data-eb-role="a" data-eb-kind="link">Galería</a>
+        <a href="#comentarios" data-eb-editable="link" data-eb-key="index.a.114" data-eb-role="a" data-eb-kind="link">Comentarios</a>
       </div>
     </div>
-    <div class="container footer-bottom">
-      <p>© <span id="yearNow">2026</span> Café Aroma Del Valle — Monterrey, México.</p>
+    <div class="footer-bottom">
+      <div class="container">
+        <p data-eb-editable="text" data-eb-key="index.p.115" data-eb-role="p" data-eb-kind="text">&copy; <span id="year">2026</span> Café Aroma Del Valle · Monterrey</p>
+      </div>
     </div>
   </footer>
 
-  <a class="wa-float" id="waFloat" href="https://wa.me/528112345678?text=Hola%20Caf%C3%A9%20Aroma%20Del%20Valle%2C%20quisiera%20hacer%20un%20pedido." target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35zM12 2a10 10 0 0 0-8.6 15L2 22l5.15-1.35A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.17-.43-4.54-1.24l-.33-.2-3.05.8.81-2.98-.21-.34A8.2 8.2 0 1 1 12 20.2z"/></svg>
-  </a>
-
-  <div class="cart-bar" id="cartBar" hidden>
-    <button class="cart-bar-info" id="cartBarToggle" aria-expanded="false">
-      <span class="cart-icon" aria-hidden="true">🛒</span>
-      <span id="cartCount">0</span>
-      <span class="cart-sep"></span>
-      <span id="cartTotal">$0</span>
-    </button>
-    <button class="btn btn-whatsapp" id="cartSendBtn" type="button">Enviar pedido por WhatsApp</button>
+  
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden>
+    <button class="lightbox-close" type="button" aria-label="Cerrar imagen" data-eb-editable="link" data-eb-key="index.button.116" data-eb-role="button" data-eb-kind="link">&times;</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="" / data-eb-editable="image" data-eb-key="index.img.117" data-eb-role="img" data-eb-kind="image">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
   </div>
 
-  <div class="cart-drawer" id="cartDrawer" hidden>
-    <div class="cart-drawer-head">
-      <h3>Tu pedido</h3>
-      <button id="cartClose" class="cart-close" aria-label="Cerrar pedido">✕</button>
-    </div>
-    <ul class="cart-items" id="cartItems"></ul>
-    <label class="cart-notes">
-      <span>Notas (dirección, instrucciones…)</span>
-      <textarea id="cartNotes" rows="3" placeholder="Ej. Entrega en privada Las Flores 123, sin cebolla, llamar al llegar."></textarea>
-    </label>
-    <div class="cart-total-line">
-      <span>Total estimado</span>
-      <strong id="cartTotalDrawer">$0</strong>
-    </div>
-    <button class="btn btn-whatsapp btn-block" id="cartSendBtn2" type="button">Enviar pedido por WhatsApp</button>
-    <p class="cart-hint">Se abrirá WhatsApp con tu pedido listo para enviar.</p>
-  </div>
-  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <noscript>
-    <p style="text-align:center;padding:1rem;background:#f6efe6;color:#5b3a28;">Para ordenar por WhatsApp habilita JavaScript o escríbenos al <a href="https://wa.me/528112345678">81 1234 5678</a>.</p>
-  </noscript>
-
-  <script src="script.js"></script>
+  <script src="https://itm-void-excepcional.pages.dev/comments.js" defer></script>
+  <script src="./script.js"></script>
 </body>
 </html>
