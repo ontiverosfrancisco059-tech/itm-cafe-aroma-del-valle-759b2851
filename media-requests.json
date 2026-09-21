@@ -1,0 +1,52 @@
+{
+  "media_requests": [
+    {
+      "slot_id": "carta-postres",
+      "page": "carta",
+      "section": "postres",
+      "category": "dish",
+      "label": "Postres artesanales",
+      "theme": "Postres artesanales que acompañan el café de especialidad",
+      "query": "artisan dessert slice with espresso coffee cup, specialty coffee shop cozy setting",
+      "priority": "high",
+      "source": "search",
+      "fallback": "GR-AI"
+    },
+    {
+      "slot_id": "carta-bebidas-frias",
+      "page": "carta",
+      "section": "bebidas-frias",
+      "category": "dish",
+      "label": "Bebidas frías",
+      "theme": "Bebidas frías de café refrescantes y de especialidad",
+      "query": "iced cold brew coffee in tall glass with cream, specialty coffee shop",
+      "priority": "high",
+      "source": "search",
+      "fallback": "GR-AI"
+    },
+    {
+      "slot_id": "inicio-cta-bg",
+      "page": "inicio",
+      "section": "cta-pedidos",
+      "category": "custom",
+      "label": "Fondo de llamada a la acción",
+      "theme": "Textura cálida de café y granos para el bloque de pedidos por WhatsApp",
+      "query": "warm roasted coffee beans texture background, moody lighting",
+      "priority": "low",
+      "source": "generic",
+      "fallback": "GR-AI"
+    },
+    {
+      "slot_id": "carta-banner",
+      "page": "carta",
+      "section": "banner",
+      "category": "custom",
+      "label": "Banner decorativo de la carta",
+      "theme": "Ambiente acogedor de cafetería como encabezado visual de la carta",
+      "query": "cozy specialty coffee shop interior ambient soft light",
+      "priority": "low",
+      "source": "generic",
+      "fallback": "GR-AI"
+    }
+  ]
+}
