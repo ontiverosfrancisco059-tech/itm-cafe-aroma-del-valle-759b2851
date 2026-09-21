@@ -1,136 +1,171 @@
+/* ============================================================
+   Café Aroma del Valle · script.js
+   Interacciones: navegación, tabs del menú, reveal, lightbox,
+   pedidos por WhatsApp y datos dinámicos.
+   ============================================================ */
+
 (function () {
   'use strict';
 
+  var WHATSAPP_NUMBER = '528112345678';
+
+  function qs(selector, scope) { return (scope || document).querySelector(selector); }
+  function qsa(selector, scope) { return Array.prototype.slice.call((scope || document).querySelectorAll(selector)); }
+
+  /* ---------- Año dinámico en el footer ---------- */
   var yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  var navEl = document.getElementById('nav');
-  var onScrollHeader = function () {
-    if (window.scrollY > 8) {
-      navEl.classList.add('is-scrolled');
-    } else {
-      navEl.classList.remove('is-scrolled');
-    }
-  };
-  window.addEventListener('scroll', onScrollHeader, { passive: true });
+  /* ---------- Header: sombra al hacer scroll ---------- */
+  var header = document.getElementById('header');
+  function onScrollHeader() {
+    if (!header) return;
+    header.classList.toggle('is-scrolled', window.scrollY > 10);
+  }
   onScrollHeader();
+  window.addEventListener('scroll', onScrollHeader, { passive: true });
 
-  var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  var body = document.body;
+  /* ---------- Navegación móvil ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
 
-  var closeMenu = function () {
-    links.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Abrir menú');
-    body.style.overflow = '';
-  };
+  function closeNav() {
+    if (!navToggle || !mainNav) return;
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    mainNav.classList.remove('is-open');
+  }
 
-  var openMenu = function () {
-    links.classList.add('is-open');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Cerrar menú');
-    body.style.overflow = 'hidden';
-  };
+  function toggleNav() {
+    var open = mainNav.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
 
-  if (toggle && links) {
-    toggle.addEventListener('click', function () {
-      var open = links.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-      body.style.overflow = open ? 'hidden' : '';
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', toggleNav);
+    qsa('a', mainNav).forEach(function (link) {
+      link.addEventListener('click', closeNav);
     });
-
-    links.addEventListener('click', function (event) {
-      if (event.target.closest('a')) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeMenu();
-      }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeNav();
     });
   }
 
-  var filterButtons = Array.prototype.slice.call(document.querySelectorAll('#menuFilters .chip'));
-  var menuCards = Array.prototype.slice.call(document.querySelectorAll('#menuGrid .menu-card'));
+  /* ---------- Tabs del menú ---------- */
+  var tabs = qsa('.menu-tab');
+  var panels = qsa('.menu-panel');
 
-  filterButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-      filterButtons.forEach(function (btn) {
-        btn.classList.remove('chip--active');
-        btn.setAttribute('aria-selected', 'false');
-      });
-      button.classList.add('chip--active');
-      button.setAttribute('aria-selected', 'true');
+  function activateTab(tab) {
+    if (!tab) return;
+    var target = tab.getAttribute('data-tab');
 
-      var filter = button.getAttribute('data-filter');
-      menuCards.forEach(function (card) {
-        var match = filter === 'all' || card.getAttribute('data-category') === filter;
-        card.classList.toggle('is-hidden', !match);
-      });
+    tabs.forEach(function (t) {
+      var active = t === tab;
+      t.classList.toggle('is-active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    panels.forEach(function (panel) {
+      panel.classList.toggle('is-active', panel.getAttribute('data-tabpanel') === target);
+    });
+
+    var descriptors = qsa('.service-card [data-tab]');
+    descriptors.forEach(function (d) {
+      d.classList.toggle('is-active', d.getAttribute('data-tab') === target);
+    });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activateTab(tab); });
+  });
+
+  /* CTA de "servicios" que apunta a una pestaña del menú */
+  qsa('[data-tab]').forEach(function (el) {
+    if (el.classList.contains('menu-tab')) return;
+    el.addEventListener('click', function () {
+      var targetTab = qs('.menu-tab[data-tab="' + el.getAttribute('data-tab') + '"]');
+      if (targetTab) activateTab(targetTab);
     });
   });
 
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  /* Desde un enlace externo con #?tab=… */
+  function readTabFromHash() {
+    var hash = window.location.hash;
+    var match = hash && hash.match(/tab=([a-z]+)/);
+    match.forEach && activateTab(qs('.menu-tab[data-tab="' + match[1] + '"]'));
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = qsa('.reveal');
+  var scrollPadding = 26;
 
   if ('IntersectionObserver' in window) {
-    var revealObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px ' + scrollPadding + '% 0px' });
 
-    revealEls.forEach(function (el) {
-      revealObserver.observe(el);
-    });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
   } else {
-    revealEls.forEach(function (el) {
-      el.classList.add('is-revealed');
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---------- Pedidos por WhatsApp con plato pre-cargado ---------- */
+  qsa('.wa-order').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      var dish = link.getAttribute('data-dish');
+      if (!dish) return;
+      var message = 'Hola Café Aroma del Valle, quiero pedir: ' + dish;
+      link.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    });
+  });
+
+  /* ---------- Lightbox de galería ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.hidden = true;
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  qsa('.gallery-item').forEach(function (item) {
+    item.addEventListener('click', function () {
+      var full = item.getAttribute('data-full');
+      var img = qs('img', item);
+      if (full) openLightbox(full, img ? img.getAttribute('alt') : '');
+    });
+  });
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
     });
   }
 
-  var navLinkEls = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
-  var sections = [];
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox && !lightbox.hidden) closeLightbox();
+  });
 
-  window.addEventListener('load', function () {
-    navLinkEls.forEach(function (link) {
-      var id = link.getAttribute('href');
-      if (id && id.charAt(0) === '#') {
-        var section = document.querySelector(id);
-        if (section) {
-          sections.push({ id: id, section: section, link: link });
-        }
-      }
-    });
-
-    if ('IntersectionObserver' in window && sections.length) {
-      var linkObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              sections.forEach(function (item) {
-                item.link.classList.toggle('is-active', item.section === entry.target);
-              });
-            }
-          });
-        },
-        { rootMargin: '-45% 0px -50% 0px' }
-      );
-
-      sections.forEach(function (item) {
-        linkObserver.observe(item.section);
-      });
-    }
+  /* ---------- Preparación tras carga ---------- */
+  window.addEventListener('DOMContentLoaded', function () {
+    readTabFromHash();
   });
 })();
