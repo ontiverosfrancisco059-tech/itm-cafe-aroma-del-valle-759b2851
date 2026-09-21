@@ -1,642 +1,232 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Café Aroma Del Valle | Cafetería de especialidad en Monterrey</title>
-  <meta name="description" content="Café Aroma Del Valle: cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal, desayunos y opciones veganas. Pedidos por WhatsApp con entrega a domicilio.">
+  <meta name="description" content="Cafetería de especialidad en el Valle de Monterrey. Café de origen, panadería artesanal, desayunos y opciones veganas. Pide por WhatsApp con entrega a domicilio.">
   <meta property="og:title" content="Café Aroma Del Valle">
-  <meta property="og:description" content="Café de especialidad, panadería artesanal y desayunos en Monterrey. Pedidos por WhatsApp con entrega a domicilio.">
+  <meta property="og:description" content="Café de origen, panadería artesanal, desayunos y opciones veganas en Monterrey. Pide por WhatsApp.">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_MX">
-  <meta name="theme-color" content="#2b1b12">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <meta property="og:image" content="assets/interior-cafe.jpg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <a class="skip-link" href="#inicio">Saltar al contenido</a>
+  <a class="skip-link" href="#menu">Saltar al menú</a>
 
-  <!-- ===== Header / Navegación ===== -->
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#inicio" aria-label="Café Aroma Del Valle, inicio">
-        <span class="brand-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
-            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
-            <path d="M6 2v3M10 2v3M14 2v3"/>
-          </svg>
-        </span>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark" aria-hidden="true">☕</span>
         <span class="brand-text">
           <strong>Café Aroma Del Valle</strong>
           <small>Cafetería de especialidad</small>
         </span>
       </a>
-
-      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
-        <ul>
-          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-          <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-          <li><a href="#menu" class="nav-link">Menú</a></li>
-          <li><a href="#galeria" class="nav-link">Galería</a></li>
-          <li><a href="#visitanos" class="nav-link">Visítanos</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <a class="btn btn-primary btn-whatsapp" href="https://wa.me/5218112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20Caf%C3%A9%20Aroma%20Del%20Valle" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-            <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/>
-          </svg>
-          <span>Pedir por WhatsApp</span>
-        </a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-nav">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#visitanos">Visítanos</a></li>
+        <li><a class="btn btn-primary btn-sm" href="#menu">Ordenar ahora</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" id="inicio">
-    <div class="hero-media" aria-hidden="true">
-      <picture>
-        <source media="(max-width: 640px)" srcset="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=9d6c26b2-7205-488f-87eb-b3991c91f366">
-        <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=9d6c26b2-7205-488f-87eb-b3991c91f366" alt="">
+  <main>
+    <section class="hero" id="inicio">
+      <picture class="hero-bg">
+        <source media="(max-width: 760px)" srcset="assets/interior-cafe.jpg">
+        <img src="assets/interior-cafe.jpg" alt="Interior de la cafetería con mesas y luz cálida">
       </picture>
-      <div class="hero-overlay" aria-hidden="true"></div>
-    </div>
-    <div class="container hero-content">
-      <p class="hero-eyebrow"><span class="eyebrow-line"></span>Cafetería de especialidad en Monterrey</p>
-      <h1 class="hero-title">Café de origen, momentos que se sienten como hogar</h1>
-      <p class="hero-subtitle">Café de especialidad, panadería artesanal, desayunos y opciones veganas en el Valle de Monterrey. Ambiente acogedor, baristas certificados y wifi gratuito.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="#menu">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M4 4h16M4 10h16M4 16h10"/>
-          </svg>
-          Ver nuestro menú
-        </a>
-        <a class="btn btn-outline btn-lg" href="https://wa.me/5218112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20Caf%C3%A9%20Aroma%20Del%20Valle" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-            <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/>
-          </svg>
-          Pedir a domicilio
-        </a>
-      </div>
-      <ul class="hero-badges">
-        <li><span aria-hidden="true">🌱</span> Opciones veganas</li>
-        <li><span aria-hidden="true">📶</span> Wifi gratuito</li>
-        <li><span aria-hidden="true">🛵</span> Entrega a domicilio</li>
-        <li><span aria-hidden="true">🪄</span> Baristas certificados</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== Nosotros ===== -->
-  <section class="section about" id="nosotros">
-    <div class="container">
-      <div class="section-head center">
-        <p class="section-kicker">Sobre nosotros</p>
-        <h2 class="section-title">Un rincón acogedor en el Valle de Monterrey</h2>
-        <p class="section-lead">Café de origen tostado con esmero, pan recién horneado cada mañana y un espacio pensado para quedarse un rato más.</p>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-gallery">
-          <figure class="about-img about-img-main reveal">
-            <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=9d6c26b2-7205-488f-87eb-b3991c91f366" alt="Interior de la cafetería con mesas y luz cálida" loading="lazy">
-          </figure>
-          <figure class="about-img about-img-small reveal">
-            <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=e10d7c70-3fc3-4cae-8dee-23ba30b5ed49" alt="Barista preparando café de especialidad" loading="lazy">
-          </figure>
-          <figure class="about-img about-img-third reveal">
-            <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821" alt="Vitrina de panadería artesanal" loading="lazy">
-          </figure>
-        </div>
-        <div class="about-text">
-          <p>Café Aroma Del Valle nace con una idea simple: tomar café de especialidad en un lugar donde te sientas en casa. En el corazón del Valle de Monterrey, tostamos y preparamos cada taza con granos de origen y baristas certificados que cuidan cada detalle.</p>
-          <p>Acompañamos el café con <strong>panadería artesanal recién horneada</strong>, desayunos completos y opciones 100% veganas. ¿Se te antojó y no puedes venir? <strong>Pedidos por WhatsApp con entrega a domicilio</strong> en Monterrey.</p>
-          <ul class="about-features">
-            <li>
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-              </span>
-              <span><strong>Café de origen</strong><br>Granos seleccionados y tostados en casa.</span>
-            </li>
-            <li>
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M7 21v-2m10 2v-2"/><path d="M2 11h20l-1.5-5H3.5Z"/><path d="M12 6V3M5 2v2M8 2v2"/></svg>
-              </span>
-              <span><strong>Panadería artesanal</strong><br>Hornea de madrugada, todos los días.</span>
-            </li>
-            <li>
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.4-9A5.7 5.7 0 0 1 12 6.5 5.7 5.7 0 0 1 21.4 12C19 16.4 12 21 12 21Z"/></svg>
-              </span>
-              <span><strong>Ambiente acogedor</strong><br>Wifi gratis y espacio para trabajar o platicar.</span>
-            </li>
-            <li>
-              <span class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-              </span>
-              <span><strong>Baristas certificados</strong><br>Preparación cuidada en cada método.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Menú ===== -->
-  <section class="section menu" id="menu">
-    <div class="container">
-      <div class="section-head center">
-        <p class="section-kicker">Nuestro menú</p>
-        <h2 class="section-title">Hecho con intención, para cada momento</h2>
-        <p class="section-lead">Puedes ordenar cualquier platillo por WhatsApp con entrega a domicilio o recogerlo en tienda.</p>
-      </div>
-
-      <div class="menu-tabs" role="tablist" aria-label="Categorías del menú">
-        <button class="menu-tab active" data-category="all" role="tab" aria-selected="true">Todo</button>
-        <button class="menu-tab" data-category="cafes" role="tab" aria-selected="false">Cafés</button>
-        <button class="menu-tab" data-category="desayunos" role="tab" aria-selected="false">Desayunos</button>
-        <button class="menu-tab" data-category="panaderia" role="tab" aria-selected="false">Panadería</button>
-        <button class="menu-tab" data-category="vegano" role="tab" aria-selected="false">Vegano</button>
-        <button class="menu-tab" data-category="frias" role="tab" aria-selected="false">Bebidas frías</button>
-      </div>
-
-      <div class="menu-grid">
-        <!-- Cafés -->
-        <article class="menu-card reveal" data-category="cafes">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=6a8996e6-e2ce-473c-b45a-f9d8ef2d9ca5" alt="Café de especialidad con latte art" loading="lazy">
-            <span class="menu-badge">Favorito</span>
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Latte de especialidad</h3>
-              <p class="price">$68</p>
-            </div>
-            <p>Espresso de origen con leche vaporizada y latte art. Opciones veganas disponibles.</p>
-            <button class="btn-order" data-order="Latte de especialidad - $68 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="cafes">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4c34b17a-580b-4ada-aa77-c538ec0db4cc" alt="Café de método pour over" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Pour over</h3>
-              <p class="price">$75</p>
-            </div>
-            <p>Café de origen filtrado a mano, lento y aromático. Perfecto para descubrir notas de tueste claro.</p>
-            <button class="btn-order" data-order="Pour over - $75 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="cafes">
-          <div class="menu-card-img">
-            <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=e10d7c70-3fc3-4cae-8dee-23ba30b5ed49" alt="Barista sirviendo café de especialidad" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Cortado de la casa</h3>
-              <p class="price">$58</p>
-            </div>
-            <p>Un equilibrio perfecto entre espresso y leche, el favorito de nuestros baristas.</p>
-            <button class="btn-order" data-order="Cortado de la casa - $58 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <!-- Desayunos -->
-        <article class="menu-card reveal" data-category="desayunos">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=ee3d98af-9adb-4d76-9c01-5e8f0b47ce57" alt="Chilaquiles con café" loading="lazy">
-            <span class="menu-badge">Top</span>
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Chilaquiles de la casa</h3>
-              <p class="price">$95</p>
-            </div>
-            <p>Tortilla de maíz, salsa roja o verde, crema, queso fresco y huevo al gusto. Acompaña con tu café.</p>
-            <button class="btn-order" data-order="Chilaquiles de la casa - $95 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="desayunos">
-          <div class="menu-card-img">
-            <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=e10d7c70-3fc3-4cae-8dee-23ba30b5ed49" alt="Desayuno con café de especialidad" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Huevos al gusto con café</h3>
-              <p class="price">$88</p>
-            </div>
-            <p>Huevos revueltos o estrellados con pan artesanal, aguacate y una bebida de especialidad.</p>
-            <button class="btn-order" data-order="Huevos al gusto con café - $88 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="desayunos">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d" alt="Panadería artesanal recién horneada" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Pan dulce + bebida</h3>
-              <p class="price">$72</p>
-            </div>
-            <p>Tu pan dulce artesanal favorito con bebida de especialidad. Combinación clásica de la casa.</p>
-            <button class="btn-order" data-order="Pan dulce + bebida - $72 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <!-- Panadería -->
-        <article class="menu-card reveal" data-category="panaderia">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821" alt="Vitrina de panadería artesanal" loading="lazy">
-            <span class="menu-badge">Recién horneado</span>
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Concha artesanal</h3>
-              <p class="price">$32</p>
-            </div>
-            <p>Concha de vainilla horneada cada mañana. La reina de nuestra vitrina.</p>
-            <button class="btn-order" data-order="Concha artesanal - $32 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="panaderia">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=4a40467c-8717-4b0f-994e-df0ed84c121d" alt="Pan de masa madre artesanal" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Pan de masa madre</h3>
-              <p class="price">$85</p>
-            </div>
-            <p>Pan fermentado con masa madre, crujiente y esponjoso. Ideal para acompañar tus desayunos.</p>
-            <button class="btn-order" data-order="Pan de masa madre - $85 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="panaderia">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947" alt="Detalle de latte art" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Gallería dulce</h3>
-              <p class="price">$45</p>
-            </div>
-            <p>Dulces artesanales que cambian cada semana: muffins, galletas y panqués de temporada.</p>
-            <button class="btn-order" data-order="Dulces artesanales - $45 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <!-- Vegano -->
-        <article class="menu-card reveal" data-category="vegano">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=a599b91a-a465-4595-8264-1552299a7720" alt="Bowl vegano de breakfast" loading="lazy">
-            <span class="menu-badge">100% vegano</span>
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Bowl de breakfast</h3>
-              <p class="price">$98</p>
-            </div>
-            <p>Granola, frutas frescas, açaí y semillas. Energía limpia para empezar el día.</p>
-            <button class="btn-order" data-order="Bowl de breakfast vegano - $98 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="vegano">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=435575ff-8529-4fc0-b84f-02cf22dfd14d" alt="Tofu scramble vegano con vegetales y pan integral" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Tofu scramble con pan integral</h3>
-              <p class="price">$92</p>
-            </div>
-            <p>Tofu revuelto al curry con vegetales, aguacate y pan integral tostado.</p>
-            <button class="btn-order" data-order="Tofu scramble vegano - $92 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="vegano">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=79455095-fa5d-47f5-8d58-bb03013393f0" alt="Bowl vegano colorido con granola, frutas frescas y açaí" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Bowl de açaí</h3>
-              <p class="price">$105</p>
-            </div>
-            <p>Açaí cremoso con granola, plátano, fresas y coco rallado. Sin lactosa, sin gluten.</p>
-            <button class="btn-order" data-order="Bowl de açaí vegano - $105 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <!-- Bebidas frías -->
-        <article class="menu-card reveal" data-category="frias">
-          <div class="menu-card-img">
-            <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=e10d7c70-3fc3-4cae-8dee-23ba30b5ed49" alt="Bebidas frías de café" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Cold brew</h3>
-              <p class="price">$70</p>
-            </div>
-            <p>Extracción en frío por 18 horas. Suave, dulce en notas y muy refrescante.</p>
-            <button class="btn-order" data-order="Cold brew - $70 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="frias">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947" alt="Iced latte frío" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Iced latte</h3>
-              <p class="price">$72</p>
-            </div>
-            <p>Espresso doble sobre hielo con leche fría. Versión vegana con leche de avena disponible.</p>
-            <button class="btn-order" data-order="Iced latte - $72 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="menu-card reveal" data-category="frias">
-          <div class="menu-card-img">
-            <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=17eb13cb-a7ee-49a7-a109-41243b6ce3ab" alt="Granos de café de origen" loading="lazy">
-          </div>
-          <div class="menu-card-body">
-            <div class="menu-card-head">
-              <h3>Limonada de la casa</h3>
-              <p class="price">$55</p>
-            </div>
-            <p>Limonada natural con hierbabuena y toque de café frío. Refrescante todo el año.</p>
-            <button class="btn-order" data-order="Limonada de la casa - $55 MXN">
-              Pedir por WhatsApp
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-            </button>
-          </div>
-        </article>
-      </div>
-
-      <p class="menu-note">
-        ¿No encuentras lo que buscas? Escríbenos y lo preparamos. <a class="link-whatsapp" href="https://wa.me/5218112345678" target="_blank" rel="noopener">Abre WhatsApp</a> para hacer tu pedido con entrega a domicilio en Monterrey.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== Cómo pedir ===== -->
-  <section class="section order" id="pedidos">
-    <div class="container">
-      <div class="order-inner">
-        <div class="order-copy">
-          <p class="section-kicker light">Pedidos a domicilio</p>
-          <h2 class="section-title light">Pide por WhatsApp, sin filas y sin salir de casa</h2>
-          <p class="section-lead light">Envía tu pedido, te confirmamos el total y llegamos a tu puerta en el Valle de Monterrey.</p>
-          <a class="btn btn-accent btn-lg" href="https://wa.me/5218112345678?text=Hola%2C%20quiero%20pedir%20a%20domicilio%20en%20Caf%C3%A9%20Aroma%20Del%20Valle" target="_blank" rel="noopener">
-            Iniciar pedido ahora
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="hero-eyebrow" id="heroEyebrow">Café de especialidad · Valle de Monterrey</p>
+        <h1>Café Aroma <span>Del Valle</span></h1>
+        <p class="hero-lead">Café de origen, panadería artesanal, desayunos y opciones veganas en un ambiente acogedor con baristas certificados y wifi gratuito.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu" id="heroOrderBtn">Ver menú y pedir</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/528112345678?text=Hola%20Caf%C3%A9%20Aroma%20Del%20Valle%2C%20quisiera%20hacer%20un%20pedido." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35zM12 2a10 10 0 0 0-8.6 15L2 22l5.15-1.35A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.17-.43-4.54-1.24l-.33-.2-3.05.8.81-2.98-.21-.34A8.2 8.2 0 1 1 12 20.2z"/></svg>
+            Pedir por WhatsApp
           </a>
         </div>
-        <ol class="order-steps">
-          <li>
-            <span class="step-num">1</span>
-            <div>
-              <h3>Elige en el menú</h3>
-              <p>Revisa nuestro menú y arma tu pedido, o simplemente di "¡lo de siempre!"</p>
-            </div>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <div>
-              <h3>Escríbenos por WhatsApp</h3>
-              <p>Te contestamos rápido para confirmar disponibilidad y tiempo de entrega.</p>
-            </div>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <div>
-              <h3>Recíbelo en tu puerta</h3>
-              <p>Entrega a domicilio en Monterrey. También puedes pasar a recogerlo en tienda.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Galería ===== -->
-  <section class="section gallery" id="galeria">
-    <div class="container">
-      <div class="section-head center">
-        <p class="section-kicker">Galería</p>
-        <h2 class="section-title">Momentos que nos dan gusto compartir</h2>
-      </div>
-      <div class="gallery-grid" id="gallery-grid">
-        <figure class="gallery-item reveal">
-          <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=957402e9-69da-47fb-a879-35924b6e8401" alt="Barista preparando café" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=be5dd427-9355-4c82-8a78-1943d4a0c821" alt="Vitrina de panadería artesanal" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=9d6c26b2-7205-488f-87eb-b3991c91f366" alt="Interior de la cafetería con mesas y luz cálida" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=301b4b41-a2b3-4a4e-939b-ee1c4879537a" alt="Terraza de cafetería con plantas y mesas de madera" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=d18438c6-9d62-4551-8b85-8c607fa4b947" alt="Detalle de latte art" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://8f785f4a.itm-void-excepcional.pages.dev/api/itm-project-assets?file=68c3f11c-a2a3-4164-8db7-9b88d57aa328" alt="Mesas de catación de café con cucharas y tazas" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=3a1cd85e-238e-44e8-bdfb-e5316215ec1d" alt="Interior de cafetería con pared de ladrillo y estantería de café" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=17eb13cb-a7ee-49a7-a109-41243b6ce3ab" alt="Granos de café de origen" loading="lazy">
-        </figure>
-        <figure class="gallery-item reveal">
-          <img src="https://itm-void-excepcional.pages.dev/api/itm-project-assets?file=dedb754c-cbdd-4aa8-b8d0-1f2723c79d06" alt="Vista exterior de la cafetería en el Valle de Monterrey" loading="lazy">
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Visítanos ===== -->
-  <section class="section visit" id="visitanos">
-    <div class="container">
-      <div class="section-head center">
-        <p class="section-kicker">Visítanos</p>
-        <h2 class="section-title">Te esperamos con una taza lista</h2>
-      </div>
-
-      <div class="visit-grid">
-        <div class="visit-card reveal">
-          <span class="visit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <h3>Ubicación</h3>
-          <p>Valle de Monterrey, Nuevo León</p>
-          <a class="visit-link" href="https://maps.google.com/?q=Monterrey" target="_blank" rel="noopener">Ver en Google Maps →</a>
+        <div class="hero-badges">
+          <span>✓ Entrega a domicilio</span>
+          <span>✓ Opciones veganas</span>
+          <span>✓ Wifi gratuito</span>
         </div>
-        <div class="visit-card reveal">
-          <span class="visit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          </span>
-          <h3>Horario</h3>
-          <ul class="hours">
-            <li><span>Lunes a Viernes</span><strong>7:00 – 21:00</strong></li>
-            <li><span>Sábado</span><strong>8:00 – 22:00</strong></li>
-            <li><span>Domingo</span><strong>9:00 – 15:00</strong></li>
+      </div>
+      <a class="hero-scroll" href="#nosotros" aria-label="Bajar a nosotros"><span></span></a>
+    </section>
+
+    <section class="about section" id="nosotros">
+      <div class="container about-grid">
+        <figure class="about-media">
+          <img src="assets/barista-preparando.png" alt="Barista preparando café de especialidad">
+          <figcaption>Café de origen, tostado con esmero.</figcaption>
+        </figure>
+        <div class="about-text">
+          <p class="eyebrow">Nuestra historia</p>
+          <h2>Café de especialidad <br>con sabor a hogar</h2>
+          <p>Somos una cafetería de especialidad en el Valle de Monterrey. Ofrecemos café de origen con trazabilidad, panadería artesanal horneada cada mañana, desayunos completos y opciones veganas.</p>
+          <p>Nuestro equipo de baristas certificados prepara cada taza con técnica y cariño, en un ambiente acogedor ideal para trabajar, estudiar o convivir. Y si prefieres quedarte en casa, llevamos tu pedido hasta tu puerta.</p>
+          <ul class="about-points">
+            <li><strong>Baristas certificados</strong> — SCAA / SCA</li>
+            <li><strong>Café de origen</strong> — Chiapas y Veracruz</li>
+            <li><strong>Panadería propia</strong> — sin conservadores</li>
+            <li><strong>Wifi gratuito</strong> — ideal para remoto</li>
           </ul>
-        </div>
-        <div class="visit-card reveal">
-          <span class="visit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-          </span>
-          <h3>Contacto y pedidos</h3>
-          <p>WhatsApp y teléfono: <a href="tel:+528112345678">81 1234 5678</a></p>
-          <p class="visit-deal">Entrega a domicilio disponible.</p>
-          <a class="visit-link" href="https://wa.me/5218112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20Caf%C3%A9%20Aroma%20Del%20Valle" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+          <a class="btn btn-outline" href="#menu">Explorar el menú</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== CTA final ===== -->
-  <section class="cta">
-    <div class="container cta-inner">
-      <h2 class="cta-title">¿Se te antojó? Pídelo en segundos.</h2>
-      <p class="cta-text">Manda tu pedido por WhatsApp y lo preparamos al momento. Entrega a domicilio en el Valle de Monterrey.</p>
-      <a class="btn btn-accent btn-lg" href="https://wa.me/5218112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20Caf%C3%A9%20Aroma%20Del%20Valle" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/></svg>
-        Pedir por WhatsApp
-      </a>
-    </div>
-  </section>
+    <section class="quote-strip" aria-hidden="true">
+      <div class="container quote-marquee">
+        <span>☕ Café de origen</span><span>🥐 Panadería artesanal</span><span>🌱 Opciones veganas</span><span>🍳 Desayunos completos</span>
+      </div>
+    </section>
 
-  <!-- ===== Footer ===== -->
+    <section class="menu section" id="menu">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Nuestro menú</p>
+          <h2>Lo que preparamos <br>para ti</h2>
+          <p class="section-sub">Agrega al pedido y envíalo por WhatsApp. Precios en pesos mexicanos (MXN).</p>
+        </header>
+
+        <div class="menu-tabs" id="menuTabs" role="tablist" aria-label="Categorías del menú"></div>
+
+        <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="gallery section" id="galeria">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Galería</p>
+          <h2>Un vistazo a nuestro espacio</h2>
+        </header>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section class="visit section" id="visitanos">
+      <div class="container visit-grid">
+        <div class="visit-info">
+          <p class="eyebrow">Visítanos</p>
+          <h2>Te esperamos en el <br>Valle de Monterrey</h2>
+          <div class="visit-row">
+            <span class="visit-icon" aria-hidden="true">📍</span>
+            <div>
+              <h3>Ubicación</h3>
+              <p>Monterrey, Nuevo León, México</p>
+              <a href="https://maps.google.com/?q=Monterrey" target="_blank" rel="noopener">Ver en Google Maps →</a>
+            </div>
+          </div>
+          <div class="visit-row">
+            <span class="visit-icon" aria-hidden="true">🕗</span>
+            <div>
+              <h3>Horario</h3>
+              <p>Lunes a Viernes · 7:00 – 21:00<br>Sábado · 8:00 – 22:00<br>Domingo · 9:00 – 15:00</p>
+            </div>
+          </div>
+          <div class="visit-row">
+            <span class="visit-icon" aria-hidden="true">📞</span>
+            <div>
+              <h3>Pedidos y reserva de mesa</h3>
+              <p><a href="tel:+528112345678">81 1234 5678</a></p>
+              <p>Entrega a domicilio en Monterrey. Pedidos por WhatsApp.</p>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/528112345678?text=Hola%20Caf%C3%A9%20Aroma%20Del%20Valle%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+        <div class="visit-map">
+          <img src="assets/interior-brick.webp" alt="Interior de cafetería con pared de ladrillo y estantería de café">
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="container footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="#inicio">
-          <span class="brand-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
-              <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
-              <path d="M6 2v3M10 2v3M14 2v3"/>
-            </svg>
-          </span>
-          <span class="brand-text">
-            <strong>Café Aroma Del Valle</strong>
-            <small>Cafetería de especialidad</small>
-          </span>
-        </a>
-        <p>Café de origen, panadería artesanal y desayunos en el Valle de Monterrey.</p>
+        <span class="brand-mark" aria-hidden="true">☕</span>
+        <p><strong>Café Aroma Del Valle</strong></p>
+        <p>Cafetería de especialidad en Monterrey. Hecho de origen a taza.</p>
       </div>
       <div class="footer-col">
-        <h4>Explora</h4>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#menu">Menú</a></li>
-          <li><a href="#galeria">Galería</a></li>
-        </ul>
+        <h3>Contacto</h3>
+        <p>Monterrey, Nuevo León</p>
+        <p><a href="tel:+528112345678">81 1234 5678</a></p>
+        <a class="btn-whatsapp-text" href="https://wa.me/528112345678" target="_blank" rel="noopener">WhatsApp</a>
       </div>
       <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="https://wa.me/5218112345678" target="_blank" rel="noopener">WhatsApp: 81 1234 5678</a></li>
-          <li><a href="tel:+528112345678">Tel: 81 1234 5678</a></li>
-          <li><a href="https://maps.google.com/?q=Monterrey" target="_blank" rel="noopener">Monterrey, N.L.</a></li>
-        </ul>
+        <h3>Horario</h3>
+        <p>Lun a Vie · 7:00 – 21:00</p>
+        <p>Sáb · 8:00 – 22:00</p>
+        <p>Dom · 9:00 – 15:00</p>
       </div>
       <div class="footer-col">
-        <h4>Horario</h4>
-        <ul>
-          <li>Lun – Vie: 7:00 – 21:00</li>
-          <li>Sáb: 8:00 – 22:00</li>
-          <li>Dom: 9:00 – 15:00</li>
-        </ul>
+        <h3>Menú</h3>
+        <p><a href="#menu">Café de especialidad</a></p>
+        <p><a href="#menu">Desayunos</a></p>
+        <p><a href="#menu">Opciones veganas</a></p>
       </div>
     </div>
     <div class="container footer-bottom">
-      <p>© <span id="year">2026</span> Café Aroma Del Valle. Todos los derechos reservados.</p>
+      <p>© <span id="yearNow">2026</span> Café Aroma Del Valle — Monterrey, México.</p>
     </div>
   </footer>
 
-  <!-- Botón flotante de WhatsApp -->
-  <a class="wa-float" href="https://wa.me/5218112345678?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20Caf%C3%A9%20Aroma%20Del%20Valle" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
-      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.4-1.47-.89-.79-1.48-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.43-9.88 9.89-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 7c0 5.45-4.43 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.49-8.4z"/>
-    </svg>
+  <a class="wa-float" id="waFloat" href="https://wa.me/528112345678?text=Hola%20Caf%C3%A9%20Aroma%20Del%20Valle%2C%20quisiera%20hacer%20un%20pedido." target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35zM12 2a10 10 0 0 0-8.6 15L2 22l5.15-1.35A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.17-.43-4.54-1.24l-.33-.2-3.05.8.81-2.98-.21-.34A8.2 8.2 0 1 1 12 20.2z"/></svg>
   </a>
 
-  <!-- Lightbox de galería -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  <div class="cart-bar" id="cartBar" hidden>
+    <button class="cart-bar-info" id="cartBarToggle" aria-expanded="false">
+      <span class="cart-icon" aria-hidden="true">🛒</span>
+      <span id="cartCount">0</span>
+      <span class="cart-sep"></span>
+      <span id="cartTotal">$0</span>
     </button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button class="btn btn-whatsapp" id="cartSendBtn" type="button">Enviar pedido por WhatsApp</button>
   </div>
+
+  <div class="cart-drawer" id="cartDrawer" hidden>
+    <div class="cart-drawer-head">
+      <h3>Tu pedido</h3>
+      <button id="cartClose" class="cart-close" aria-label="Cerrar pedido">✕</button>
+    </div>
+    <ul class="cart-items" id="cartItems"></ul>
+    <label class="cart-notes">
+      <span>Notas (dirección, instrucciones…)</span>
+      <textarea id="cartNotes" rows="3" placeholder="Ej. Entrega en privada Las Flores 123, sin cebolla, llamar al llegar."></textarea>
+    </label>
+    <div class="cart-total-line">
+      <span>Total estimado</span>
+      <strong id="cartTotalDrawer">$0</strong>
+    </div>
+    <button class="btn btn-whatsapp btn-block" id="cartSendBtn2" type="button">Enviar pedido por WhatsApp</button>
+    <p class="cart-hint">Se abrirá WhatsApp con tu pedido listo para enviar.</p>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <p style="text-align:center;padding:1rem;background:#f6efe6;color:#5b3a28;">Para ordenar por WhatsApp habilita JavaScript o escríbenos al <a href="https://wa.me/528112345678">81 1234 5678</a>.</p>
+  </noscript>
 
   <script src="script.js"></script>
 </body>
