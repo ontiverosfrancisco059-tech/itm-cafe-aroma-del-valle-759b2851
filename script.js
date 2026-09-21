@@ -1,273 +1,208 @@
+/* ==========================================================================
+   Café Aroma Del Valle — script.js
+   Interacciones: nav móvil, menú por categorías, pedidos por WhatsApp,
+   reveal on scroll, lightbox y header sticky.
+   ========================================================================== */
+
 (function () {
   "use strict";
 
-  var WHATSAPP = "528112345678";
-  var BUSINESS = "Café Aroma Del Valle";
+  var WHATSAPP_NUMBER = "5218112345678";
 
-  var menuItems = {};
-  var cart = {};
-  var currentFilter = "all";
-
-  var qs = function (sel, ctx) { return (ctx || document).querySelector(sel); };
-  var qsa = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
-
-  document.querySelectorAll(".menu-item").forEach(function (item) {
-    var id = item.getAttribute("data-id");
-    var titleEl = qs(".item-title h3", item);
-    var priceEl = qs(".price", item);
-    menuItems[id] = {
-      id: id,
-      name: titleEl ? titleEl.textContent.trim() : id,
-      price: priceEl ? parseFloat(priceEl.textContent.replace(/[^\d]/g, "")) || 0 : 0,
-      cat: item.getAttribute("data-cat")
-    };
-  });
-
-  function money(n) {
-    return "$" + n.toLocaleString("es-MX");
+  function whatsappLink(message) {
+    return (
+      "https://wa.me/" +
+      WHATSAPP_NUMBER +
+      "?text=" +
+      encodeURIComponent(message)
+    );
   }
 
-  function cartCount() {
-    return Object.keys(cart).reduce(function (sum, id) { return sum + cart[id].qty; }, 0);
-  }
+  /* ---------- Header: sombra al hacer scroll ---------- */
+  var header = document.getElementById("site-header");
 
-  function cartTotal() {
-    return Object.keys(cart).reduce(function (sum, id) {
-      return sum + (menuItems[id] ? menuItems[id].price : 0) * cart[id].qty;
-    }, 0);
-  }
-
-  function addItem(id) {
-    if (!cart[id]) cart[id] = { qty: 0 };
-    cart[id].qty += 1;
-    updateCart();
-  }
-
-  function setQty(id, qty) {
-    if (qty <= 0) {
-      delete cart[id];
+  function onScrollHeader() {
+    if (window.scrollY > 10) {
+      header.classList.add("scrolled");
     } else {
-      if (!cart[id]) cart[id] = { qty: 0 };
-      cart[id].qty = qty;
+      header.classList.remove("scrolled");
     }
-    updateCart();
   }
 
-  function clearCart() {
-    cart = {};
-    updateCart();
+  onScrollHeader();
+  window.addEventListener("scroll", onScrollHeader, { passive: true });
+
+  /* ---------- Navegación móvil ---------- */
+  var navToggle = document.getElementById("nav-toggle");
+  var mainNav = document.getElementById("main-nav");
+
+  function closeNav() {
+    mainNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Abrir menú de navegación");
   }
 
-  function updateCart() {
-    var count = cartCount();
-    var total = cartTotal();
-
-    var bar = qs("#orderBar");
-    if (count > 0) {
-      bar.hidden = false;
-      qs("#orderCount").textContent = String(count);
-      qs("#orderTotal").textContent = money(total);
-    } else {
-      bar.hidden = true;
-    }
-
-document.addEventListener("error", function (e) {
-    if (e.target.tagName !== "IMG") return;
-    var img = e.target;
-    var ph = document.createElement("div");
-    ph.className = "img-fallback";
-    ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a3 3 0 0 1 0 6h-1"/><path d="M3 8h14v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8Z"/><path d="M7 2v2M11 2v2M15 2v2"/></svg>';
-    var parent = img.parentElement;
-    if (parent && parent.classList.contains("about-media")) {
-      ph.style.aspectRatio = "4 / 4.4";
-    }
-    if (parent) parent.replaceChild(ph, img);
-  }, true);
-
-  qsa(".add-btn").forEach(function (btn) {
-      var id = btn.getAttribute("data-add");
-      if (cart[id]) {
-        btn.textContent = "Agregado (" + cart[id].qty + ")";
-        btn.classList.add("added");
-      } else {
-        btn.textContent = "Añadir";
-        btn.classList.remove("added");
-      }
-    });
-
-    renderCartLines();
-    qs("#cartTotal").textContent = money(total);
-  }
-
-  function renderCartLines() {
-    var wrap = qs("#cartItems");
-    var ids = Object.keys(cart);
-
-    if (ids.length === 0) {
-      wrap.innerHTML = '<p class="drawer-empty">Tu pedido está vacío. Agrega algo del menú.</p>';
-      return;
-    }
-
-    var html = '';
-    ids.forEach(function (id) {
-      var item = menuItems[id];
-      if (!item) return;
-      var lineTotal = item.price * cart[id].qty;
-      var priceTxt = item.price ? " · " + money(item.price) + " c/u" : "";
-      html +=
-        '<div class="cart-line">' +
-          '<div class="cart-line-info">' +
-            '<strong>' + item.name + '</strong>' +
-            '<span>' + item.catLabel + priceTxt + '</span>' +
-          '</div>' +
-          '<div class="step">' +
-            '<button type="button" data-dec="' + id + '" aria-label="Quitar uno">-</button>' +
-            '<b>' + cart[id].qty + '</b>' +
-            '<button type="button" data-inc="' + id + '" aria-label="Agregar uno">+</button>' +
-          '</div>' +
-        '</div>';
-    });
-    wrap.innerHTML = html;
-  }
-
-  function buildMessage() {
-    var lines = Object.keys(cart).map(function (id) {
-      var item = menuItems[id];
-      var lineTotal = item.price * cart[id].qty;
-      var pricePart = item.price ? " — " + money(lineTotal) : "";
-      return "• " + cart[id].qty + "x " + item.name + pricePart;
-    });
-
-    var text =
-      "Hola " + BUSINESS + ", me gustaría ordenar:\n\n" +
-      lines.join("\n") +
-      "\n\nTotal: " + money(cartTotal()) +
-      "\nEntrega a domicilio: Sí" +
-      "\nNombre: " +
-      "\nDirección / zona: ";
-
-    return encodeURIComponent(text);
-  }
-
-  function sendOrder() {
-    var url = "https://wa.me/" + WHATSAPP + "?text=" + buildMessage();
-    window.open(url, "_blank", "noopener");
-  }
-
-  function openDrawer() {
-    qs("#cartDrawer").classList.add("open");
-    qs("#cartDrawer").setAttribute("aria-hidden", "false");
-    qs("#drawerBackdrop").hidden = false;
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeDrawer() {
-    qs("#cartDrawer").classList.remove("open");
-    qs("#cartDrawer").setAttribute("aria-hidden", "true");
-    qs("#drawerBackdrop").hidden = true;
-    document.body.style.overflow = "";
-  }
-
-  qsa(".add-btn").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      addItem(btn.getAttribute("data-add"));
-      pulse(btn);
-    });
+  navToggle.addEventListener("click", function () {
+    var isOpen = mainNav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+    navToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+    );
   });
 
-  qs("#openDrawer").addEventListener("click", openDrawer);
-  qs("#drawerClose").addEventListener("click", closeDrawer);
-  qs("#drawerBackdrop").addEventListener("click", closeDrawer);
-  qs("#sendOrder").addEventListener("click", sendOrder);
+  /* ---------- Navegación activa con IntersectionObserver ---------- */
+  var navLinks = document.querySelectorAll(".nav-link");
+  var sections = [];
 
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeDrawer();
+  navLinks.forEach(function (link) {
+    var target = document.querySelector(link.getAttribute("href"));
+    if (target) sections.push(target);
   });
 
-  qs("#cartItems").addEventListener("click", function (e) {
-    var btn = e.target.closest("button[data-inc], button[data-dec]");
-    if (!btn) return;
-    var id = btn.getAttribute("data-inc") || btn.getAttribute("data-dec");
-    var delta = btn.hasAttribute("data-inc") ? 1 : -1;
-    setQty(id, (cart[id] ? cart[id].qty : 0) + delta);
-  });
+  if ("IntersectionObserver" in window) {
+    var navObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.getAttribute("id");
+            navLinks.forEach(function (link) {
+              link.classList.toggle(
+                "active",
+                link.getAttribute("href") === "#" + id
+              );
+            });
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
 
-  function pulse(btn) {
-    btn.style.transform = "scale(0.92)";
-    setTimeout(function () { btn.style.transform = ""; }, 120);
+    sections.forEach(function (section) {
+      navObserver.observe(section);
+    });
   }
 
-  qsa(".menu-tab").forEach(function (tab) {
+  /* ---------- Cerrar menú al hacer clic en un enlace ---------- */
+  mainNav.addEventListener("click", function (e) {
+    if (e.target.classList.contains("nav-link")) closeNav();
+  });
+
+  /* ---------- Menú: filtro por categorías ---------- */
+  var menuTabs = document.querySelectorAll(".menu-tab");
+  var menuCards = document.querySelectorAll(".menu-card");
+
+  menuTabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
-      qsa(".menu-tab").forEach(function (t) {
+      menuTabs.forEach(function (t) {
         t.classList.remove("active");
         t.setAttribute("aria-selected", "false");
       });
       tab.classList.add("active");
       tab.setAttribute("aria-selected", "true");
-      currentFilter = tab.getAttribute("data-filter");
-      qsa(".menu-item").forEach(function (item) {
-        var match = currentFilter === "all" || item.getAttribute("data-cat") === currentFilter;
-        item.classList.toggle("hide", !match);
-        if (match) animateIn(item);
+
+      var category = tab.getAttribute("data-category");
+
+      menuCards.forEach(function (card) {
+        var match =
+          category === "all" || card.getAttribute("data-category") === category;
+        card.classList.toggle("hide", !match);
+
+        if (match) {
+          card.classList.remove("visible");
+          void card.offsetWidth;
+          card.classList.add("visible");
+        }
       });
     });
   });
 
-  function animateIn(el) {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(10px)";
-    requestAnimationFrame(function () {
-      el.style.transition = "opacity 0.35s ease, transform 0.35s ease";
-      el.style.opacity = "1";
-      el.style.transform = "none";
-      setTimeout(function () { el.style.transition = ""; }, 360);
+  /* ---------- Pedidos: botón "Pedir por WhatsApp" por platillo ---------- */
+  var orderButtons = document.querySelectorAll(".btn-order");
+
+  orderButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item = btn.getAttribute("data-order") || "un platillo del menú";
+      var message =
+        "Hola, quiero hacer un pedido en Café Aroma Del Valle  (encantado de atenderte)\n\nMe gustaría: " +
+        item +
+        "\n\n¿Está disponible a domicilio?";
+      window.open(whatsappLink(message), "_blank", "noopener");
+    });
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    var revealObserver = new IntersectionObserver(
+      function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) {
+      el.classList.add("visible");
     });
   }
 
-  var nav = qs("#mainNav");
-  var toggle = qs("#navToggle");
-  toggle.addEventListener("click", function () {
-    var open = nav.classList.toggle("open");
-    toggle.classList.toggle("open", open);
-    toggle.setAttribute("aria-expanded", String(open));
+  /* ---------- Galería: lightbox ---------- */
+  var galleryItems = document.querySelectorAll(".gallery-item img");
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  var lightboxClose = document.getElementById("lightbox-close");
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  galleryItems.forEach(function (img) {
+    img.addEventListener("click", function () {
+      openLightbox(img.src, img.alt);
+    });
   });
-  nav.addEventListener("click", function (e) {
-    if (e.target.closest("a")) {
-      nav.classList.remove("open");
-      toggle.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
+
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeLightbox();
+      closeNav();
     }
   });
 
-  var header = qs("#siteHeader");
-  var onScroll = function () {
-    header.classList.toggle("scrolled", window.scrollY > 12);
-  };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  /* ---------- Año en el footer ---------- */
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  if ("IntersectionObserver" in window) {
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    qsa(".reveal").forEach(function (el) { revealObs.observe(el); });
-  } else {
-    qsa(".reveal").forEach(function (el) { el.classList.add("is-visible"); });
+  /* ---------- Guardado del pedido (mejora UX en móviles) ---------- */
+  var defaultWaLink = document.querySelector(
+    'a[href^="https://wa.me/"]'
+  );
+  if (defaultWaLink && !defaultWaLink.dataset.bound) {
+    defaultWaLink.setAttribute("target", "_blank");
+    defaultWaLink.setAttribute("rel", "noopener");
   }
-
-  qs("#year").textContent = String(new Date().getFullYear());
-
-  Object.keys(menuItems).forEach(function (id) {
-    var item = menuItems[id];
-    var labels = { cafe: "Café de especialidad", desayunos: "Desayunos", panaderia: "Panadería", tienda: "Tienda" };
-    item.catLabel = labels[item.cat] || item.cat;
-  });
-
-  updateCart();
 })();
